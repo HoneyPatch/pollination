@@ -39,14 +39,14 @@ class Droneify
 
     FileUtils.copy(json_file, "#{run_dir}/ParamSet.json")
 
-    faux_wait = 1
+    #faux_wait = 1
     receipt_file = "#{run_dir}/done.receipt"
     until File.exist?(receipt_file) # || timeout !
-      faux_wait += 1
+    #  faux_wait += 1
 
-      if faux_wait >= 10
-        File.open(receipt_file, 'w') { |f| f << "#{Time.now}" }
-      end
+    #  if faux_wait >= 10
+    #    File.open(receipt_file, 'w') { |f| f << "#{Time.now}" }
+    #  end
       sleep 1
     end
 
