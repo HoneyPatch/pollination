@@ -72,7 +72,10 @@ class Droneify
 
       # stage the grasshopper file
       unless File.exist? "#{d}/#{File.basename(@grasshopper_definition)}"
+		d_def = File.expand_path("#{d}/#{File.basename(@grasshopper_definition)}")
         FileUtils.copy @grasshopper_definition, "#{d}/#{File.basename(@grasshopper_definition)}"
+		syscall = "\"C:/Program Files/Rhinoceros\ 5\ (64-bit)/System/Rhino.exe\" /runscript=\"-Grasshopper Editor Load Document Open \"\"#{d_def}\"\" Enter\""
+		IO.popen("#{syscall}")
       end
     end
 
