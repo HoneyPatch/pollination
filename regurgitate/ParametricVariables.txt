@@ -14,5 +14,6 @@ roof r-value
 
 orientation
 schedules?
+thermostat setpoints?
 
 marker for type of HVAC system (e.g. system types 1-9)
