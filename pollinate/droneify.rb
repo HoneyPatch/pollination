@@ -64,7 +64,7 @@ class Droneify
     threads = []
 
     # Create the run directories (1 per core and populate with the GH file)
-    @processor_tracker.each do |k,_|
+    @processor_tracker.each do |k, _|
       # Force removal of the directory if there
       d = "#{File.dirname(__FILE__)}/Run/Processor_#{k}"
       FileUtils.rm_rf d
@@ -72,10 +72,15 @@ class Droneify
 
       # stage the grasshopper file
       unless File.exist? "#{d}/#{File.basename(@grasshopper_definition)}"
-		d_def = File.expand_path("#{d}/#{File.basename(@grasshopper_definition)}")
+        d_def = File.expand_path("#{d}/#{File.basename(@grasshopper_definition)}")
+        rhino_location = "C:/Program Files/Rhinoceros\ 5\ (64-bit)/System/Rhino.exe"
         FileUtils.copy @grasshopper_definition, "#{d}/#{File.basename(@grasshopper_definition)}"
-		syscall = "\"C:/Program Files/Rhinoceros\ 5\ (64-bit)/System/Rhino.exe\" /runscript=\"-Grasshopper Editor Load Document Open \"\"#{d_def}\"\" Enter\""
-		IO.popen("#{syscall}")
+        if File.exist? rhino_location
+          syscall = "\"#{rhino_location}\" /runscript=\"-Grasshopper Editor Load Document Open \"\"#{d_def}\"\" Enter\""
+          IO.popen("#{syscall}")
+        else
+          puts "WARNING: Can't find Rhino"
+        end
       end
     end
 
@@ -108,7 +113,7 @@ class Droneify
   private
 
   def get_available_processor
-    @processor_tracker.find{ | k, v| v == false}.first
+    @processor_tracker.find { |k, v| v == false }.first
   end
 
 end
