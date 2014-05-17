@@ -66,13 +66,13 @@
         },
         "AWSRegionArch2AMI": {
             "us-west-1": {
-                "64": "ami-0b51203b"
+                "64": "ami-bf57268f"
             },
             "us-west-2": {
-                "64": "ami-0b51203b"
+                "64": "ami-bf57268f"
             },
             "eu-west-1": {
-                "64": "ami-0b51203b"
+                "64": "ami-bf57268f"
             }
         }
     },
@@ -234,7 +234,7 @@
                                 "<powershell>\n",
                                 "Set-ExecutionPolicy Unrestricted -force\n",
                                 "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))\n",
-                                "'winscp','git','cygwin' | %{ cinst $_ }\n",
+                                "'winscp','git','cygwin', 'putty' | %{ cinst $_ }\n",
                                 "</powershell>"
                             ]
                         ]

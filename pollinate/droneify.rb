@@ -54,7 +54,7 @@ class Droneify
     results = Dir["#{run_dir}/*"]
     results.each do |r|
       pp "moving file #{r} to #{destination_directory}"
-      if File.extname(r).downcase == '.gh' || File.name(r) == 'launch.receipt'
+      if File.extname(r).downcase == '.gh' || File.basename(r) == 'launch.receipt'
         pp "skipping file #{r}"
       else
         FileUtils.move(r, "#{destination_directory}/#{File.basename(r)}")
@@ -70,19 +70,25 @@ class Droneify
     # Create the run directories (1 per core and populate with the GH file)
     @processor_tracker.each do |k, _|
       # Force removal of the directory if there
-      d = "#{File.dirname(__FILE__)}/Run/Processor_#{k}"
+      d = File.expand_path("#{File.dirname(__FILE__)}/Run/Processor_#{k}")
       FileUtils.rm_rf d
       FileUtils.mkdir_p d
 
       # stage the grasshopper file
       unless File.exist? "#{d}/#{File.basename(@grasshopper_definition)}"
         d_def = File.expand_path("#{d}/#{File.basename(@grasshopper_definition)}")
+        #rhino_location = "/Applications/Microsoft\ Office\ 2011/Microsoft\ Word.app"
         rhino_location = "C:/Program Files/Rhinoceros\ 5\ (64-bit)/System/Rhino.exe"
         FileUtils.copy @grasshopper_definition, "#{d}/#{File.basename(@grasshopper_definition)}"
         if File.exist? rhino_location
+          pp "Creating run directory and launching app for #{d}"
+          #syscall = "open \"#{rhino_location}\""# /runscript=\"-Grasshopper Editor Load Document Open \"\"#{d_def}\"\" Enter\""
           syscall = "\"#{rhino_location}\" /runscript=\"-Grasshopper Editor Load Document Open \"\"#{d_def}\"\" Enter\""
           IO.popen("#{syscall}")
-          sleep 5 unless File.exist("#{d}/launch.receipt")
+          while !File.exist? "#{d}/launch.receipt"
+            print "."
+            sleep 5
+          end
         else
           puts "WARNING: Can't find Rhino"
         end
