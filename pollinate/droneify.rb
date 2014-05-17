@@ -50,11 +50,15 @@ class Droneify
       sleep 1
     end
 
-    # Move the results out of the run directorys
+    # Move the results out of the run directories
     results = Dir["#{run_dir}/*"]
     results.each do |r|
       pp "moving file #{r} to #{destination_directory}"
-      FileUtils.move(r, "#{destination_directory}/#{File.basename(r)}") unless File.extname(r).downcase == '.gh'
+      if File.extname(r).downcase == '.gh' || File.name(r) == 'launch.receipt'
+        pp "skipping file #{r}"
+      else
+        FileUtils.move(r, "#{destination_directory}/#{File.basename(r)}")
+      end
     end
   end
 
@@ -78,6 +82,7 @@ class Droneify
         if File.exist? rhino_location
           syscall = "\"#{rhino_location}\" /runscript=\"-Grasshopper Editor Load Document Open \"\"#{d_def}\"\" Enter\""
           IO.popen("#{syscall}")
+          sleep 5 unless File.exist("#{d}/launch.receipt")
         else
           puts "WARNING: Can't find Rhino"
         end
