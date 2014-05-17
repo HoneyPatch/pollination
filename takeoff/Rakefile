@@ -1,0 +1,11 @@
+require "bundler/gem_tasks"
+
+require 'pp'
+
+namespace :takeoff do
+
+  desc "Start the predefined instance"
+  task :start do
+    pp "starting the instance"
+  end
+end
