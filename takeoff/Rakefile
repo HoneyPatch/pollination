@@ -1,0 +1,32 @@
+require "bundler/gem_tasks"
+
+require 'pp'
+
+namespace :takeoff do
+
+  desc "Start the predefined instance"
+  task :start do
+    pp "starting the instance"
+  end
+
+  desc "Upload files"
+  task :upload do
+    pp "uploading files"
+    if is_windows?
+      # TODO: do we need to have cygwin installed to make this work?
+      sys_command = "winscp.com root:password@10.5.2.42 /command put C:/Data"
+    else
+      sys_command = "scp LICENSE.txt nlong@WIN-5U34AKQ7SV7.local:/C/Data"
+    end
+    command_result = `#{sys_command}`
+    pp $:
+    pp command_result
+  end
+end
+
+
+def is_windows?
+  RUBY_PLATFORM =~ /mswin|mingw|cygwin/
+end
+
+
