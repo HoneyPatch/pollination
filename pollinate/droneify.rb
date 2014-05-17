@@ -24,14 +24,14 @@ class Droneify
   end
 
 
-  def tracker_jacker(json_file, processor_id, destination_directory, &block)
+  def tracker_jacker(json_file, processor_id, base_destination_directory, &block)
     pp "running #{json_file}"
     json_dir = File.dirname(json_file)
 
     random = UUID.new.generate
-    dest_dir = "#{destination_directory}/job_#{random}"
-    FileUtils.mkdir_p(dest_dir)
-    FileUtils.copy(json_file, "#{dest_dir}/ParamSet.json")
+    destination_directory = "#{base_destination_directory}/job_#{random}"
+    FileUtils.mkdir_p(destination_directory)
+    FileUtils.copy(json_file, "#{destination_directory}/ParamSet.json")
 
     # Also copy to the run directory
     run_dir = "#{File.dirname(__FILE__)}/Run/Processor_#{processor_id}"
@@ -53,7 +53,8 @@ class Droneify
     # Move the results out of the run directorys
     results = Dir["#{run_dir}/*"]
     results.each do |r|
-      FileUtils.move(r, "#{destination_directory}/#{File.basename(r)}") unless File.basename(r) == 'DefMaster.gh'
+      pp "moving file #{r} to #{destination_directory}"
+      FileUtils.move(r, "#{destination_directory}/#{File.basename(r)}") unless File.extname(r).downcase == '.gh'
     end
   end
 
