@@ -1,8 +1,7 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
 
-    "Description": "This template enables roles and features of Windows Server. **WARNING** This template creates Amazon EC2 Windows instance and related resources. You will be billed for the AWS resources used if you create a stack from this template.",
-
+    "Description": "Pollination",
     "Parameters": {
         "KeyPairName": {
             "Description": "Name of an existing Amazon EC2 key pair for RDP access",
@@ -66,29 +65,14 @@
             }
         },
         "AWSRegionArch2AMI": {
-            "us-east-1": {
-                "64": "ami-df8e93b6"
-            },
             "us-west-1": {
-                "64": "ami-cce3da89"
+                "64": "ami-0b51203b"
             },
             "us-west-2": {
-                "64": "ami-56e38866"
+                "64": "ami-0b51203b"
             },
             "eu-west-1": {
-                "64": "ami-69f9021e"
-            },
-            "ap-southeast-1": {
-                "64": "ami-e41b48b6"
-            },
-            "ap-southeast-2": {
-                "64": "ami-6758c05d"
-            },
-            "ap-northeast-1": {
-                "64": "ami-89cbb588"
-            },
-            "sa-east-1": {
-                "64": "ami-e74eecfa"
+                "64": "ami-0b51203b"
             }
         }
     },
@@ -106,13 +90,13 @@
                         "CidrIp": {
                             "Ref": "SourceCidrForRDP"
                         }
-                    }
+                    },
                     {
-                        "IpProtocol": "ssh",
+                        "IpProtocol": "tcp",
                         "FromPort": "22",
                         "ToPort": "22",
                         "CidrIp": {
-                            "Ref": "SourceCidrForSsh"
+                            "Ref": "SourceCidrForRDP"
                         }
                     }
                 ]
@@ -235,19 +219,26 @@
                 },
                 "UserData": {
                     "Fn::Base64": {
-                        "Fn::Join": ["", [
-                            "<script>\n",
+                        "Fn::Join": ["",
+                            [
+                                "<script>\n",
 
-                            "cfn-init.exe -v -s ", {
+                                "cfn-init.exe -v -s ", {
                                 "Ref": "AWS::StackId"
                             },
-                            " -r WindowsServer",
-                            " --region ", {
+                                " -r WindowsServer",
+                                " --region ", {
                                 "Ref": "AWS::Region"
-                            }, "\n",
+                            },
+                                "\n",
+                                "@powershell -NoProfile -ExecutionPolicy unrestricted -Command \"iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))\" && SET PATH=%PATH%;%systemdrive%/chocolatey/bin\n",
+                                "cinst winscp\n",
+                                "cinst git\n",
+                                "cinst cygwin\n",
+                                "</script>"
 
-                            "</script>"
-                        ]]
+                            ]
+                        ]
                     }
                 }
             }
