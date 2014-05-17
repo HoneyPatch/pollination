@@ -1,0 +1,19 @@
+plug load power density
+lighting power density
+minimum airflow at terminal box
+% outdoor air
+window U-value
+window shgc
+Wall R-value
+Cooling COP (low speed) 
+Cooling COP (high speed) 
+window to wall ratio
+infiltration 
+fan static pressure
+roof r-value
+
+orientation
+schedules?
+thermostat setpoints?
+
+marker for type of HVAC system (e.g. system types 1-9)
