@@ -1,0 +1,27 @@
+PATH
+  remote: .
+  specs:
+    takeoff (0.0.1)
+      aws-sdk-core (~> 2.0.0.rc8)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    aws-sdk-core (2.0.0.rc8)
+      builder (~> 3.0)
+      jamespath
+      multi_json (~> 1.0)
+      multi_xml (~> 0.5)
+    builder (3.2.2)
+    jamespath (0.5.0)
+    multi_json (1.10.0)
+    multi_xml (0.5.5)
+    rake (10.3.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.6)
+  rake
+  takeoff!
