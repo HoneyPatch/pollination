@@ -222,7 +222,6 @@
                         "Fn::Join": ["",
                             [
                                 "<script>\n",
-
                                 "cfn-init.exe -v -s ", {
                                 "Ref": "AWS::StackId"
                             },
@@ -231,12 +230,12 @@
                                 "Ref": "AWS::Region"
                             },
                                 "\n",
-                                "@powershell -NoProfile -ExecutionPolicy unrestricted -Command \"iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))\" && SET PATH=%PATH%;%systemdrive%/chocolatey/bin\n",
-                                "cinst winscp\n",
-                                "cinst git\n",
-                                "cinst cygwin\n",
-                                "</script>"
-
+                                "</script>\n",
+                                "<powershell>\n",
+                                "Set-ExecutionPolicy Unrestricted -force\n",
+                                "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))\n",
+                                "'winscp','git','cygwin' | %{ cinst $_ }\n",
+                                "</powershell>"
                             ]
                         ]
                     }
