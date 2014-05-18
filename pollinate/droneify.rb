@@ -10,7 +10,7 @@ require 'logger'
 require 'uuid'
 require 'pp'
 
-NUMBER_OF_PROCESSORS = 2
+NUMBER_OF_PROCESSORS = 8
 
 class Droneify
   def initialize(grasshopper_definition)
@@ -65,7 +65,6 @@ class Droneify
   def swarm(json_file_directory, destination_directory)
     queue = Queue.new
     threads = []
-
 
     FileUtils.rm_rf(destination_directory)
     # add the jsons to the queue to process
@@ -150,9 +149,12 @@ syscall = "\"#{sevenzip_location}\"\ e\ #{zips.first}"
 `#{syscall}`
 
 # this is cheeze... but putting the script call here
-drone = Droneify.new("#{File.dirname(__FILE__)}/DefMaster.gh")
-drone.swarm("#{File.dirname(__FILE__)}", "#{File.dirname(__FILE__)}/Swarm")
+begin
+  drone = Droneify.new("#{File.dirname(__FILE__)}/DefMaster.gh")
+  drone.swarm("#{File.dirname(__FILE__)}", "#{File.dirname(__FILE__)}/Swarm")
+ensure
+  syscall = "\"#{sevenzip_location}\"\ a\ Results.7z -r Swarm/*.receipt"
+  `#{syscall}`
+end
 
-syscall = "\"#{sevenzip_location}\"\ a\ Results.7z -r Swarm/*.receipt"
-`#{syscall}`
 

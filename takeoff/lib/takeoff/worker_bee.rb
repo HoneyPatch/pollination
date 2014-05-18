@@ -23,7 +23,7 @@ module Takeoff
     def create_workers(number_of_instances)
       options = {
           stack_name: "Pollinator-#{Time.now.to_i}",
-          template_body: "#{File.read(File.join(File.dirname(__FILE__), "../bootstrap/cloudformulation.json")).gsub("\n\r", "")}",
+          template_body: "#{File.read(File.join(File.dirname(__FILE__), "../bootstrap/cloudformulation.json"))}",
           parameters: [
               {
                   parameter_key: "Features",
@@ -31,7 +31,7 @@ module Takeoff
               },
               {
                   parameter_key: "InstanceType",
-                  parameter_value: "m1.xlarge"
+                  parameter_value: "c3.4xlarge"
               },
               {
                   parameter_key: "KeyPairName",
@@ -59,7 +59,7 @@ module Takeoff
       #threads = []
       number_of_instances.times do |index|
         #threads << Thread.new do
-          puts "Launcing system #{index}"
+          puts "Launching system #{index}"
           @instances << {:index => index, :data => launch_worker(options)}
         #end
       end
@@ -75,10 +75,11 @@ module Takeoff
       resp = @cloudformation.create_stack(options)
       stack_id = resp.stack_id
       pp "Start template created: #{resp.stack_id}"
-      stack_name = "Pollinator-1400405017"
+      stack_name = options[:stack_name]
 
+      #stack_name = "Pollinator-1400405017"
       #stack_id = "arn:aws:cloudformation:us-west-2:471211731895:stack/Pollinator-1400405017/172ef8d0-de6e-11e3-ac7a-500160d4da18"
-      #stack_name = options[:stack_name]
+
 
       status = 'unknown'
       resp = nil
@@ -118,7 +119,8 @@ module Takeoff
           end
           puts "Instance is running"
           puts "Getting details"
-          detail_info = describe_running_instances(stack_id).first
+          detail_info = describe_running_instances(stack_id)
+          detail_info = detail_info.first if detail_info
           puts "Public IP #{detail_info[:public_ip_address]}"
         }
       rescue TimeoutError

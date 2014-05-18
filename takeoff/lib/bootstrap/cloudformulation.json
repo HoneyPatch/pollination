@@ -11,7 +11,7 @@
             "Description": "Amazon EC2 instance type",
             "Type": "String",
             "Default": "m1.large",
-            "AllowedValues": [ "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "c1.medium", "c1.xlarge"]
+            "AllowedValues": [ "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "c1.medium", "c1.xlarge", "c3.4xlarge"]
         },
         "Roles": {
             "Description": "Roles.",
@@ -62,17 +62,20 @@
             },
             "c1.xlarge": {
                 "Arch": "64"
+            },
+            "c3.4xlarge": {
+                "Arch": "64"
             }
         },
         "AWSRegionArch2AMI": {
             "us-west-1": {
-                "64": "ami-67433257"
+                "64": "ami-2f4b3a1f"
             },
             "us-west-2": {
-                "64": "ami-67433257"
+                "64": "ami-2f4b3a1f"
             },
             "eu-west-1": {
-                "64": "ami-67433257"
+                "64": "ami-2f4b3a1f"
             }
         }
     },
