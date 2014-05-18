@@ -34,7 +34,7 @@ namespace :takeoff do
         values = "#{values_directory}/system_#{instance[:index]}.zip"
         if File.exist?(values)
           pp "Uploading #{file} to #{instance}"
-          sys_call = "pscp -v -pw #{ENV['WINPW']} #{values} Administrator@#{instance[:data][:public_ip_address]}:/cygdrive/c/Data"
+          sys_call = "pscp -v -batch -pw #{ENV['WINPW']} #{values} Administrator@#{instance[:data][:public_ip_address]}:/cygdrive/c/Data"
           pp sys_call
           r = `#{sys_call}`
         else
@@ -56,7 +56,7 @@ namespace :takeoff do
       instances = JSON.parse(File.read(ij), :symbolize_names => true)
       instances.each do |instance|
         pp "Downloading results from #{instance}"
-        sys_call = "pscp -v -pw #{ENV['WINPW']} Administrator@#{instance[:data][:public_ip_address]}:/cygdrive/c/Data/Results.7z #{download_directory}/Results_#{instance}"
+        sys_call = "pscp -v -batch -pw #{ENV['WINPW']} Administrator@#{instance[:data][:public_ip_address]}:/cygdrive/c/Data/Results.7z #{download_directory}/Results_#{instance}"
         pp sys_call
         r = `#{sys_call}`
       end
