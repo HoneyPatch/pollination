@@ -13,22 +13,47 @@ namespace :takeoff do
     pp "starting the instance"
     bee = Takeoff::WorkerBee.new
 
-    number_of_instances = 1
-
+    number_of_instances = 2
 
     # files to upload
 
-    #bee.create_workers(number_of_instances)
+    bee.create_workers(number_of_instances)
 
-    number_of_instances.times do |i|
-      instances = File.join(File.dirname(__FILE__),"../pollinate/Instances/system_#{i}.zip")
-      bee.upload_file(instances)
-    end
     # now upload the files and let it do its job
-
   end
 
+  desc "Upload the zips"
+  task :upload do
+    pp "uploading the zip files"
+    ij = "instances.json"
+    if File.exist? ij
+      values_directory = File.join(File.dirname(__FILE__), "../pollinate/Instances")
+      instances = JSON.parse(File.read(ij), :symbolize => true)
+      instances.each do |instance|
+        values = "#{values_directory}/system_#{instance[:index]}.zip"
+        if File.exist?(values)
+          pp "Uploading #{file} to #{instance}"
+          sys_call = "pscp -v -pw #{ENV['WINPW']} #{values} Administrator@#{instance[:data][:public_ip_address]}:/cygdrive/c/Data"
+          pp sys_call
+          r = `#{sys_call}`
+        end
+      end
+    end
+  end
+
+
   desc "Download the results"
+  task :finish do
+    ij = "instances.json"
+    if File.exist? ij
+      instances = JSON.parse(File.read(ij), :symbolize => true)
+
+
+      # go through and download all the Results.7z files for C:/Data
+    else
+      pp "No runnings instances defines"
+    end
+  end
 
 end
 

@@ -20,7 +20,7 @@ module Takeoff
       @cloudformation = Aws::CloudFormation.new
     end
 
-    def create_workers(number_of_instances, instance_data = {})
+    def create_workers(number_of_instances)
       options = {
           stack_name: "Pollinator-#{Time.now.to_i}",
           template_body: "#{File.read(File.join(File.dirname(__FILE__), "../bootstrap/cloudformulation.json")).gsub("\n\r", "")}",
@@ -56,33 +56,24 @@ module Takeoff
           ]
       }
 
-      threads = []
+      #threads = []
       number_of_instances.times do |index|
-        threads << Thread.new do
-          @instances << launch_worker(options)
-        end
+        #threads << Thread.new do
+          puts "Launcing system #{index}"
+          @instances << {:index => index, :data => launch_worker(options)}
+        #end
       end
       threads.each { |t| t.join }
 
-      # Send the data to the systems
-
-
+      File.rm "instances.json" if File.exist? "instances.json"
+      File.open("instances.json",'w') { |f| f << JSON.pretty_generate({:instances => @instances})}
 
     end
 
-    def upload_file(file)
-      pp "Uploading #{file}"
-      sys_call = "pscp -v -pw #{ENV['WINPW']} #{file} Administrator@54.184.35.76:/cygdrive/c/Data"
-      pp sys_call
-      r = `#{sys_call}`
-    end
 
     private
 
-
-
     def launch_worker(options)
-      # TODO: store the data about the instances some
       resp = @cloudformation.create_stack(options)
       stack_id = resp.stack_id
       pp "Start template created: #{resp.stack_id}"
@@ -93,7 +84,7 @@ module Takeoff
       status = 'unknown'
       resp = nil
       begin
-        Timeout.timeout(600) {# 10 minutes
+        Timeout.timeout(900) {# 20 minutes
           until status == 'CREATE_COMPLETE'
             begin
               resp = @cloudformation.describe_stack_resource(stack_name: stack_name, logical_resource_id: "WindowsServerWaitCondition")[:stack_resource_detail]
@@ -133,6 +124,8 @@ module Takeoff
       rescue TimeoutError
         raise "Instance was unable to launch due to timeout #{aws_instance.instance_id}"
       end
+
+      detail_info
     end
 
     # return all of the running instances, or filter by the group_uuid & instance type

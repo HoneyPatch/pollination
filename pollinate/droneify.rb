@@ -10,7 +10,7 @@ require 'logger'
 require 'uuid'
 require 'pp'
 
-NUMBER_OF_PROCESSORS = 8
+NUMBER_OF_PROCESSORS = 2
 
 class Droneify
   def initialize(grasshopper_definition)
