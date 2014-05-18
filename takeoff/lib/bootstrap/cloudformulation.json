@@ -251,13 +251,12 @@
                                 "<powershell>\n",
                                 "Set-ExecutionPolicy Unrestricted -force\n",
                                 "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))\n",
-
-                                "'winscp','git','cygwin', 'putty', 'notepadplusplus', 'nmap', 'curl', 'openssh' | %{ cinst $_ }\n",
+                                "'winscp','git','cygwin', 'putty', 'notepadplusplus', 'nmap', 'curl', 'freesshd', 'openssh' | %{ cinst $_ }\n",
                                 "netsh firewall set portopening protocol=TCP port=21\n",
                                 "netsh firewall set portopening protocol=TCP port=22\n",
                                 "netsh firewall set portopening protocol=TCP port=80\n",
                                 "netsh firewall set portopening protocol=TCP port=443\n",
-                                "Restart-Service openssh\n",
+                                "Restart-Service 'OpenSSH Server'\n",
                                 "</powershell>"
                             ]
                         ]

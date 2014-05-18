@@ -84,10 +84,9 @@ class Droneify
           end
         end
 
-        # TODO: what next?
-        puts "Done"
       end
     end
+    puts "Done with all the threads"
 
     threads.each { |t| t.join }
   end
