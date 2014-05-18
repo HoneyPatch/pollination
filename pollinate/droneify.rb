@@ -6,10 +6,9 @@
 
 require 'fileutils'
 require 'thread'
+require 'logger'
 require 'uuid'
 require 'pp'
-require 'aws-s3'
-
 
 NUMBER_OF_PROCESSORS = 8
 
@@ -130,12 +129,30 @@ class Droneify
     end
     @processor_tracker[processor_id][:initialized] = true
   end
-
 end
 
+@logger = Logger.new("droning.log")
+# Wait forever
+zips = nil
+while true
+  print "."
+  zips = Dir["*.zip"]
+  break if zips.count >= 1
+
+  @logger.info "waiting for a zip file to appear..."
+  sleep 5
+end
+
+# unzip and droneify
+sevenzip_location = "C:/Program\ Files/7-Zip/7z.exe"
+
+syscall = "\"#{sevenzip_location}\"\ e\ #{zips.first}"
+`#{syscall}`
 
 # this is cheeze... but putting the script call here
 drone = Droneify.new("#{File.dirname(__FILE__)}/DefMaster.gh")
-drone.swarm("#{File.dirname(__FILE__)}/Instances", "#{File.dirname(__FILE__)}/Swarm")
+drone.swarm("#{File.dirname(__FILE__)}", "#{File.dirname(__FILE__)}/Swarm")
 
+syscall = "\"#{sevenzip_location}\"\ a\ Results.7z -r Swarm/*.receipt"
+`#{syscall}`
 

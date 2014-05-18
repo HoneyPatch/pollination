@@ -20,8 +20,6 @@ module Takeoff
       @cloudformation = Aws::CloudFormation.new
     end
 
-
-
     def create_workers(number_of_instances, instance_data = {})
       options = {
           stack_name: "Pollinator-#{Time.now.to_i}",
@@ -67,22 +65,20 @@ module Takeoff
       threads.each { |t| t.join }
 
       # Send the data to the systems
-      upload_files()
 
+
+
+    end
+
+    def upload_file(file)
+      pp "Uploading #{file}"
+      sys_call = "pscp -v -pw #{ENV['WINPW']} #{file} Administrator@54.184.35.76:/cygdrive/c/Data"
+      pp sys_call
+      r = `#{sys_call}`
     end
 
     private
 
-    def upload_files(files)
-      files.each do |file_name|
-        key = File.basename(file_name)
-        pp "Uploading "
-        sys_call = "pscp -v -pw #{ENV['WINPW']} #{file_name} Administrator@54.184.35.76:/cygdrive/c/Data"
-        pp sys_call
-        r = `#{sys_call}`
-        #puts r
-      end
-    end
 
 
     def launch_worker(options)
