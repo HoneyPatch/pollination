@@ -16,11 +16,11 @@ module Takeoff
       Aws.config[:region] = 'us-west-2'
       Aws.config[:cloudformation] = {region: 'us-west-2'}
 
-
       @aws = Aws::EC2.new
       @cloudformation = Aws::CloudFormation.new
-
     end
+
+
 
     def create_workers(number_of_instances, instance_data = {})
       options = {
@@ -33,7 +33,7 @@ module Takeoff
               },
               {
                   parameter_key: "InstanceType",
-                  parameter_value: "m1.large"
+                  parameter_value: "m1.small"
               },
               {
                   parameter_key: "KeyPairName",
@@ -58,67 +58,84 @@ module Takeoff
           ]
       }
 
-      #threads = []
-      # number_of_instances.times do |index|
-      #   threads << Thread.new do
-      #     worker.launch_instance(image_id, instance_type, user_data, options[:user_id])
-      #   end
-      # end
-      #threads.each { |t| t.join }
+      threads = []
+      number_of_instances.times do |index|
+        threads << Thread.new do
+          @instances << launch_worker(options)
+        end
+      end
+      threads.each { |t| t.join }
+
+      # Send the data to the systems
+      upload_files()
+
+    end
+
+    private
+
+    def upload_files(files)
+      files.each do |file_name|
+        key = File.basename(file_name)
+        pp "Uploading "
+        sys_call = "pscp -v -pw #{ENV['WINPW']} #{file_name} Administrator@54.184.35.76:/cygdrive/c/Data"
+        pp sys_call
+        r = `#{sys_call}`
+        #puts r
+      end
+    end
 
 
-      # resp = @cloudformation.create_stack(options)
-      # stack_id = resp.stack_id
-      # pp "Start template created: #{resp.stack_id}"
-      #
-      # resp = @cloudformation.start_stack(
-      #     stack_id: resp.stack_id,
-      # )
+    def launch_worker(options)
+      # TODO: store the data about the instances some
+      resp = @cloudformation.create_stack(options)
+      stack_id = resp.stack_id
+      pp "Start template created: #{resp.stack_id}"
 
-      stack_id = "arn:aws:cloudformation:us-west-2:471211731895:stack/Pollinator-1400383912/f2865220-de3c-11e3-a914-507bfc8840a6"
-      instances = describe_running_instances(stack_id)
-      instance_id = instances.first[:instance_id]
+      stack_name = options[:stack_name]
+      #stack_name = "Pollinator-1400390557"
+      #stack_id = "arn:aws:cloudformation:us-west-2:471211731895:stack/Pollinator-1400388047/93060890-de46-11e3-ac7a-500160d4da18"
+      status = 'unknown'
+      resp = nil
+      begin
+        Timeout.timeout(600) {# 10 minutes
+          until status == 'CREATE_COMPLETE'
+            begin
+              resp = @cloudformation.describe_stack_resource(stack_name: stack_name, logical_resource_id: "WindowsServerWaitCondition")[:stack_resource_detail]
+              status = resp[:resource_status]
+            rescue
+            end
+            print "."
+            sleep 5
+          end
+        }
+      end
+
+      resp = @cloudformation.describe_stack_resource(stack_name: stack_name, logical_resource_id: "WindowsServer")[:stack_resource_detail]
+      instance_id = resp[:physical_resource_id]
+      pp "CloudFormation is waiting checking amazon instance #{instance_id}"
 
       # get the instance information
-      test_result = @aws.describe_instance_status(instance_ids: [instance_id]).data.instance_statuses.first
+      test_result = nil
       begin
         Timeout.timeout(1800) {# 30 minutes
           while test_result.nil? || test_result.instance_state.name != 'running'
             # refresh the server instance information
 
             sleep 5
-            test_result = @aws.describe_instance_status(instance_ids: [aws_instance.instance_id]).data.instance_statuses.first
-            logger.info '... waiting for instance to be running ...'
+            begin
+              test_result = @aws.describe_instance_status(instance_ids: [instance_id]).data.instance_statuses.first
+            rescue
+            end
+
+            @logger.info '... waiting for instance to be running ...'
           end
           puts "Instance is running"
-          puts "Public IP #{instances.first[:public_ip_address]}"
+          puts "Getting details"
+          detail_info = describe_running_instances(stack_id).first
+          puts "Public IP #{detail_info[:public_ip_address]}"
         }
       rescue TimeoutError
-        raise "Intance was unable to launch due to timeout #{aws_instance.instance_id}"
-      end
-
-      # Send the data to the systems
-
-      # HOOOOW
-
-      
-
-
-
-    end
-
-
-    private
-
-
-    def setup_cloudformation
-
-    end
-
-    def launch_workers(number_of_instances, instance_data)
-      # TODO: store the data about the instances some
-      (1..number_of_instances).each do |instance|
-        @instances << launch_instance()
+        raise "Instance was unable to launch due to timeout #{aws_instance.instance_id}"
       end
     end
 
@@ -133,7 +150,6 @@ module Takeoff
           # {:name => "tag-value", :values => [group_uuid.to_s, "OpenStudio#{@openstudio_instance_type.capitalize}"]}
           # {:name => "tag:key=value", :values => ["GroupUUID=#{group_uuid.to_s}"]}
           ]
-
       )
 
       instance_data = nil
@@ -148,7 +164,7 @@ module Takeoff
 
           end
         else
-          logger.info 'no running instances found'
+          @logger.info 'no running instances found'
         end
       end
 

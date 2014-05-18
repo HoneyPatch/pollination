@@ -8,6 +8,8 @@ require 'fileutils'
 require 'thread'
 require 'uuid'
 require 'pp'
+require 'aws-s3'
+
 
 NUMBER_OF_PROCESSORS = 8
 
