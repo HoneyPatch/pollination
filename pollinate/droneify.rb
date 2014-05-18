@@ -18,11 +18,10 @@ class Droneify
 
     @processor_tracker = {}
     NUMBER_OF_PROCESSORS.times do |processor|
-      @processor_tracker[processor] = false
-
+      @processor_tracker[processor] = {available: true, initialized: false}
+      create_run_directories(processor)
     end
   end
-
 
   def tracker_jacker(json_file, processor_id, base_destination_directory, &block)
     pp "running #{json_file}"
@@ -32,15 +31,18 @@ class Droneify
     destination_directory = "#{base_destination_directory}/job_#{random}"
     FileUtils.mkdir_p(destination_directory)
     param_file = File.read(json_file)
-    File.open("#{destination_directory}/ParamSet.json", 'w') {|f| f << param_file}
+    File.open("#{destination_directory}/ParamSet.json", 'w') { |f| f << param_file }
 
     # Also copy to the run directory
     run_dir = "#{File.dirname(__FILE__)}/Run/Processor_#{processor_id}"
     fail "Run dir missing #{run_dir}" unless File.exist? run_dir
 
+    # first copy in the paramset
     FileUtils.copy(json_file, "#{run_dir}/ParamSet.json")
 
-    #faux_wait = 1
+    # then add the rhino
+    initialize_rhino(processor_id) unless @processor_tracker[processor_id][:initialized]
+
     receipt_file = "#{run_dir}/done.receipt"
     until File.exist?(receipt_file) # || timeout !
       sleep 1
@@ -63,33 +65,6 @@ class Droneify
     queue = Queue.new
     threads = []
 
-    # Create the run directories (1 per core and populate with the GH file)
-    @processor_tracker.each do |k, _|
-      # Force removal of the directory if there
-      d = File.expand_path("#{File.dirname(__FILE__)}/Run/Processor_#{k}")
-      FileUtils.rm_rf d
-      FileUtils.mkdir_p d
-
-      # stage the grasshopper file
-      unless File.exist? "#{d}/#{File.basename(@grasshopper_definition)}"
-        d_def = File.expand_path("#{d}/#{File.basename(@grasshopper_definition)}")
-        #rhino_location = "/Applications/Microsoft\ Office\ 2011/Microsoft\ Word.app"
-        rhino_location = "C:/Program Files/Rhinoceros\ 5\ (64-bit)/System/Rhino.exe"
-        FileUtils.copy @grasshopper_definition, "#{d}/#{File.basename(@grasshopper_definition)}"
-        if File.exist? rhino_location
-          pp "Creating run directory and launching app for #{d}"
-          #syscall = "open \"#{rhino_location}\""# /runscript=\"-Grasshopper Editor Load Document Open \"\"#{d_def}\"\" Enter\""
-          syscall = "\"#{rhino_location}\" /runscript=\"-Grasshopper Editor Load Document Open \"\"#{d_def}\"\" Enter\""
-          IO.popen("#{syscall}")
-          while !File.exist? "#{d}/launch.receipt"
-            print "."
-            sleep 5
-          end
-        else
-          puts "WARNING: Can't find Rhino"
-        end
-      end
-    end
 
     FileUtils.rm_rf(destination_directory)
     # add the jsons to the queue to process
@@ -103,9 +78,9 @@ class Droneify
           bee = queue.pop #(true)
           if bee
             processor_id = get_available_processor
-            @processor_tracker[processor_id] = true
+            @processor_tracker[processor_id][:available] = false
             tracker_jacker(bee, processor_id, destination_directory)
-            @processor_tracker[processor_id] = false
+            @processor_tracker[processor_id][:available] = true
           end
         end
 
@@ -120,7 +95,39 @@ class Droneify
   private
 
   def get_available_processor
-    @processor_tracker.find { |k, v| v == false }.first
+    @processor_tracker.find { |k, _| @processor_tracker[k][:available] == true }.first
+  end
+
+  def create_run_directories(processor_id)
+    # Force removal of the directory if there
+    d = File.expand_path("#{File.dirname(__FILE__)}/Run/Processor_#{processor_id}")
+    FileUtils.rm_rf d
+    FileUtils.mkdir_p d
+  end
+
+  def initialize_rhino(processor_id)
+    # stage the grasshopper file
+    d = File.expand_path("#{File.dirname(__FILE__)}/Run/Processor_#{processor_id}")
+    unless File.exist? "#{d}/#{File.basename(@grasshopper_definition)}"
+      d_def = File.expand_path("#{d}/#{File.basename(@grasshopper_definition)}")
+      #rhino_location = "/Applications/Microsoft\ Office\ 2011/Microsoft\ Word.app"
+      rhino_location = "C:/Program Files/Rhinoceros\ 5\ (64-bit)/System/Rhino.exe"
+      FileUtils.copy @grasshopper_definition, "#{d}/#{File.basename(@grasshopper_definition)}"
+      if File.exist? rhino_location
+        pp "Creating run directory and launching app for #{d}"
+        #syscall = "open \"#{rhino_location}\""# /runscript=\"-Grasshopper Editor Load Document Open \"\"#{d_def}\"\" Enter\""
+        syscall = "\"#{rhino_location}\" /runscript=\"-Grasshopper Editor Load Document Open \"\"#{d_def}\"\" Enter\""
+        IO.popen("#{syscall}")
+        until File.exist? "#{d}/launch.receipt"
+          print "."
+          sleep 5
+        end
+        pp "I have launched"
+      else
+        puts "WARNING: Can't find Rhino"
+      end
+    end
+    @processor_tracker[processor_id][:initialized] = true
   end
 
 end
