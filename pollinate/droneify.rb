@@ -6,6 +6,7 @@
 
 require 'fileutils'
 require 'thread'
+require 'logger'
 require 'uuid'
 require 'pp'
 
@@ -114,8 +115,8 @@ class Droneify
       FileUtils.copy @grasshopper_definition, "#{d}/#{File.basename(@grasshopper_definition)}"
       if File.exist? rhino_location
         pp "Creating run directory and launching app for #{d}"
-        #syscall = "open \"#{rhino_location}\""# /runscript=\"-Grasshopper Editor Load Document Open \"\"#{d_def}\"\" Enter\""
-        syscall = "\"#{rhino_location}\" /runscript=\"-Grasshopper Editor Load Document Open \"\"#{d_def}\"\" Enter\""
+        #syscall = "open \"#{rhino_location}\""# /runscript=\"-Grasshopper Editor Load Editor Show Enter -Grasshopper Document Open \"\"#{d_def}\"\" Enter\""
+        syscall = "\"#{rhino_location}\" /runscript=\"-Grasshopper Editor Load Editor Show Enter -Grasshopper Document Open \"\"#{d_def}\"\" Enter\""
         IO.popen("#{syscall}")
         until File.exist? "#{d}/launch.receipt"
           print "."
@@ -128,12 +129,30 @@ class Droneify
     end
     @processor_tracker[processor_id][:initialized] = true
   end
-
 end
 
+@logger = Logger.new("droning.log")
+# Wait forever
+zips = nil
+while true
+  print "."
+  zips = Dir["*.zip"]
+  break if zips.count >= 1
+
+  @logger.info "waiting for a zip file to appear..."
+  sleep 5
+end
+
+# unzip and droneify
+sevenzip_location = "C:/Program\ Files/7-Zip/7z.exe"
+
+syscall = "\"#{sevenzip_location}\"\ e\ #{zips.first}"
+`#{syscall}`
 
 # this is cheeze... but putting the script call here
 drone = Droneify.new("#{File.dirname(__FILE__)}/DefMaster.gh")
-drone.swarm("#{File.dirname(__FILE__)}/Instances", "#{File.dirname(__FILE__)}/Swarm")
+drone.swarm("#{File.dirname(__FILE__)}", "#{File.dirname(__FILE__)}/Swarm")
 
+syscall = "\"#{sevenzip_location}\"\ a\ Results.7z -r Swarm/*.receipt"
+`#{syscall}`
 

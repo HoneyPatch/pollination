@@ -12,24 +12,24 @@ namespace :takeoff do
   task :start do
     pp "starting the instance"
     bee = Takeoff::WorkerBee.new
-    bee.create_workers(1)
+
+    number_of_instances = 1
 
 
-  end
+    # files to upload
 
-  desc "Upload files"
-  task :upload do
-    pp "uploading files"
-    if is_windows?
-      # TODO: do we need to have cygwin installed to make this work?
-      sys_command = "winscp.com root:password@10.5.2.42 /command put C:/Data"
-    else
-      sys_command = "scp LICENSE.txt nlong@WIN-5U34AKQ7SV7.local:/C/Data"
+    #bee.create_workers(number_of_instances)
+
+    number_of_instances.times do |i|
+      instances = File.join(File.dirname(__FILE__),"../pollinate/Instances/system_#{i}.zip")
+      bee.upload_file(instances)
     end
-    command_result = `#{sys_command}`
-    pp $:
-    pp command_result
+    # now upload the files and let it do its job
+
   end
+
+  desc "Download the results"
+
 end
 
 

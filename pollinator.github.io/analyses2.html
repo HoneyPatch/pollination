@@ -1,0 +1,55 @@
+<!doctype html>
+<head>
+<title>Linking to Data Table</title>
+<link rel="stylesheet" type="text/css" href="./css/d3.parcoords.css">
+<link rel="stylesheet" type="text/css" href="./css/styles.css">
+
+<script src="./js/d3.v3.min.js"></script>
+<script src="./js/d3.parcoords.js"></script>
+<script src="./js/divgrid.js"></script>
+</head>
+
+<body>
+<div id="example" class="parcoords" style="height:400px;"></div>
+<div id="grid"></div>
+</body>
+
+<script id="brushing">// quantitative color scale
+
+var parcoords = d3.parcoords()("#example")
+  .alpha(0.4)
+  .mode("queue") // progressive rendering
+
+// load json file and create the chart
+//d3.csv('./nutrients.csv', function(data) {
+d3.json("./cars.json", function (error, data) {
+    parcoords
+    .data(data)
+    .render()
+    .reorderable()
+    .brushable();  // enable brushing
+
+  // create data table, row hover highlighting
+  var grid = d3.divgrid();
+  d3.select("#grid")
+    .datum(data.slice(0,20))
+    .call(grid)
+    .selectAll(".row")
+    .on({
+      "mouseover": function(d) { parcoords.highlight([d]) },
+      "mouseout": parcoords.unhighlight
+    });
+
+  // update data table on brush event
+  parcoords.on("brush", function(d) {
+    d3.select("#grid")
+      .datum(d.slice(0,10))
+      .call(grid)
+      .selectAll(".row")
+      .on({
+        "mouseover": function(d) { parcoords.highlight([d]) },
+        "mouseout": parcoords.unhighlight
+      });
+  });
+});
+</script>

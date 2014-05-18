@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    takeoff (0.0.1)
+    Pollinator-Takeoff (0.0.1)
       aws-sdk-core (~> 2.0.0.rc8)
 
 GEM
@@ -20,8 +20,9 @@ GEM
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
+  Pollinator-Takeoff!
   bundler (~> 1.6)
   rake
-  takeoff!
