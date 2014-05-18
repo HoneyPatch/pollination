@@ -21,52 +21,51 @@ module Takeoff
     end
 
     def create_workers(number_of_instances)
-      options = {
-          stack_name: "Pollinator-#{Time.now.to_i}",
-          template_body: "#{File.read(File.join(File.dirname(__FILE__), "../bootstrap/cloudformulation.json"))}",
-          parameters: [
-              {
-                  parameter_key: "Features",
-                  parameter_value: "None"
-              },
-              {
-                  parameter_key: "InstanceType",
-                  parameter_value: "c3.4xlarge"
-              },
-              {
-                  parameter_key: "KeyPairName",
-                  parameter_value: "pollinator-hackathon"
-              },
-              {
-                  parameter_key: "SourceCidrForRDP",
-                  parameter_value: "0.0.0.0/0"
-              },
-              {
-                  parameter_key: "Roles",
-                  parameter_value: "None"
-              }
-          ],
-          timeout_in_minutes: 1800,
-          on_failure: "ROLLBACK",
-          tags: [
-              {
-                  key: "Pollinator",
-                  value: "Worker",
-              },
-          ]
-      }
-
       #threads = []
       number_of_instances.times do |index|
+        options = {
+            stack_name: "Pollinator-#{index}#-{Time.now.to_i}",
+            template_body: "#{File.read(File.join(File.dirname(__FILE__), "../bootstrap/cloudformulation.json"))}",
+            parameters: [
+                {
+                    parameter_key: "Features",
+                    parameter_value: "None"
+                },
+                {
+                    parameter_key: "InstanceType",
+                    parameter_value: "c3.4xlarge"
+                },
+                {
+                    parameter_key: "KeyPairName",
+                    parameter_value: "pollinator-hackathon"
+                },
+                {
+                    parameter_key: "SourceCidrForRDP",
+                    parameter_value: "0.0.0.0/0"
+                },
+                {
+                    parameter_key: "Roles",
+                    parameter_value: "None"
+                }
+            ],
+            timeout_in_minutes: 1800,
+            on_failure: "ROLLBACK",
+            tags: [
+                {
+                    key: "Pollinator",
+                    value: "Worker",
+                },
+            ]
+        }
         #threads << Thread.new do
-          puts "Launching system #{index}"
-          @instances << {:index => index, :data => launch_worker(options)}
+        puts "Launching system #{index}"
+        @instances << {:index => index, :data => launch_worker(options)}
         #end
       end
       #threads.each { |t| t.join }
 
       FileUtils.rm "instances.json" if File.exist? "instances.json"
-      File.open("instances.json",'w') { |f| f << JSON.pretty_generate(@instances) }
+      File.open("instances.json", 'w') { |f| f << JSON.pretty_generate(@instances) }
     end
 
     private
