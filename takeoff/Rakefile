@@ -1,5 +1,9 @@
 require "bundler/gem_tasks"
 
+
+$LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
+
+require 'takeoff'
 require 'pp'
 
 namespace :takeoff do
@@ -7,6 +11,10 @@ namespace :takeoff do
   desc "Start the predefined instance"
   task :start do
     pp "starting the instance"
+    bee = Takeoff::WorkerBee.new
+    bee.create_workers(1)
+
+
   end
 
   desc "Upload files"

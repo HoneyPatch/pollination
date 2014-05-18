@@ -31,7 +31,8 @@ class Droneify
     random = UUID.new.generate
     destination_directory = "#{base_destination_directory}/job_#{random}"
     FileUtils.mkdir_p(destination_directory)
-    FileUtils.copy(json_file, "#{destination_directory}/ParamSet.json")
+    param_file = File.read(json_file)
+    File.open("#{destination_directory}/ParamSet.json", 'w') {|f| f << param_file}
 
     # Also copy to the run directory
     run_dir = "#{File.dirname(__FILE__)}/Run/Processor_#{processor_id}"
@@ -42,11 +43,6 @@ class Droneify
     #faux_wait = 1
     receipt_file = "#{run_dir}/done.receipt"
     until File.exist?(receipt_file) # || timeout !
-    #  faux_wait += 1
-
-    #  if faux_wait >= 10
-    #    File.open(receipt_file, 'w') { |f| f << "#{Time.now}" }
-    #  end
       sleep 1
     end
 
