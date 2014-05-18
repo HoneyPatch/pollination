@@ -66,13 +66,13 @@
         },
         "AWSRegionArch2AMI": {
             "us-west-1": {
-                "64": "ami-11403121"
+                "64": "ami-67433257"
             },
             "us-west-2": {
-                "64": "ami-11403121"
+                "64": "ami-67433257"
             },
             "eu-west-1": {
-                "64": "ami-11403121"
+                "64": "ami-67433257"
             }
         }
     },
@@ -250,14 +250,10 @@
                                 "</script>\n",
                                 "<powershell>\n",
                                 "Set-ExecutionPolicy Unrestricted -force\n",
-                                "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))\n",
-                                "'winscp','git','cygwin', 'putty', 'notepadplusplus', 'nmap', 'curl', 'freesshd', 'openssh' | %{ cinst $_ }\n",
                                 "netsh firewall set portopening protocol=TCP port=21\n",
                                 "netsh firewall set portopening protocol=TCP port=22\n",
                                 "netsh firewall set portopening protocol=TCP port=80\n",
                                 "netsh firewall set portopening protocol=TCP port=443\n",
-                                "Restart-Service 'OpenSSH Server'\n",
-
                                 "</powershell>"
                             ]
                         ]

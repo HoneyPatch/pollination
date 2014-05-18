@@ -13,10 +13,9 @@ namespace :takeoff do
     pp "starting the instance"
     bee = Takeoff::WorkerBee.new
 
-    number_of_instances = 2
+    number_of_instances = 1
 
     # files to upload
-
     bee.create_workers(number_of_instances)
 
     # now upload the files and let it do its job
@@ -41,15 +40,21 @@ namespace :takeoff do
     end
   end
 
-
   desc "Download the results"
   task :finish do
     ij = "instances.json"
     if File.exist? ij
+      download_directory = "../regurgitate/results"
+      File.rm_rf download_directory if File.exist?(download_directory)
+      FileUtils.mkdir_p download_directory
+
       instances = JSON.parse(File.read(ij), :symbolize => true)
-
-
-      # go through and download all the Results.7z files for C:/Data
+      instances.each do |instance|
+        pp "Downloading results from #{instance}"
+        sys_call = "pscp -v -pw #{ENV['WINPW']} Administrator@#{instance[:data][:public_ip_address]}:/cygdrive/c/Data/Results.7z #{download_directory}/Results_#{instance}"
+        pp sys_call
+        r = `#{sys_call}`
+      end
     else
       pp "No runnings instances defines"
     end

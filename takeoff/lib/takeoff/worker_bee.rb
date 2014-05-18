@@ -31,7 +31,7 @@ module Takeoff
               },
               {
                   parameter_key: "InstanceType",
-                  parameter_value: "m1.small"
+                  parameter_value: "m1.xlarge"
               },
               {
                   parameter_key: "KeyPairName",
@@ -63,9 +63,9 @@ module Takeoff
           @instances << {:index => index, :data => launch_worker(options)}
         #end
       end
-      threads.each { |t| t.join }
+      #threads.each { |t| t.join }
 
-      File.rm "instances.json" if File.exist? "instances.json"
+      FileUtils.rm "instances.json" if File.exist? "instances.json"
       File.open("instances.json",'w') { |f| f << JSON.pretty_generate({:instances => @instances})}
 
     end
@@ -74,25 +74,26 @@ module Takeoff
     private
 
     def launch_worker(options)
-      resp = @cloudformation.create_stack(options)
-      stack_id = resp.stack_id
-      pp "Start template created: #{resp.stack_id}"
+      #resp = @cloudformation.create_stack(options)
+      stack_id = "arn:aws:cloudformation:us-west-2:471211731895:stack/Pollinator-1400405017/172ef8d0-de6e-11e3-ac7a-500160d4da18"
+      #stack_id = resp.stack_id
+      #pp "Start template created: #{resp.stack_id}"
 
-      stack_name = options[:stack_name]
-      #stack_name = "Pollinator-1400390557"
+      #stack_name = options[:stack_name]
+      stack_name = "Pollinator-1400405017"
       #stack_id = "arn:aws:cloudformation:us-west-2:471211731895:stack/Pollinator-1400388047/93060890-de46-11e3-ac7a-500160d4da18"
       status = 'unknown'
       resp = nil
       begin
-        Timeout.timeout(900) {# 20 minutes
+        Timeout.timeout(2400) {# 15 minutes
           until status == 'CREATE_COMPLETE'
             begin
               resp = @cloudformation.describe_stack_resource(stack_name: stack_name, logical_resource_id: "WindowsServerWaitCondition")[:stack_resource_detail]
               status = resp[:resource_status]
             rescue
             end
-            print "."
-            sleep 5
+            print "w"
+            sleep 30
           end
         }
       end
@@ -103,6 +104,7 @@ module Takeoff
 
       # get the instance information
       test_result = nil
+      detail_info = nil
       begin
         Timeout.timeout(1800) {# 30 minutes
           while test_result.nil? || test_result.instance_state.name != 'running'
@@ -135,7 +137,7 @@ module Takeoff
 
           filters: [
               {name: 'instance-state-code', values: [0.to_s, 16.to_s]}, # running or pending
-              {name: 'tag-value', values: [stack_id]},
+              {name: 'tag-value', values: [stack_id]}
           # {:name => "tag-value", :values => [group_uuid.to_s, "OpenStudio#{@openstudio_instance_type.capitalize}"]}
           # {:name => "tag:key=value", :values => ["GroupUUID=#{group_uuid.to_s}"]}
           ]
