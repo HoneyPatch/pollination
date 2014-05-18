@@ -116,8 +116,8 @@ class Droneify
       FileUtils.copy @grasshopper_definition, "#{d}/#{File.basename(@grasshopper_definition)}"
       if File.exist? rhino_location
         pp "Creating run directory and launching app for #{d}"
-        #syscall = "open \"#{rhino_location}\""# /runscript=\"-Grasshopper Editor Load Document Open \"\"#{d_def}\"\" Enter\""
-        syscall = "\"#{rhino_location}\" /runscript=\"-Grasshopper Editor Load Document Open \"\"#{d_def}\"\" Enter\""
+        #syscall = "open \"#{rhino_location}\""# /runscript=\"-Grasshopper Editor Load Editor Show Enter -Grasshopper Document Open \"\"#{d_def}\"\" Enter\""
+        syscall = "\"#{rhino_location}\" /runscript=\"-Grasshopper Editor Load Editor Show Enter -Grasshopper Document Open \"\"#{d_def}\"\" Enter\""
         IO.popen("#{syscall}")
         until File.exist? "#{d}/launch.receipt"
           print "."
