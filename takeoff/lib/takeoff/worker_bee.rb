@@ -24,7 +24,7 @@ module Takeoff
       #threads = []
       number_of_instances.times do |index|
         options = {
-            stack_name: "Pollinator-#{index}#-{Time.now.to_i}",
+            stack_name: "Pollinator-#{index}-#{Time.now.to_i}",
             template_body: "#{File.read(File.join(File.dirname(__FILE__), "../bootstrap/cloudformulation.json"))}",
             parameters: [
                 {
