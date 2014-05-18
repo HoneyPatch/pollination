@@ -66,26 +66,24 @@ module Takeoff
       #threads.each { |t| t.join }
 
       FileUtils.rm "instances.json" if File.exist? "instances.json"
-      File.open("instances.json",'w') { |f| f << JSON.pretty_generate({:instances => @instances})}
-
+      File.open("instances.json",'w') { |f| f << JSON.pretty_generate(@instances) }
     end
-
 
     private
 
     def launch_worker(options)
-      #resp = @cloudformation.create_stack(options)
-      stack_id = "arn:aws:cloudformation:us-west-2:471211731895:stack/Pollinator-1400405017/172ef8d0-de6e-11e3-ac7a-500160d4da18"
-      #stack_id = resp.stack_id
-      #pp "Start template created: #{resp.stack_id}"
-
-      #stack_name = options[:stack_name]
+      resp = @cloudformation.create_stack(options)
+      stack_id = resp.stack_id
+      pp "Start template created: #{resp.stack_id}"
       stack_name = "Pollinator-1400405017"
-      #stack_id = "arn:aws:cloudformation:us-west-2:471211731895:stack/Pollinator-1400388047/93060890-de46-11e3-ac7a-500160d4da18"
+
+      #stack_id = "arn:aws:cloudformation:us-west-2:471211731895:stack/Pollinator-1400405017/172ef8d0-de6e-11e3-ac7a-500160d4da18"
+      #stack_name = options[:stack_name]
+
       status = 'unknown'
       resp = nil
       begin
-        Timeout.timeout(2400) {# 15 minutes
+        Timeout.timeout(2400) {
           until status == 'CREATE_COMPLETE'
             begin
               resp = @cloudformation.describe_stack_resource(stack_name: stack_name, logical_resource_id: "WindowsServerWaitCondition")[:stack_resource_detail]
@@ -93,7 +91,7 @@ module Takeoff
             rescue
             end
             print "w"
-            sleep 30
+            sleep 5
           end
         }
       end

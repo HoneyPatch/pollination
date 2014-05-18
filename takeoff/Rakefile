@@ -5,6 +5,7 @@ $LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
 
 require 'takeoff'
 require 'pp'
+require 'json'
 
 namespace :takeoff do
 
@@ -26,8 +27,9 @@ namespace :takeoff do
     pp "uploading the zip files"
     ij = "instances.json"
     if File.exist? ij
-      values_directory = File.join(File.dirname(__FILE__), "../pollinate/Instances")
-      instances = JSON.parse(File.read(ij), :symbolize => true)
+      values_directory = File.expand_path(File.join(File.dirname(__FILE__), "../pollinate/Instances"))
+      pp values_directory
+      instances = JSON.parse(File.read(ij), :symbolize_names => true)
       instances.each do |instance|
         values = "#{values_directory}/system_#{instance[:index]}.zip"
         if File.exist?(values)
@@ -35,7 +37,10 @@ namespace :takeoff do
           sys_call = "pscp -v -pw #{ENV['WINPW']} #{values} Administrator@#{instance[:data][:public_ip_address]}:/cygdrive/c/Data"
           pp sys_call
           r = `#{sys_call}`
+        else
+          pp "Could not find zip file with parameters"
         end
+
       end
     end
   end
@@ -44,11 +49,11 @@ namespace :takeoff do
   task :finish do
     ij = "instances.json"
     if File.exist? ij
-      download_directory = "../regurgitate/results"
+      download_directory =  File.expand_path(File.join(File.dirname(__FILE__), "../regurgitate/results"))
       File.rm_rf download_directory if File.exist?(download_directory)
       FileUtils.mkdir_p download_directory
 
-      instances = JSON.parse(File.read(ij), :symbolize => true)
+      instances = JSON.parse(File.read(ij), :symbolize_names => true)
       instances.each do |instance|
         pp "Downloading results from #{instance}"
         sys_call = "pscp -v -pw #{ENV['WINPW']} Administrator@#{instance[:data][:public_ip_address]}:/cygdrive/c/Data/Results.7z #{download_directory}/Results_#{instance}"

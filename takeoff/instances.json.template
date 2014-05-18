@@ -1,83 +1,81 @@
-{
-  "instances": [
-    {
-      "index": 0,
-      "data": {
-        "instance_id": "i-79c63f72",
-        "image_id": "ami-bf57268f",
-        "state": {
-          "code": 16,
-          "name": "running"
-        },
-        "private_dns_name": "ip-10-254-149-123.us-west-2.compute.internal",
-        "public_dns_name": "ec2-54-203-137-90.us-west-2.compute.amazonaws.com",
-        "key_name": "pollinator-hackathon",
-        "ami_launch_index": 0,
-        "product_codes": [
+[
+  {
+    "index": 0,
+    "data": {
+      "instance_id": "i-79c63f72",
+      "image_id": "ami-bf57268f",
+      "state": {
+        "code": 16,
+        "name": "running"
+      },
+      "private_dns_name": "ip-10-254-149-123.us-west-2.compute.internal",
+      "public_dns_name": "ec2-54-203-137-90.us-west-2.compute.amazonaws.com",
+      "key_name": "pollinator-hackathon",
+      "ami_launch_index": 0,
+      "product_codes": [
 
-        ],
-        "instance_type": "m1.xlarge",
-        "launch_time": "2014-05-18 09:24:06 UTC",
-        "placement": {
-          "availability_zone": "us-west-2a",
-          "tenancy": "default"
-        },
-        "platform": "windows",
-        "monitoring": {
-          "state": "disabled"
-        },
-        "private_ip_address": "10.254.149.123",
-        "public_ip_address": "54.203.137.90",
-        "state_reason": {
-        },
-        "architecture": "x86_64",
-        "root_device_type": "ebs",
-        "root_device_name": "/dev/sda1",
-        "block_device_mappings": [
-          {
-            "device_name": "/dev/sda1",
-            "ebs": {
-              "volume_id": "vol-a6884ba7",
-              "status": "attached",
-              "attach_time": "2014-05-18 09:24:08 UTC",
-              "delete_on_termination": true
-            }
+      ],
+      "instance_type": "m1.xlarge",
+      "launch_time": "2014-05-18 09:24:06 UTC",
+      "placement": {
+        "availability_zone": "us-west-2a",
+        "tenancy": "default"
+      },
+      "platform": "windows",
+      "monitoring": {
+        "state": "disabled"
+      },
+      "private_ip_address": "10.254.149.123",
+      "public_ip_address": "54.203.137.90",
+      "state_reason": {
+      },
+      "architecture": "x86_64",
+      "root_device_type": "ebs",
+      "root_device_name": "/dev/sda1",
+      "block_device_mappings": [
+        {
+          "device_name": "/dev/sda1",
+          "ebs": {
+            "volume_id": "vol-a6884ba7",
+            "status": "attached",
+            "attach_time": "2014-05-18 09:24:08 UTC",
+            "delete_on_termination": true
           }
-        ],
-        "virtualization_type": "hvm",
-        "client_token": "Polli-Windo-HFKOKL82EHTU",
-        "tags": [
-          {
-            "key": "Pollinator",
-            "value": "Worker"
-          },
-          {
-            "key": "aws:cloudformation:stack-name",
-            "value": "Pollinator-1400405017"
-          },
-          {
-            "key": "aws:cloudformation:stack-id",
-            "value": "arn:aws:cloudformation:us-west-2:471211731895:stack/Pollinator-1400405017/172ef8d0-de6e-11e3-ac7a-500160d4da18"
-          },
-          {
-            "key": "aws:cloudformation:logical-id",
-            "value": "WindowsServer"
-          }
-        ],
-        "security_groups": [
-          {
-            "group_name": "Pollinator-1400405017-InstanceSecurityGroup-3M310R5FE1QB",
-            "group_id": "sg-006e8c33"
-          }
-        ],
-        "hypervisor": "xen",
-        "network_interfaces": [
+        }
+      ],
+      "virtualization_type": "hvm",
+      "client_token": "Polli-Windo-HFKOKL82EHTU",
+      "tags": [
+        {
+          "key": "Pollinator",
+          "value": "Worker"
+        },
+        {
+          "key": "aws:cloudformation:stack-name",
+          "value": "Pollinator-1400405017"
+        },
+        {
+          "key": "aws:cloudformation:stack-id",
+          "value": "arn:aws:cloudformation:us-west-2:471211731895:stack/Pollinator-1400405017/172ef8d0-de6e-11e3-ac7a-500160d4da18"
+        },
+        {
+          "key": "aws:cloudformation:logical-id",
+          "value": "WindowsServer"
+        }
+      ],
+      "security_groups": [
+        {
+          "group_name": "Pollinator-1400405017-InstanceSecurityGroup-3M310R5FE1QB",
+          "group_id": "sg-006e8c33"
+        }
+      ],
+      "hypervisor": "xen",
+      "network_interfaces": [
 
-        ],
-        "iam_instance_profile": {
-        },
-        "ebs_optimized": false
-      }
+      ],
+      "iam_instance_profile": {
+      },
+      "ebs_optimized": false
     }
-  ]
-}
+  }
+]
