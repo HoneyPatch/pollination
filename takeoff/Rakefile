@@ -56,9 +56,13 @@ namespace :takeoff do
       instances = JSON.parse(File.read(ij), :symbolize_names => true)
       instances.each do |instance|
         pp "Downloading results from #{instance[:index]}"
-        sys_call = "pscp -v -pw #{ENV['WINPW']} Administrator@#{instance[:data][:public_ip_address]}:/cygdrive/c/Data/Results.7z #{download_directory}/Results_#{instance[:index]}.7z"
-        pp sys_call
-        r = `#{sys_call}`
+        to_download = ["Results.7z", "Swarm.7z"]
+        to_download.each do |f|
+          sys_call = "pscp -v -pw #{ENV['WINPW']} Administrator@#{instance[:data][:public_ip_address]}:/cygdrive/c/Data/#{f} #{download_directory}/#{File.basename(f, '.7z')}_#{instance[:index]}.7z"
+          pp sys_call
+          r = `#{sys_call}`
+        end
+
       end
     else
       pp "No runnings instances defines"
