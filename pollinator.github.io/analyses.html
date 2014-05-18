@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>OpenStudio Cloud Management Console</title>
+<link href="./css/application.css" media="all" rel="stylesheet" type="text/css" />
+<link href="./css/bootstrap-responsive.css" media="all" rel="stylesheet" type="text/css" />
+<link href="./css/bootstrap.css" media="all" rel="stylesheet" type="text/css" />
+<link href="./css/chart.css" media="all" rel="stylesheet" type="text/css" />
+<link href="./css/main.css" media="all" rel="stylesheet" type="text/css" />
+<link href="./css/measures.css" media="all" rel="stylesheet" type="text/css" />
+<link href="./css/pages.css" media="all" rel="stylesheet" type="text/css" />
+<link href="./css/scaffolds.css" media="all" rel="stylesheet" type="text/css" />
+<script src="./js/jquery.js" type="text/javascript"></script>
+<script src="./js/jquery_ujs.js" type="text/javascript"></script>
+<script src="./js/jquery.tablesorter.js" type="text/javascript"></script>
+<script src="./js/bootstrap_tooltip.js" type="text/javascript"></script>
+<script src="./js/bootstrap_tab.js" type="text/javascript"></script>
+<script src="./js/bootstrap_popover.js" type="text/javascript"></script>
+<script src="./js/bootstrap_modal.js" type="text/javascript"></script>
+<script src="./js/mustache.js" type="text/javascript"></script>
+<script src="./js/d3.v3.min.js" type="text/javascript"></script>
+<script src="./js/radarchart.js" type="text/javascript"></script>
+<script src="./js/underscore.js" type="text/javascript"></script>
+<script src="./js/bootstrap.js" type="text/javascript"></script>
+<script src="./js/backbone.js" type="text/javascript"></script>
+<script src="./js/openstudio_server.js" type="text/javascript"></script>
+<script src="./js/application.js" type="text/javascript"></script>
+<meta content="authenticity_token" name="csrf-param" />
+<meta content="IElWr4rOfGy35viNNbdMtXWj6zIUTqqyVJA4y9KfozA=" name="csrf-token" />
+</head>
+
+<!--BODY-->
+<body>
+<div class="fluid-container">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="collapse nav-collapse">
+                <ul class="nav navbar-nav">
+                
+                <li><a href="index">About</a></li>
+                
+                <li><a href="team">Team</a></li>
+                
+                <li class="dropdown active">
+                    <a href="analyses" class="dropdown-toggle" data-toggle="dropdown">Analyses <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="active"><a href="analyses">Example 1</a></li>
+                        <li><a href="analyses2">Example 2</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="http://core.thorntontomasetti.com/aec-technology-symposium-2014/">AEC Hackathon</a></li>
+                
+                </ul>
+            </div>
+        </div><!-- /.container-fluid -->
+    </nav> <!--END NAV BAR-->
+
+    <div class="row-fluid header-row">
+        <div class="span12">
+            <h1>Pollinator Results</h1>
+        </div>
+    </div>
+    
+    <div id="blue-line-and-fade" class="row-fluid header-row">
+        <div class="span12">
+            <hr class='top-blue '>
+            <div class="below-header"></div>
+        </div>
+    </div>
+
+    <div class="row-fluid header-row">
+    <!-- notices -->
+    </div>
+
+<!--BEGIN DATA-->
+<script type="text/javascript">
+    //
+    data = [
+            {
+            "data_point_uuid": "/data_points/41ce8c80-be26-0131-a32d-080027880ca6",
+            "air_handler_fan_efficiency": null,
+            "air_source_heat_pump_cooling_efficiency": null,
+            "air_source_heat_pump_fan_efficiency": null,
+            "air_source_heat_pump_heating_efficiency": null,
+            "aspect_ratio_multiplier": null,
+            "boiler_heating_efficiency": null,
+            "chiller_cooling_efficiency": null,
+            "daylighting_control_setpoint": null,
+            "district_chiller_cooling_efficiency": null,
+            "district_heating_efficiency": null,
+            "economizer": null,
+            "floor_plate_area_multiplier": null,
+            "floor_r_value_for_24_in": null,
+            "floor_to_floor_height": 0.6206896551724138,
+            "gas_heating_efficiency": null,
+            "interior_lighting_power_density": null,
+            "location": "USA_MD_Baltimore-Washington.Intl.AP.724060_TMY3.epw",
+            "orientation": null,
+            "packaged_dx_cooling_efficiency": null,
+            "packaged_dx_fan_efficiency": null,
+            "perimeter_zone_depth": null,
+            "roof_built_up_concrete_deck_construction_type": null,
+            "roof_built_up_concrete_deck_u_value": null,
+            "roof_built_up_concrete_deck_u_value_static": null,
+            "roof_built_up_metal_deck_construction_type": null,
+            "roof_built_up_metal_deck_u_value": null,
+            "roof_built_up_metal_deck_u_value_static": null,
+            "roof_built_up_wood_deck_construction_type": null,
+            "roof_built_up_wood_deck_u_value": null,
+            "roof_built_up_wood_deck_u_value_static": null,
+            "roof_metal_construction_type": null,
+            "roof_metal_u_value": null,
+            "roof_metal_u_value_static": null,
+            "roof_shingle_construction_type": null,
+            "roof_shingle_u_value": null,
+            "roof_shingle_u_value_static": null,
+            "shading_height_above_window": null,
+            "shading_projection_factor": null,
+            "shading_type": null,
+            "square_footage_multiplier": null,
+            "wall_masonry_on_masonry_construction_type": null,
+            "wall_masonry_on_masonry_u_value": null,
+            "wall_masonry_on_masonry_u_value_static": null,
+            "wall_masonry_on_steel_construction_type": null,
+            "wall_masonry_on_steel_u_value": null,
+            "wall_masonry_on_steel_u_value_static": null,
+            "wall_masonry_on_wood_construction_type": null,
+            "wall_masonry_on_wood_u_value": null,
+            "wall_masonry_on_wood_u_value_static": null,
+            "wall_metal_panel_construction_type": null,
+            "wall_metal_panel_u_value": null,
+            "wall_metal_panel_u_value_static": null,
+            "wall_wood_siding_construction_type": null,
+            "wall_wood_siding_u_value": null,
+            "wall_wood_siding_u_value_static": null,
+            "water_heater_energy_factor": null,
+            "window_shgc": null,
+            "window_sill_height": null,
+            "window_to_wall_ratio": null,
+            "window_u_value": null,
+            "window_u_value_static": null,
+            "window_vlt": null,
+            "total_energy": 430.45,
+            "total_source_energy": 1320.49
+        },
+        {
+            "data_point_uuid": "/data_points/41e15140-be26-0131-a32d-080027880ca6",
+            "air_handler_fan_efficiency": null,
+            "air_source_heat_pump_cooling_efficiency": null,
+            "air_source_heat_pump_fan_efficiency": null,
+            "air_source_heat_pump_heating_efficiency": null,
+            "aspect_ratio_multiplier": null,
+            "boiler_heating_efficiency": null,
+            "chiller_cooling_efficiency": null,
+            "daylighting_control_setpoint": null,
+            "district_chiller_cooling_efficiency": null,
+            "district_heating_efficiency": null,
+            "economizer": null,
+            "floor_plate_area_multiplier": null,
+            "floor_r_value_for_24_in": null,
+            "floor_to_floor_height": null,
+            "gas_heating_efficiency": null,
+            "interior_lighting_power_density": null,
+            "location": "USA_MD_Baltimore-Washington.Intl.AP.724060_TMY3.epw",
+            "orientation": null,
+            "packaged_dx_cooling_efficiency": null,
+            "packaged_dx_fan_efficiency": null,
+            "perimeter_zone_depth": null,
+            "roof_built_up_concrete_deck_construction_type": null,
+            "roof_built_up_concrete_deck_u_value": null,
+            "roof_built_up_concrete_deck_u_value_static": null,
+            "roof_built_up_metal_deck_construction_type": null,
+            "roof_built_up_metal_deck_u_value": null,
+            "roof_built_up_metal_deck_u_value_static": null,
+            "roof_built_up_wood_deck_construction_type": null,
+            "roof_built_up_wood_deck_u_value": null,
+            "roof_built_up_wood_deck_u_value_static": null,
+            "roof_metal_construction_type": null,
+            "roof_metal_u_value": null,
+            "roof_metal_u_value_static": null,
+            "roof_shingle_construction_type": null,
+            "roof_shingle_u_value": null,
+            "roof_shingle_u_value_static": null,
+            "shading_height_above_window": 2.0,
+            "shading_projection_factor": null,
+            "shading_type": null,
+            "square_footage_multiplier": null,
+            "wall_masonry_on_masonry_construction_type": null,
+            "wall_masonry_on_masonry_u_value": null,
+            "wall_masonry_on_masonry_u_value_static": null,
+            "wall_masonry_on_steel_construction_type": null,
+            "wall_masonry_on_steel_u_value": null,
+            "wall_masonry_on_steel_u_value_static": null,
+            "wall_masonry_on_wood_construction_type": null,
+            "wall_masonry_on_wood_u_value": null,
+            "wall_masonry_on_wood_u_value_static": null,
+            "wall_metal_panel_construction_type": null,
+            "wall_metal_panel_u_value": null,
+            "wall_metal_panel_u_value_static": null,
+            "wall_wood_siding_construction_type": null,
+            "wall_wood_siding_u_value": null,
+            "wall_wood_siding_u_value_static": null,
+            "water_heater_energy_factor": null,
+            "window_shgc": null,
+            "window_sill_height": null,
+            "window_to_wall_ratio": null,
+            "window_u_value": null,
+            "window_u_value_static": null,
+            "window_vlt": null,
+            "total_energy": 491.86,
+            "total_source_energy": 1521.81
+        },
+        {
+            "data_point_uuid": "/data_points/41cc4120-be26-0131-a32d-080027880ca6",
+            "air_handler_fan_efficiency": null,
+            "air_source_heat_pump_cooling_efficiency": null,
+            "air_source_heat_pump_fan_efficiency": 0.38461538461538464,
+            "air_source_heat_pump_heating_efficiency": null,
+            "aspect_ratio_multiplier": null,
+            "boiler_heating_efficiency": null,
+            "chiller_cooling_efficiency": null,
+            "daylighting_control_setpoint": null,
+            "district_chiller_cooling_efficiency": null,
+            "district_heating_efficiency": null,
+            "economizer": null,
+            "floor_plate_area_multiplier": null,
+            "floor_r_value_for_24_in": null,
+            "floor_to_floor_height": null,
+            "gas_heating_efficiency": null,
+            "interior_lighting_power_density": null,
+            "location": "USA_MD_Baltimore-Washington.Intl.AP.724060_TMY3.epw",
+            "orientation": null,
+            "packaged_dx_cooling_efficiency": null,
+            "packaged_dx_fan_efficiency": null,
+            "perimeter_zone_depth": null,
+            "roof_built_up_concrete_deck_construction_type": null,
+            "roof_built_up_concrete_deck_u_value": null,
+            "roof_built_up_concrete_deck_u_value_static": null,
+            "roof_built_up_metal_deck_construction_type": null,
+            "roof_built_up_metal_deck_u_value": null,
+            "roof_built_up_metal_deck_u_value_static": null,
+            "roof_built_up_wood_deck_construction_type": null,
+            "roof_built_up_wood_deck_u_value": null,
+            "roof_built_up_wood_deck_u_value_static": null,
+            "roof_metal_construction_type": null,
+            "roof_metal_u_value": null,
+            "roof_metal_u_value_static": null,
+            "roof_shingle_construction_type": null,
+            "roof_shingle_u_value": null,
+            "roof_shingle_u_value_static": null,
+            "shading_height_above_window": null,
+            "shading_projection_factor": null,
+            "shading_type": null,
+            "square_footage_multiplier": null,
+            "wall_masonry_on_masonry_construction_type": null,
+            "wall_masonry_on_masonry_u_value": null,
+            "wall_masonry_on_masonry_u_value_static": null,
+            "wall_masonry_on_steel_construction_type": null,
+            "wall_masonry_on_steel_u_value": null,
+            "wall_masonry_on_steel_u_value_static": null,
+            "wall_masonry_on_wood_construction_type": null,
+            "wall_masonry_on_wood_u_value": null,
+            "wall_masonry_on_wood_u_value_static": null,
+            "wall_metal_panel_construction_type": null,
+            "wall_metal_panel_u_value": null,
+            "wall_metal_panel_u_value_static": null,
+            "wall_wood_siding_construction_type": null,
+            "wall_wood_siding_u_value": null,
+            "wall_wood_siding_u_value_static": null,
+            "water_heater_energy_factor": null,
+            "window_shgc": null,
+            "window_sill_height": null,
+            "window_to_wall_ratio": null,
+            "window_u_value": null,
+            "window_u_value_static": null,
+            "window_vlt": null,
+            "total_energy": 491.86,
+            "total_source_energy": 1521.81
+        },
+        {
+            "data_point_uuid": "/data_points/41e01de0-be26-0131-a32d-080027880ca6",
+            "air_handler_fan_efficiency": null,
+            "air_source_heat_pump_cooling_efficiency": null,
+            "air_source_heat_pump_fan_efficiency": null,
+            "air_source_heat_pump_heating_efficiency": null,
+            "aspect_ratio_multiplier": null,
+            "boiler_heating_efficiency": null,
+            "chiller_cooling_efficiency": null,
+            "daylighting_control_setpoint": null,
+            "district_chiller_cooling_efficiency": null,
+            "district_heating_efficiency": null,
+            "economizer": null,
+            "floor_plate_area_multiplier": null,
+            "floor_r_value_for_24_in": null,
+            "floor_to_floor_height": null,
+            "gas_heating_efficiency": null,
+            "interior_lighting_power_density": null,
+            "location": "USA_MD_Baltimore-Washington.Intl.AP.724060_TMY3.epw",
+            "orientation": null,
+            "packaged_dx_cooling_efficiency": null,
+            "packaged_dx_fan_efficiency": null,
+            "perimeter_zone_depth": null,
+            "roof_built_up_concrete_deck_construction_type": "built-up concrete-deck",
+            "roof_built_up_concrete_deck_u_value": 3.174603174603175,
+            "roof_built_up_concrete_deck_u_value_static": 0.063,
+            "roof_built_up_metal_deck_construction_type": null,
+            "roof_built_up_metal_deck_u_value": null,
+            "roof_built_up_metal_deck_u_value_static": null,
+            "roof_built_up_wood_deck_construction_type": null,
+            "roof_built_up_wood_deck_u_value": null,
+            "roof_built_up_wood_deck_u_value_static": null,
+            "roof_metal_construction_type": null,
+            "roof_metal_u_value": null,
+            "roof_metal_u_value_static": null,
+            "roof_shingle_construction_type": null,
+            "roof_shingle_u_value": null,
+            "roof_shingle_u_value_static": null,
+            "shading_height_above_window": null,
+            "shading_projection_factor": null,
+            "shading_type": null,
+            "square_footage_multiplier": null,
+            "wall_masonry_on_masonry_construction_type": null,
+            "wall_masonry_on_masonry_u_value": null,
+            "wall_masonry_on_masonry_u_value_static": null,
+            "wall_masonry_on_steel_construction_type": null,
+            "wall_masonry_on_steel_u_value": null,
+            "wall_masonry_on_steel_u_value_static": null,
+            "wall_masonry_on_wood_construction_type": null,
+            "wall_masonry_on_wood_u_value": null,
+            "wall_masonry_on_wood_u_value_static": null,
+            "wall_metal_panel_construction_type": null,
+            "wall_metal_panel_u_value": null,
+            "wall_metal_panel_u_value_static": null,
+            "wall_wood_siding_construction_type": null,
+            "wall_wood_siding_u_value": null,
+            "wall_wood_siding_u_value_static": null,
+            "water_heater_energy_factor": null,
+            "window_shgc": null,
+            "window_sill_height": null,
+            "window_to_wall_ratio": null,
+            "window_u_value": null,
+            "window_u_value_static": null,
+            "window_vlt": null,
+            "total_energy": 550.04,
+            "total_source_energy": 1707.05
+        },
+        {
+            "data_point_uuid": "/data_points/41e0c920-be26-0131-a32d-080027880ca6",
+            "air_handler_fan_efficiency": null,
+            "air_source_heat_pump_cooling_efficiency": null,
+            "air_source_heat_pump_fan_efficiency": null,
+            "air_source_heat_pump_heating_efficiency": null,
+            "aspect_ratio_multiplier": null,
+            "boiler_heating_efficiency": null,
+            "chiller_cooling_efficiency": null,
+            "daylighting_control_setpoint": null,
+            "district_chiller_cooling_efficiency": null,
+            "district_heating_efficiency": null,
+            "economizer": null,
+            "floor_plate_area_multiplier": null,
+            "floor_r_value_for_24_in": null,
+            "floor_to_floor_height": null,
+            "gas_heating_efficiency": null,
+            "interior_lighting_power_density": null,
+            "location": "USA_MD_Baltimore-Washington.Intl.AP.724060_TMY3.epw",
+            "orientation": null,
+            "packaged_dx_cooling_efficiency": null,
+            "packaged_dx_fan_efficiency": null,
+            "perimeter_zone_depth": null,
+            "roof_built_up_concrete_deck_construction_type": null,
+            "roof_built_up_concrete_deck_u_value": null,
+            "roof_built_up_concrete_deck_u_value_static": null,
+            "roof_built_up_metal_deck_construction_type": null,
+            "roof_built_up_metal_deck_u_value": null,
+            "roof_built_up_metal_deck_u_value_static": null,
+            "roof_built_up_wood_deck_construction_type": null,
+            "roof_built_up_wood_deck_u_value": null,
+            "roof_built_up_wood_deck_u_value_static": null,
+            "roof_metal_construction_type": "Metal roof",
+            "roof_metal_u_value": 3.076923076923077,
+            "roof_metal_u_value_static": 0.065,
+            "roof_shingle_construction_type": null,
+            "roof_shingle_u_value": null,
+            "roof_shingle_u_value_static": null,
+            "shading_height_above_window": null,
+            "shading_projection_factor": null,
+            "shading_type": null,
+            "square_footage_multiplier": null,
+            "wall_masonry_on_masonry_construction_type": null,
+            "wall_masonry_on_masonry_u_value": null,
+            "wall_masonry_on_masonry_u_value_static": null,
+            "wall_masonry_on_steel_construction_type": null,
+            "wall_masonry_on_steel_u_value": null,
+            "wall_masonry_on_steel_u_value_static": null,
+            "wall_masonry_on_wood_construction_type": null,
+            "wall_masonry_on_wood_u_value": null,
+            "wall_masonry_on_wood_u_value_static": null,
+            "wall_metal_panel_construction_type": null,
+            "wall_metal_panel_u_value": null,
+            "wall_metal_panel_u_value_static": null,
+            "wall_wood_siding_construction_type": null,
+            "wall_wood_siding_u_value": null,
+            "wall_wood_siding_u_value_static": null,
+            "water_heater_energy_factor": null,
+            "window_shgc": null,
+            "window_sill_height": null,
+            "window_to_wall_ratio": null,
+            "window_u_value": null,
+            "window_u_value_static": null,
+            "window_vlt": null
+        },
+        {
+            "data_point_uuid": "/data_points/41e29e40-be26-0131-a32d-080027880ca6",
+            "air_handler_fan_efficiency": null,
+            "air_source_heat_pump_cooling_efficiency": null,
+            "air_source_heat_pump_fan_efficiency": null,
+            "air_source_heat_pump_heating_efficiency": null,
+            "aspect_ratio_multiplier": null,
+            "boiler_heating_efficiency": null,
+            "chiller_cooling_efficiency": null,
+            "daylighting_control_setpoint": null,
+            "district_chiller_cooling_efficiency": null,
+            "district_heating_efficiency": null,
+            "economizer": null,
+            "floor_plate_area_multiplier": null,
+            "floor_r_value_for_24_in": null,
+            "floor_to_floor_height": null,
+            "gas_heating_efficiency": null,
+            "interior_lighting_power_density": null,
+            "location": "USA_MD_Baltimore-Washington.Intl.AP.724060_TMY3.epw",
+            "orientation": null,
+            "packaged_dx_cooling_efficiency": null,
+            "packaged_dx_fan_efficiency": null,
+            "perimeter_zone_depth": null,
+            "roof_built_up_concrete_deck_construction_type": null,
+            "roof_built_up_concrete_deck_u_value": null,
+            "roof_built_up_concrete_deck_u_value_static": null,
+            "roof_built_up_metal_deck_construction_type": null,
+            "roof_built_up_metal_deck_u_value": null,
+            "roof_built_up_metal_deck_u_value_static": null,
+            "roof_built_up_wood_deck_construction_type": null,
+            "roof_built_up_wood_deck_u_value": null,
+            "roof_built_up_wood_deck_u_value_static": null,
+            "roof_metal_construction_type": null,
+            "roof_metal_u_value": null,
+            "roof_metal_u_value_static": null,
+            "roof_shingle_construction_type": null,
+            "roof_shingle_u_value": null,
+            "roof_shingle_u_value_static": null,
+            "shading_height_above_window": null,
+            "shading_projection_factor": null,
+            "shading_type": null,
+            "square_footage_multiplier": null,
+            "wall_masonry_on_masonry_construction_type": null,
+            "wall_masonry_on_masonry_u_value": null,
+            "wall_masonry_on_masonry_u_value_static": null,
+            "wall_masonry_on_steel_construction_type": null,
+            "wall_masonry_on_steel_u_value": null,
+            "wall_masonry_on_steel_u_value_static": null,
+            "wall_masonry_on_wood_construction_type": null,
+            "wall_masonry_on_wood_u_value": null,
+            "wall_masonry_on_wood_u_value_static": null,
+            "wall_metal_panel_construction_type": "metal-panel",
+            "wall_metal_panel_u_value": 5.1327433628318575,
+            "wall_metal_panel_u_value_static": 0.113,
+            "wall_wood_siding_construction_type": null,
+            "wall_wood_siding_u_value": null,
+            "wall_wood_siding_u_value_static": null,
+            "water_heater_energy_factor": null,
+            "window_shgc": null,
+            "window_sill_height": null,
+            "window_to_wall_ratio": null,
+            "window_u_value": null,
+            "window_u_value_static": null,
+            "window_vlt": null,
+            "total_energy": 579.18,
+            "total_source_energy": 1799.33
+        },
+        {
+            "data_point_uuid": "/data_points/41dbeae0-be26-0131-a32d-080027880ca6",
+            "air_handler_fan_efficiency": null,
+            "air_source_heat_pump_cooling_efficiency": null,
+            "air_source_heat_pump_fan_efficiency": null,
+            "air_source_heat_pump_heating_efficiency": null,
+            "aspect_ratio_multiplier": null,
+            "boiler_heating_efficiency": 1.2,
+            "chiller_cooling_efficiency": null,
+            "daylighting_control_setpoint": null,
+            "district_chiller_cooling_efficiency": null,
+            "district_heating_efficiency": null,
+            "economizer": null,
+            "floor_plate_area_multiplier": null,
+            "floor_r_value_for_24_in": null,
+            "floor_to_floor_height": null,
+            "gas_heating_efficiency": null,
+            "interior_lighting_power_density": null,
+            "location": "USA_MD_Baltimore-Washington.Intl.AP.724060_TMY3.epw",
+            "orientation": null,
+            "packaged_dx_cooling_efficiency": null,
+            "packaged_dx_fan_efficiency": null,
+            "perimeter_zone_depth": null,
+            "roof_built_up_concrete_deck_construction_type": null,
+            "roof_built_up_concrete_deck_u_value": null,
+            "roof_built_up_concrete_deck_u_value_static": null,
+            "roof_built_up_metal_deck_construction_type": null,
+            "roof_built_up_metal_deck_u_value": null,
+            "roof_built_up_metal_deck_u_value_static": null,
+            "roof_built_up_wood_deck_construction_type": null,
+            "roof_built_up_wood_deck_u_value": null,
+            "roof_built_up_wood_deck_u_value_static": null,
+            "roof_metal_construction_type": null,
+            "roof_metal_u_value": null,
+            "roof_metal_u_value_static": null,
+            "roof_shingle_construction_type": null,
+            "roof_shingle_u_value": null,
+            "roof_shingle_u_value_static": null,
+            "shading_height_above_window": null,
+            "shading_projection_factor": null,
+            "shading_type": null,
+            "square_footage_multiplier": null,
+            "wall_masonry_on_masonry_construction_type": null,
+            "wall_masonry_on_masonry_u_value": null,
+            "wall_masonry_on_masonry_u_value_static": null,
+            "wall_masonry_on_steel_construction_type": null,
+            "wall_masonry_on_steel_u_value": null,
+            "wall_masonry_on_steel_u_value_static": null,
+            "wall_masonry_on_wood_construction_type": null,
+            "wall_masonry_on_wood_u_value": null,
+            "wall_masonry_on_wood_u_value_static": null,
+            "wall_metal_panel_construction_type": null,
+            "wall_metal_panel_u_value": null,
+            "wall_metal_panel_u_value_static": null,
+            "wall_wood_siding_construction_type": null,
+            "wall_wood_siding_u_value": null,
+            "wall_wood_siding_u_value_static": null,
+            "water_heater_energy_factor": null,
+            "window_shgc": null,
+            "window_sill_height": null,
+            "window_to_wall_ratio": null,
+            "window_u_value": null,
+            "window_u_value_static": null,
+            "window_vlt": null,
+            "total_energy": 491.86,
+            "total_source_energy": 1521.81
+        },
+        {
+            "data_point_uuid": "/data_points/41e2d8b0-be26-0131-a32d-080027880ca6",
+            "air_handler_fan_efficiency": null,
+            "air_source_heat_pump_cooling_efficiency": null,
+            "air_source_heat_pump_fan_efficiency": null,
+            "air_source_heat_pump_heating_efficiency": null,
+            "aspect_ratio_multiplier": null,
+            "boiler_heating_efficiency": null,
+            "chiller_cooling_efficiency": null,
+            "daylighting_control_setpoint": null,
+            "district_chiller_cooling_efficiency": null,
+            "district_heating_efficiency": null,
+            "economizer": null,
+            "floor_plate_area_multiplier": null,
+            "floor_r_value_for_24_in": null,
+            "floor_to_floor_height": null,
+            "gas_heating_efficiency": null,
+            "interior_lighting_power_density": null,
+            "location": "USA_MD_Baltimore-Washington.Intl.AP.724060_TMY3.epw",
+            "orientation": null,
+            "packaged_dx_cooling_efficiency": null,
+            "packaged_dx_fan_efficiency": null,
+            "perimeter_zone_depth": null,
+            "roof_built_up_concrete_deck_construction_type": null,
+            "roof_built_up_concrete_deck_u_value": null,
+            "roof_built_up_concrete_deck_u_value_static": null,
+            "roof_built_up_metal_deck_construction_type": null,
+            "roof_built_up_metal_deck_u_value": null,
+            "roof_built_up_metal_deck_u_value_static": null,
+            "roof_built_up_wood_deck_construction_type": null,
+            "roof_built_up_wood_deck_u_value": null,
+            "roof_built_up_wood_deck_u_value_static": null,
+            "roof_metal_construction_type": null,
+            "roof_metal_u_value": null,
+            "roof_metal_u_value_static": null,
+            "roof_shingle_construction_type": null,
+            "roof_shingle_u_value": null,
+            "roof_shingle_u_value_static": null,
+            "shading_height_above_window": null,
+            "shading_projection_factor": null,
+            "shading_type": null,
+            "square_footage_multiplier": null,
+            "wall_masonry_on_masonry_construction_type": null,
+            "wall_masonry_on_masonry_u_value": null,
+            "wall_masonry_on_masonry_u_value_static": null,
+            "wall_masonry_on_steel_construction_type": null,
+            "wall_masonry_on_steel_u_value": null,
+            "wall_masonry_on_steel_u_value_static": null,
+            "wall_masonry_on_wood_construction_type": null,
+            "wall_masonry_on_wood_u_value": null,
+            "wall_masonry_on_wood_u_value_static": null,
+            "wall_metal_panel_construction_type": null,
+            "wall_metal_panel_u_value": null,
+            "wall_metal_panel_u_value_static": null,
+            "wall_wood_siding_construction_type": "wood-siding",
+            "wall_wood_siding_u_value": 6.51685393258427,
+            "wall_wood_siding_u_value_static": 0.089,
+            "water_heater_energy_factor": null,
+            "window_shgc": null,
+            "window_sill_height": null,
+            "window_to_wall_ratio": null,
+            "window_u_value": null,
+            "window_u_value_static": null,
+            "window_vlt": null,
+            "total_energy": 597.88,
+            "total_source_energy": 1858.61
+        },
+        {
+            "data_point_uuid": "/data_points/41dac500-be26-0131-a32d-080027880ca6",
+            "air_handler_fan_efficiency": null,
+            "air_source_heat_pump_cooling_efficiency": null,
+            "air_source_heat_pump_fan_efficiency": null,
+            "air_source_heat_pump_heating_efficiency": null,
+            "aspect_ratio_multiplier": null,
+            "boiler_heating_efficiency": null,
+            "chiller_cooling_efficiency": null,
+            "daylighting_control_setpoint": null,
+            "district_chiller_cooling_efficiency": null,
+            "district_heating_efficiency": null,
+            "economizer": null,
+            "floor_plate_area_multiplier": null,
+            "floor_r_value_for_24_in": null,
+            "floor_to_floor_height": null,
+            "gas_heating_efficiency": null,
+            "interior_lighting_power_density": null,
+            "location": "USA_MD_Baltimore-Washington.Intl.AP.724060_TMY3.epw",
+            "orientation": null,
+            "packaged_dx_cooling_efficiency": null,
+            "packaged_dx_fan_efficiency": null,
+            "perimeter_zone_depth": null,
+            "roof_built_up_concrete_deck_construction_type": null,
+            "roof_built_up_concrete_deck_u_value": null,
+            "roof_built_up_concrete_deck_u_value_static": null,
+            "roof_built_up_metal_deck_construction_type": null,
+            "roof_built_up_metal_deck_u_value": null,
+            "roof_built_up_metal_deck_u_value_static": null,
+            "roof_built_up_wood_deck_construction_type": null,
+            "roof_built_up_wood_deck_u_value": null,
+            "roof_built_up_wood_deck_u_value_static": null,
+            "roof_metal_construction_type": null,
+            "roof_metal_u_value": null,
+            "roof_metal_u_value_static": null,
+            "roof_shingle_construction_type": null,
+            "roof_shingle_u_value": null,
+            "roof_shingle_u_value_static": null,
+            "shading_height_above_window": null,
+            "shading_projection_factor": null,
+            "shading_type": null,
+            "square_footage_multiplier": null,
+            "wall_masonry_on_masonry_construction_type": null,
+            "wall_masonry_on_masonry_u_value": null,
+            "wall_masonry_on_masonry_u_value_static": null,
+            "wall_masonry_on_steel_construction_type": null,
+            "wall_masonry_on_steel_u_value": null,
+            "wall_masonry_on_steel_u_value_static": null,
+            "wall_masonry_on_wood_construction_type": null,
+            "wall_masonry_on_wood_u_value": null,
+            "wall_masonry_on_wood_u_value_static": null,
+            "wall_metal_panel_construction_type": null,
+            "wall_metal_panel_u_value": null,
+            "wall_metal_panel_u_value_static": null,
+            "wall_wood_siding_construction_type": null,
+            "wall_wood_siding_u_value": null,
+            "wall_wood_siding_u_value_static": null,
+            "water_heater_energy_factor": null,
+            "window_shgc": null,
+            "window_sill_height": null,
+            "window_to_wall_ratio": null,
+            "window_u_value": null,
+            "window_u_value_static": null,
+            "window_vlt": 0.08571428571428572,
+            "total_energy": 491.86,
+            "total_source_energy": 1521.81
+        },
+        {
+            "data_point_uuid": "/data_points/41ddbd50-be26-0131-a32d-080027880ca6",
+            "air_handler_fan_efficiency": null,
+            "air_source_heat_pump_cooling_efficiency": null,
+            "air_source_heat_pump_fan_efficiency": null,
+            "air_source_heat_pump_heating_efficiency": null,
+            "aspect_ratio_multiplier": 1.0,
+            "boiler_heating_efficiency": null,
+            "chiller_cooling_efficiency": null,
+            "daylighting_control_setpoint": null,
+            "district_chiller_cooling_efficiency": null,
+            "district_heating_efficiency": null,
+            "economizer": null,
+            "floor_plate_area_multiplier": 4.0,
+            "floor_r_value_for_24_in": null,
+            "floor_to_floor_height": null,
+            "gas_heating_efficiency": null,
+            "interior_lighting_power_density": null,
+            "location": "USA_MD_Baltimore-Washington.Intl.AP.724060_TMY3.epw",
+            "orientation": null,
+            "packaged_dx_cooling_efficiency": null,
+            "packaged_dx_fan_efficiency": null,
+            "perimeter_zone_depth": null,
+            "roof_built_up_concrete_deck_construction_type": null,
+            "roof_built_up_concrete_deck_u_value": null,
+            "roof_built_up_concrete_deck_u_value_static": null,
+            "roof_built_up_metal_deck_construction_type": null,
+            "roof_built_up_metal_deck_u_value": null,
+            "roof_built_up_metal_deck_u_value_static": null,
+            "roof_built_up_wood_deck_construction_type": null,
+            "roof_built_up_wood_deck_u_value": null,
+            "roof_built_up_wood_deck_u_value_static": null,
+            "roof_metal_construction_type": null,
+            "roof_metal_u_value": null,
+            "roof_metal_u_value_static": null,
+            "roof_shingle_construction_type": null,
+            "roof_shingle_u_value": null,
+            "roof_shingle_u_value_static": null,
+            "shading_height_above_window": null,
+            "shading_projection_factor": null,
+            "shading_type": null,
+            "square_footage_multiplier": 3.0,
+            "wall_masonry_on_masonry_construction_type": null,
+            "wall_masonry_on_masonry_u_value": null,
+            "wall_masonry_on_masonry_u_value_static": null,
+            "wall_masonry_on_steel_construction_type": null,
+            "wall_masonry_on_steel_u_value": null,
+            "wall_masonry_on_steel_u_value_static": null,
+            "wall_masonry_on_wood_construction_type": null,
+            "wall_masonry_on_wood_u_value": null,
+            "wall_masonry_on_wood_u_value_static": null,
+            "wall_metal_panel_construction_type": null,
+            "wall_metal_panel_u_value": null,
+            "wall_metal_panel_u_value_static": null,
+            "wall_wood_siding_construction_type": null,
+            "wall_wood_siding_u_value": null,
+            "wall_wood_siding_u_value_static": null,
+            "water_heater_energy_factor": null,
+            "window_shgc": null,
+            "window_sill_height": null,
+            "window_to_wall_ratio": null,
+            "window_u_value": null,
+            "window_u_value_static": null,
+            "window_vlt": null
+        }
+    ];
+</script> <!--END OF DATA-->
+
+
+
+
+
+
+
+
+
+<div id="graph-div">
+    <script>
+        //size of chart
+        var m = [230, 20, 50, 40],
+        w = 1220 - m[1] - m[3],
+        h = 1000 - m[0] - m[2];
+        
+        var x = d3.scale.ordinal().rangePoints([0, w], 1),
+        y = {},
+        dragging = {};
+        
+        var line = d3.svg.line(),
+        axis = d3.svg.axis().ticks(5).tickFormat(d3.format(" .2e")).orient("left"),
+        background,
+        foreground;
+        
+        var svg = d3.select("#graph-div").append("svg:svg")
+        .attr("width", w + m[1] + m[3])
+        .attr("height", h + m[0] + m[2])
+        .append("svg:g")
+        .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+        
+        // d3.json("plot_data.json", function (error, data) {
+        function draw(data) {
+        // Extract the list of dimensions and create a scale for each.
+        
+        x.domain(dimensions = d3.keys(data[0]).filter(function (d) {
+        
+        // Don't show any of these items
+        if ((d === "_id") || (d === "data_point_uuid") || (d === "lighting_control") || (d === "climate_zone_id") || (d === "wwr_west_static")) return false;
+        
+        if ((d === "wwr_facade") || (d === "location")) {
+        y[d] = d3.scale.ordinal()
+        .domain(d3.extent(data, function (p) {
+        return p[d];
+        }))
+        .rangePoints([h, 0]);
+        }
+        else {
+        y[d] = d3.scale.linear()
+        .domain(d3.extent(data, function (p) {
+        return +p[d];
+        }))
+        .range([h, 0]);
+        }
+        return true;
+        }));
+        
+        // Add grey background lines for context.
+        background = svg.append("svg:g")
+        .attr("class", "background")
+        .selectAll("path")
+        .data(data)
+        .enter().append("svg:path")
+        .attr("d", path);
+        
+        // Add blue foreground lines for focus.
+        foreground = svg.append("svg:g")
+        .attr("class", "foreground")
+        .selectAll("path")
+        .data(data)
+        .enter().append("svg:path")
+        .attr("d", path);
+        
+        // Add a group element for each dimension.
+        var g = svg.selectAll(".dimension")
+        .data(dimensions)
+        .enter().append("svg:g")
+        .attr("class", "dimension")
+        .attr("transform", function (d) {
+        return "translate(" + x(d) + ")";
+        })
+        .call(d3.behavior.drag()
+        .on("dragstart", function (d) {
+        dragging[d] = this.__origin__ = x(d);
+        background.attr("visibility", "hidden");
+        })
+        .on("drag", function (d) {
+        dragging[d] = Math.min(w, Math.max(0, this.__origin__ += d3.event.dx));
+        foreground.attr("d", path);
+        dimensions.sort(function (a, b) {
+        return position(a) - position(b);
+        });
+        x.domain(dimensions);
+        g.attr("transform", function (d) {
+        return "translate(" + position(d) + ")";
+        })
+        })
+        .on("dragend", function (d) {
+        delete this.__origin__;
+        delete dragging[d];
+        transition(d3.select(this)).attr("transform", "translate(" + x(d) + ")");
+        transition(foreground)
+        .attr("d", path);
+        background
+        .attr("d", path)
+        .transition()
+        .delay(500)
+        .duration(0)
+        .attr("visibility", null);
+        }));
+        
+        // Add an axis and title.
+        g.append("svg:g")
+        .attr("class", "axis")
+        .each(function (d) {
+        d3.select(this).call(axis.scale(y[d]));
+        })
+        .append("svg:text")
+        .attr("text-anchor", "start")
+        .attr("y", -9)
+        .attr("transform", "rotate(-45)")
+        .text(String);
+        
+        // Add and store a brush for each axis.
+        g.append("svg:g")
+        .attr("class", "brush")
+        .each(function (d) {
+        d3.select(this).call(y[d].brush = d3.svg.brush().y(y[d]).on("brush", brush));
+        })
+        .selectAll("rect")
+        .attr("x", -8)
+        .attr("width", 16);
+        
+        }
+        //});
+        
+        draw(data);
+        
+        function position(d) {
+            var v = dragging[d];
+            return v == null ? x(d) : v;
+        }
+        
+        function transition(g) {
+            return g.transition().duration(500);
+        }
+        
+        // Returns the path for a given data point.
+        function path(d) {
+            return line(dimensions.map(function (p) {
+                return [position(p), y[p](d[p])];
+            }));
+        }
+        
+        // Handles a brush event, toggling the display of foreground lines.
+        function brush() {
+            var actives = dimensions.filter(function (p) {
+                return !y[p].brush.empty();
+            }),
+            extents = actives.map(function (p) {
+                return y[p].brush.extent();
+            });
+            foreground.style("display", function (d) {
+                return actives.every(function (p, i) {
+                return extents[i][0] <= d[p] && d[p] <= extents[i][1];
+                }) ? null : "none";
+            });
+        }
+    
+    </script>
+</div> <!--graph div-->
+
+
+<!--VARIABLE LIST TO PLOT-->
+<div id="chart-form">
+<div class="chart-text">
+
+    <p>Unselect variables below to remove them from the chart</p>
+
+    <div class="update-button">
+        <button type="button" id="check_all"> Check / Uncheck All </button>
+    </div>
+
+<div class="row-fluid">
+<form accept-charset="UTF-8" action="/analyses/1095dfa0-be26-0131-f711-14109fdf0b37/plot_parallelcoordinates2" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="IElWr4rOfGy35viNNbdMtXWj6zIUTqqyVJA4y9KfozA=" /></div>
+<div class="span5">
+    <p>
+    <input checked="checked" id="variables_10bbdf50-be26-0131-f80e-14109fdf0b37" name="variables[]" type="checkbox" value="air_handler_fan_efficiency" />
+    <label for="variables_10bbdf50-be26-0131-f80e-14109fdf0b37">air_handler_fan_efficiency</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10b7c2e0-be26-0131-f7f0-14109fdf0b37" name="variables[]" type="checkbox" value="air_source_heat_pump_cooling_efficiency" />
+    <label for="variables_10b7c2e0-be26-0131-f7f0-14109fdf0b37">air_source_heat_pump_cooling_efficiency</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10b90c90-be26-0131-f7fa-14109fdf0b37" name="variables[]" type="checkbox" value="air_source_heat_pump_fan_efficiency" />
+    <label for="variables_10b90c90-be26-0131-f7fa-14109fdf0b37">air_source_heat_pump_fan_efficiency</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10b86130-be26-0131-f7f5-14109fdf0b37" name="variables[]" type="checkbox" value="air_source_heat_pump_heating_efficiency" />
+    <label for="variables_10b86130-be26-0131-f7f5-14109fdf0b37">air_source_heat_pump_heating_efficiency</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10969d60-be26-0131-f717-14109fdf0b37" name="variables[]" type="checkbox" value="aspect_ratio_multiplier" />
+    <label for="variables_10969d60-be26-0131-f717-14109fdf0b37">aspect_ratio_multiplier</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10b66670-be26-0131-f7e6-14109fdf0b37" name="variables[]" type="checkbox" value="boiler_heating_efficiency" />
+    <label for="variables_10b66670-be26-0131-f7e6-14109fdf0b37">boiler_heating_efficiency</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10b4eac0-be26-0131-f7dc-14109fdf0b37" name="variables[]" type="checkbox" value="chiller_cooling_efficiency" />
+    <label for="variables_10b4eac0-be26-0131-f7dc-14109fdf0b37">chiller_cooling_efficiency</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10b19930-be26-0131-f7c4-14109fdf0b37" name="variables[]" type="checkbox" value="daylighting_control_setpoint" />
+    <label for="variables_10b19930-be26-0131-f7c4-14109fdf0b37">daylighting_control_setpoint</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10b5a540-be26-0131-f7e1-14109fdf0b37" name="variables[]" type="checkbox" value="district_chiller_cooling_efficiency" />
+    <label for="variables_10b5a540-be26-0131-f7e1-14109fdf0b37">district_chiller_cooling_efficiency</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10b70430-be26-0131-f7eb-14109fdf0b37" name="variables[]" type="checkbox" value="district_heating_efficiency" />
+    <label for="variables_10b70430-be26-0131-f7eb-14109fdf0b37">district_heating_efficiency</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10bd3150-be26-0131-f818-14109fdf0b37" name="variables[]" type="checkbox" value="economizer" />
+    <label for="variables_10bd3150-be26-0131-f818-14109fdf0b37">economizer</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_1096d710-be26-0131-f719-14109fdf0b37" name="variables[]" type="checkbox" value="floor_plate_area_multiplier" />
+    <label for="variables_1096d710-be26-0131-f719-14109fdf0b37">floor_plate_area_multiplier</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_1098f730-be26-0131-f72a-14109fdf0b37" name="variables[]" type="checkbox" value="floor_r_value_for_24_in" />
+    <label for="variables_1098f730-be26-0131-f72a-14109fdf0b37">floor_r_value_for_24_in</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_1097b670-be26-0131-f720-14109fdf0b37" name="variables[]" type="checkbox" value="floor_to_floor_height" />
+    <label for="variables_1097b670-be26-0131-f720-14109fdf0b37">floor_to_floor_height</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10bb3f00-be26-0131-f809-14109fdf0b37" name="variables[]" type="checkbox" value="gas_heating_efficiency" />
+    <label for="variables_10bb3f00-be26-0131-f809-14109fdf0b37">gas_heating_efficiency</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10b24c30-be26-0131-f7c9-14109fdf0b37" name="variables[]" type="checkbox" value="interior_lighting_power_density" />
+    <label for="variables_10b24c30-be26-0131-f7c9-14109fdf0b37">interior_lighting_power_density</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10964380-be26-0131-f714-14109fdf0b37" name="variables[]" type="checkbox" value="location" />
+    <label for="variables_10964380-be26-0131-f714-14109fdf0b37">location</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10bd89b0-be26-0131-f81b-14109fdf0b37" name="variables[]" type="checkbox" value="orientation" />
+    <label for="variables_10bd89b0-be26-0131-f81b-14109fdf0b37">orientation</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10b9dd10-be26-0131-f7ff-14109fdf0b37" name="variables[]" type="checkbox" value="packaged_dx_cooling_efficiency" />
+    <label for="variables_10b9dd10-be26-0131-f7ff-14109fdf0b37">packaged_dx_cooling_efficiency</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10ba8c00-be26-0131-f804-14109fdf0b37" name="variables[]" type="checkbox" value="packaged_dx_fan_efficiency" />
+    <label for="variables_10ba8c00-be26-0131-f804-14109fdf0b37">packaged_dx_fan_efficiency</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10985390-be26-0131-f725-14109fdf0b37" name="variables[]" type="checkbox" value="perimeter_zone_depth" />
+    <label for="variables_10985390-be26-0131-f725-14109fdf0b37">perimeter_zone_depth</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10a78110-be26-0131-f797-14109fdf0b37" name="variables[]" type="checkbox" value="roof_built_up_concrete_deck_construction_type" />
+    <label for="variables_10a78110-be26-0131-f797-14109fdf0b37">roof_built_up_concrete_deck_construction_type</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10a80d10-be26-0131-f79b-14109fdf0b37" name="variables[]" type="checkbox" value="roof_built_up_concrete_deck_u_value" />
+    <label for="variables_10a80d10-be26-0131-f79b-14109fdf0b37">roof_built_up_concrete_deck_u_value</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10a7cf90-be26-0131-f799-14109fdf0b37" name="variables[]" type="checkbox" value="roof_built_up_concrete_deck_u_value_static" />
+    <label for="variables_10a7cf90-be26-0131-f799-14109fdf0b37">roof_built_up_concrete_deck_u_value_static</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10a910c0-be26-0131-f7a3-14109fdf0b37" name="variables[]" type="checkbox" value="roof_built_up_metal_deck_construction_type" />
+    <label for="variables_10a910c0-be26-0131-f7a3-14109fdf0b37">roof_built_up_metal_deck_construction_type</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10a98bc0-be26-0131-f7a7-14109fdf0b37" name="variables[]" type="checkbox" value="roof_built_up_metal_deck_u_value" />
+    <label for="variables_10a98bc0-be26-0131-f7a7-14109fdf0b37">roof_built_up_metal_deck_u_value</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10a95410-be26-0131-f7a5-14109fdf0b37" name="variables[]" type="checkbox" value="roof_built_up_metal_deck_u_value_static" />
+    <label for="variables_10a95410-be26-0131-f7a5-14109fdf0b37">roof_built_up_metal_deck_u_value_static</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10a5f760-be26-0131-f78b-14109fdf0b37" name="variables[]" type="checkbox" value="roof_built_up_wood_deck_construction_type" />
+    <label for="variables_10a5f760-be26-0131-f78b-14109fdf0b37">roof_built_up_wood_deck_construction_type</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10a67e60-be26-0131-f78f-14109fdf0b37" name="variables[]" type="checkbox" value="roof_built_up_wood_deck_u_value" />
+    <label for="variables_10a67e60-be26-0131-f78f-14109fdf0b37">roof_built_up_wood_deck_u_value</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10a63f90-be26-0131-f78d-14109fdf0b37" name="variables[]" type="checkbox" value="roof_built_up_wood_deck_u_value_static" />
+    <label for="variables_10a63f90-be26-0131-f78d-14109fdf0b37">roof_built_up_wood_deck_u_value_static</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10aa80a0-be26-0131-f7af-14109fdf0b37" name="variables[]" type="checkbox" value="roof_metal_construction_type" />
+    <label for="variables_10aa80a0-be26-0131-f7af-14109fdf0b37">roof_metal_construction_type</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10ab15d0-be26-0131-f7b3-14109fdf0b37" name="variables[]" type="checkbox" value="roof_metal_u_value" />
+    <label for="variables_10ab15d0-be26-0131-f7b3-14109fdf0b37">roof_metal_u_value</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10aac720-be26-0131-f7b1-14109fdf0b37" name="variables[]" type="checkbox" value="roof_metal_u_value_static" />
+    <label for="variables_10aac720-be26-0131-f7b1-14109fdf0b37">roof_metal_u_value_static</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10b02d20-be26-0131-f7bb-14109fdf0b37" name="variables[]" type="checkbox" value="roof_shingle_construction_type" />
+    <label for="variables_10b02d20-be26-0131-f7bb-14109fdf0b37">roof_shingle_construction_type</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10b0c640-be26-0131-f7bf-14109fdf0b37" name="variables[]" type="checkbox" value="roof_shingle_u_value" />
+    <label for="variables_10b0c640-be26-0131-f7bf-14109fdf0b37">roof_shingle_u_value</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10b07e90-be26-0131-f7bd-14109fdf0b37" name="variables[]" type="checkbox" value="roof_shingle_u_value_static" />
+    <label for="variables_10b07e90-be26-0131-f7bd-14109fdf0b37">roof_shingle_u_value_static</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10b44040-be26-0131-f7d7-14109fdf0b37" name="variables[]" type="checkbox" value="shading_height_above_window" />
+    <label for="variables_10b44040-be26-0131-f7d7-14109fdf0b37">shading_height_above_window</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10b392d0-be26-0131-f7d2-14109fdf0b37" name="variables[]" type="checkbox" value="shading_projection_factor" />
+    <label for="variables_10b392d0-be26-0131-f7d2-14109fdf0b37">shading_projection_factor</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10b34590-be26-0131-f7d0-14109fdf0b37" name="variables[]" type="checkbox" value="shading_type" />
+    <label for="variables_10b34590-be26-0131-f7d0-14109fdf0b37">shading_type</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10972030-be26-0131-f71b-14109fdf0b37" name="variables[]" type="checkbox" value="square_footage_multiplier" />
+    <label for="variables_10972030-be26-0131-f71b-14109fdf0b37">square_footage_multiplier</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10a42cf0-be26-0131-f77f-14109fdf0b37" name="variables[]" type="checkbox" value="wall_masonry_on_masonry_construction_type" />
+    <label for="variables_10a42cf0-be26-0131-f77f-14109fdf0b37">wall_masonry_on_masonry_construction_type</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10a4aea0-be26-0131-f783-14109fdf0b37" name="variables[]" type="checkbox" value="wall_masonry_on_masonry_u_value" />
+    <label for="variables_10a4aea0-be26-0131-f783-14109fdf0b37">wall_masonry_on_masonry_u_value</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10a476f0-be26-0131-f781-14109fdf0b37" name="variables[]" type="checkbox" value="wall_masonry_on_masonry_u_value_static" />
+    <label for="variables_10a476f0-be26-0131-f781-14109fdf0b37">wall_masonry_on_masonry_u_value_static</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10a28af0-be26-0131-f773-14109fdf0b37" name="variables[]" type="checkbox" value="wall_masonry_on_steel_construction_type" />
+    <label for="variables_10a28af0-be26-0131-f773-14109fdf0b37">wall_masonry_on_steel_construction_type</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10a32910-be26-0131-f777-14109fdf0b37" name="variables[]" type="checkbox" value="wall_masonry_on_steel_u_value" />
+    <label for="variables_10a32910-be26-0131-f777-14109fdf0b37">wall_masonry_on_steel_u_value</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10a2dd60-be26-0131-f775-14109fdf0b37" name="variables[]" type="checkbox" value="wall_masonry_on_steel_u_value_static" />
+    <label for="variables_10a2dd60-be26-0131-f775-14109fdf0b37">wall_masonry_on_steel_u_value_static</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10a0ec60-be26-0131-f767-14109fdf0b37" name="variables[]" type="checkbox" value="wall_masonry_on_wood_construction_type" />
+    <label for="variables_10a0ec60-be26-0131-f767-14109fdf0b37">wall_masonry_on_wood_construction_type</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10a175f0-be26-0131-f76b-14109fdf0b37" name="variables[]" type="checkbox" value="wall_masonry_on_wood_u_value" />
+    <label for="variables_10a175f0-be26-0131-f76b-14109fdf0b37">wall_masonry_on_wood_u_value</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10a12730-be26-0131-f769-14109fdf0b37" name="variables[]" type="checkbox" value="wall_masonry_on_wood_u_value_static" />
+    <label for="variables_10a12730-be26-0131-f769-14109fdf0b37">wall_masonry_on_wood_u_value_static</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_109defd0-be26-0131-f74f-14109fdf0b37" name="variables[]" type="checkbox" value="wall_metal_panel_construction_type" />
+    <label for="variables_109defd0-be26-0131-f74f-14109fdf0b37">wall_metal_panel_construction_type</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_109e7140-be26-0131-f753-14109fdf0b37" name="variables[]" type="checkbox" value="wall_metal_panel_u_value" />
+    <label for="variables_109e7140-be26-0131-f753-14109fdf0b37">wall_metal_panel_u_value</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_109e39e0-be26-0131-f751-14109fdf0b37" name="variables[]" type="checkbox" value="wall_metal_panel_u_value_static" />
+    <label for="variables_109e39e0-be26-0131-f751-14109fdf0b37">wall_metal_panel_u_value_static</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_109f7700-be26-0131-f75b-14109fdf0b37" name="variables[]" type="checkbox" value="wall_wood_siding_construction_type" />
+    <label for="variables_109f7700-be26-0131-f75b-14109fdf0b37">wall_wood_siding_construction_type</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_109ff510-be26-0131-f75f-14109fdf0b37" name="variables[]" type="checkbox" value="wall_wood_siding_u_value" />
+    <label for="variables_109ff510-be26-0131-f75f-14109fdf0b37">wall_wood_siding_u_value</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_109fb580-be26-0131-f75d-14109fdf0b37" name="variables[]" type="checkbox" value="wall_wood_siding_u_value_static" />
+    <label for="variables_109fb580-be26-0131-f75d-14109fdf0b37">wall_wood_siding_u_value_static</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10bc7fc0-be26-0131-f813-14109fdf0b37" name="variables[]" type="checkbox" value="water_heater_energy_factor" />
+    <label for="variables_10bc7fc0-be26-0131-f813-14109fdf0b37">water_heater_energy_factor</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_109c2520-be26-0131-f742-14109fdf0b37" name="variables[]" type="checkbox" value="window_shgc" />
+    <label for="variables_109c2520-be26-0131-f742-14109fdf0b37">window_shgc</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_109a30d0-be26-0131-f734-14109fdf0b37" name="variables[]" type="checkbox" value="window_sill_height" />
+    <label for="variables_109a30d0-be26-0131-f734-14109fdf0b37">window_sill_height</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_10999df0-be26-0131-f72f-14109fdf0b37" name="variables[]" type="checkbox" value="window_to_wall_ratio" />
+    <label for="variables_10999df0-be26-0131-f72f-14109fdf0b37">window_to_wall_ratio</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_109b6c80-be26-0131-f73d-14109fdf0b37" name="variables[]" type="checkbox" value="window_u_value" />
+    <label for="variables_109b6c80-be26-0131-f73d-14109fdf0b37">window_u_value</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_109b1e80-be26-0131-f73b-14109fdf0b37" name="variables[]" type="checkbox" value="window_u_value_static" />
+    <label for="variables_109b1e80-be26-0131-f73b-14109fdf0b37">window_u_value_static</label>
+    </p>
+    <p>
+    <input checked="checked" id="variables_109cddf0-be26-0131-f747-14109fdf0b37" name="variables[]" type="checkbox" value="window_vlt" />
+    <label for="variables_109cddf0-be26-0131-f747-14109fdf0b37">window_vlt</label>
+    </p>
+
+</div>
+    <div class="span3">
+    
+        <p>
+        <input checked="checked" id="variables_0" name="variables[]" type="checkbox" value="total_energy" />
+        <label for="variables_0">total_energy</label>
+        </p>
+        
+    </div>
+    <div class="span3">
+    
+    <p>
+    <input checked="checked" id="variables_1" name="variables[]" type="checkbox" value="total_source_energy" />
+    <label for="variables_1">total_source_energy</label>
+    </p>
+    <p>
+    
+    <div class="submit-form"> <input name="commit" type="submit" value="Update Chart" /> </div>
+    </p>
+    </div>
+</form>
+</div>
+</div>
+</div>
+
+
+<script type='text/javascript'>
+    var toggle = false;
+    
+    $('#check_all').on("click", function () {
+        if (toggle == true) {
+        $('input:checkbox').prop('checked', true);
+        toggle = false;
+        }
+        else {
+        $('input:checkbox').prop('checked', false);
+        toggle = true;
+        }
+    console.log($('input:checkbox'));
+    });
+    
+</script>
+
+</div> <!-- /container -->
+</body>
+</html>
