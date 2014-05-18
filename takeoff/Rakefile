@@ -34,7 +34,7 @@ namespace :takeoff do
         values = "#{values_directory}/system_#{instance[:index]}.zip"
         if File.exist?(values)
           pp "Uploading #{file} to #{instance}"
-          sys_call = "pscp -v -batch -pw #{ENV['WINPW']} #{values} Administrator@#{instance[:data][:public_ip_address]}:/cygdrive/c/Data"
+          sys_call = "pscp -v -pw #{ENV['WINPW']} #{values} Administrator@#{instance[:data][:public_ip_address]}:/cygdrive/c/Data"
           pp sys_call
           r = `#{sys_call}`
         else
@@ -50,13 +50,13 @@ namespace :takeoff do
     ij = "instances.json"
     if File.exist? ij
       download_directory =  File.expand_path(File.join(File.dirname(__FILE__), "../regurgitate/results"))
-      File.rm_rf download_directory if File.exist?(download_directory)
+      FileUtils.rm_rf download_directory if File.exist?(download_directory)
       FileUtils.mkdir_p download_directory
 
       instances = JSON.parse(File.read(ij), :symbolize_names => true)
       instances.each do |instance|
-        pp "Downloading results from #{instance}"
-        sys_call = "pscp -v -batch -pw #{ENV['WINPW']} Administrator@#{instance[:data][:public_ip_address]}:/cygdrive/c/Data/Results.7z #{download_directory}/Results_#{instance}"
+        pp "Downloading results from #{instance[:index]}"
+        sys_call = "pscp -v -pw #{ENV['WINPW']} Administrator@#{instance[:data][:public_ip_address]}:/cygdrive/c/Data/Results.7z #{download_directory}/Results_#{instance[:index]}.7z"
         pp sys_call
         r = `#{sys_call}`
       end
