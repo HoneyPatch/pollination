@@ -1,0 +1,34 @@
+Program Version,EnergyPlus-Windows-64 8.1.0.008, YMD=2014.05.18 07:35,IDD_Version 8.1.0.008
+   ** Warning ** IP: Note -- Some missing fields have been filled with defaults. See the audit output file for details.
+   ** Warning ** ManageSizing: For a zone sizing run, there must be at least 1 Sizing:Zone input object. SimulationControl Zone Sizing option ignored.
+   ** Warning ** ManageSizing: For a plant sizing run, there must be at least 1 Sizing:Plant object input. SimulationControl Plant Sizing option ignored.
+   ** Warning ** GetHTSurfaceData: Surfaces with interface to Ground found but no "Ground Temperatures" were input.
+   **   ~~~   ** Found first in surface=0_0_1
+   **   ~~~   ** Defaults, constant throughout the year of (18.0) will be used.
+   ** Warning ** GetSurfaceData: InterZone Surface Areas do not match as expected and might not satisfy conservation of energy:
+   **   ~~~   ** ...use Output:Diagnostics,DisplayExtraWarnings; to show more details on individual mismatches.
+   ** Warning ** GetSurfaceData: There are 1 coincident/collinear vertices; These have been deleted unless the deletion would bring the number of surface sides < 3.
+   **   ~~~   ** For explicit details on each problem surface, use Output:Diagnostics,DisplayExtraWarnings;
+   ************* Testing Individual Branch Integrity
+   ************* All Branches passed integrity testing
+   ************* Testing Individual Supply Air Path Integrity
+   ************* All Supply Air Paths passed integrity testing
+   ************* Testing Individual Return Air Path Integrity
+   ************* All Return Air Paths passed integrity testing
+   ************* No node connection errors were found.
+   ************* Beginning Simulation
+   ************* Simulation Error Summary *************
+   ** Warning ** The following Report Variables were requested but not generated
+   **   ~~~   ** because IDF did not contain these elements or misspelled variable name -- check .rdd file
+   ************* Key=*, VarName=ZONE LIGHTS TOTAL HEAT GAIN, Frequency=Monthly
+   ************* Key=*, VarName=ZONE ELECTRIC EQUIPMENT TOTAL HEAT GAIN, Frequency=Monthly
+   *************
+   ************* ===== Final Error Summary =====
+   ************* The following error categories occurred.  Consider correcting or noting.
+   ************* InterZone Surface Areas -- mismatch
+   ************* ..Area mismatch errors happen when the interzone surface in zone A is
+   ************* ..not the same size as it's companion in zone B.
+   *************
+   ************* EnergyPlus Warmup Error Summary. During Warmup: 0 Warning; 0 Severe Errors.
+   ************* EnergyPlus Sizing Error Summary. During Sizing: 2 Warning; 0 Severe Errors.
+   ************* EnergyPlus Completed Successfully-- 7 Warning; 0 Severe Errors; Elapsed Time=00hr 01min 32.74sec

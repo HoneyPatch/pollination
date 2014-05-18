@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<svg width="250mm" height="200mm" viewBox="0 0   2500    1500"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:ev="http://www.w3.org/2001/xml-events">
+<g font-family="Verdana" font-size="8" >
+  <text x="   200" y="    40">Unused Non-Parent Objects:</text>
+  <text x="   220" y="    60">0_0</text>
+  <text x="   220" y="    80">1_0</text>
+  <text x="   220" y="   100">2_0</text>
+  <text x="   220" y="   120">3_0</text>
+  <text x="   220" y="   140">4_0</text>
+  <text x="   220" y="   160">5_0</text>
+  <text x="   220" y="   180">6_0</text>
+  <text x="   220" y="   200">7_0</text>
+  <text x="   220" y="   220">8_0</text>
+  <text x="   220" y="   240">9_0</text>
+  <text x="   220" y="   260">10_0</text>
+  <text x="   220" y="   280">11_0</text>
+  <text x="   220" y="   300">12_0</text>
+  <text x="   220" y="   320">13_0</text>
+  <text x="   220" y="   340">14_0</text>
+  <text x="   220" y="   360">15_0</text>
+  <text x="   220" y="   380">16_0</text>
+  <text x="   220" y="   400">17_0</text>
+  <text x="   220" y="   420">18_0</text>
+  <text x="   220" y="   440">19_0</text>
+  <text x="   220" y="   460">20_0</text>
+  <text x="   220" y="   480">0_0 IDEAL LOADS AIR SYSTEM</text>
+  <text x="   220" y="   500">1_0 IDEAL LOADS AIR SYSTEM</text>
+  <text x="   220" y="   520">2_0 IDEAL LOADS AIR SYSTEM</text>
+  <text x="   220" y="   540">3_0 IDEAL LOADS AIR SYSTEM</text>
+  <text x="   220" y="   560">4_0 IDEAL LOADS AIR SYSTEM</text>
+  <text x="   220" y="   580">5_0 IDEAL LOADS AIR SYSTEM</text>
+  <text x="   220" y="   600">6_0 IDEAL LOADS AIR SYSTEM</text>
+  <text x="   220" y="   620">7_0 IDEAL LOADS AIR SYSTEM</text>
+  <text x="   220" y="   640">8_0 IDEAL LOADS AIR SYSTEM</text>
+  <text x="   220" y="   660">9_0 IDEAL LOADS AIR SYSTEM</text>
+  <text x="   220" y="   680">10_0 IDEAL LOADS AIR SYSTEM</text>
+  <text x="   220" y="   700">11_0 IDEAL LOADS AIR SYSTEM</text>
+  <text x="   220" y="   720">12_0 IDEAL LOADS AIR SYSTEM</text>
+  <text x="   220" y="   740">13_0 IDEAL LOADS AIR SYSTEM</text>
+  <text x="   220" y="   760">14_0 IDEAL LOADS AIR SYSTEM</text>
+  <text x="   220" y="   780">15_0 IDEAL LOADS AIR SYSTEM</text>
+  <text x="   220" y="   800">16_0 IDEAL LOADS AIR SYSTEM</text>
+  <text x="   220" y="   820">17_0 IDEAL LOADS AIR SYSTEM</text>
+  <text x="   220" y="   840">18_0 IDEAL LOADS AIR SYSTEM</text>
+  <text x="   220" y="   860">19_0 IDEAL LOADS AIR SYSTEM</text>
+  <text x="   220" y="   880">20_0 IDEAL LOADS AIR SYSTEM</text>
+  <text x="   200" y="   920">
+The following are not supported: objects related to controls, AirTerminal:SingleDuct:Uncontrolled, or ZoneHVAC:IdealLoadsAirSystem</text>
+</g>
+</svg>
