@@ -1,0 +1,20 @@
+Adjustable Parameters:
+1) Height
+2) Taper
+3) South Glazing Ratio
+4) South Shading Depth
+5) East Shading Depth
+6) West Shading Depth
+7) Heating Setpoint
+8) Cooling Setpoint
+
+Output Variables:
+1) Heatingload
+2) Cooling load
+3) Lighting
+4) Equipment
+5) Comfortable Occupied hours
+6) Hot Occupied hours
+7) Cold Occupied hours
+
+Fittness = Heatingload + Cooling load + Lighting + Equipment + Hot Occupied hours + Cold Occupied hours

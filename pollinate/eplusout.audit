@@ -1,0 +1,4468 @@
+  Processing Data Dictionary (Energy+.idd) File -- Complete
+  Maximum number of Alpha Args=        4500
+  Maximum number of Numeric Args=       21040
+  Number of Object Definitions=         727
+  Number of Section Definitions=           2
+  Total Number of Alpha Fields=       17233
+  Total Number of Numeric Fields=       39169
+  Total Number of Fields=       56402
+  Processing Input Data File (in.idf) -- Start
+      1 
+      2 Version, 8.1;
+      3 
+      4 Timestep, 6;
+      5 
+      6 ShadowCalculation,
+      7  AverageOverDaysInFrequency,        !- Calculation Method
+      8  30,        !- Calculation Frequency
+      9  3000;    !- Maximum Figures in Shadow Overlap Calculation
+     10 
+     11 ProgramControl,
+     12  10; !- Number of Threads AllowedNumber
+     13 
+     14 Building,
+     15  simRun.idf, !- Name
+     16  0.0, !- North Axis {deg}
+     17  City, !- Terrain
+     18  0.040000000000000001, !- Loads Convergence Tolerance Value
+     19  0.40000000000000002, !- Temperature Convergence Tolerance Value {deltaC}
+     20  FullExterior, !- Solar Distribution or maybe FullExterior
+     21  25, !- Maximum Number of Warmup Days
+     22  6; !- Minimum Number of Warmup Days
+     23 
+     24 HeatBalanceAlgorithm, ConductionTransferFunction;
+     25 
+     26 SurfaceConvectionAlgorithm:Inside, TARP;
+     27 
+     28 SurfaceConvectionAlgorithm:Outside, DOE-2;
+     29 
+     30 Site:Location,
+     31  New York J F Kennedy IntL Ar USA,
+     32  40.65,    !Latitude
+     33  -73.80,   !Longitude
+     34  -5.0, !Time Zone
+     35  5.0;   !Elevation
+     36 
+     37 SimulationControl,
+     38  Yes,    !- Do Zone Sizing Calculation
+     39  Yes,  !- Do System Sizing Calculation
+     40  Yes,   !- Do Plant Sizing Calculation
+     41  No,  !- Run Simulation for Sizing Periods
+     42  Yes; !- Run Simulation for Weather File Run Periods
+     43 
+     44 RunPeriod,
+     45  customRun,    !- Name
+     46  1,   !- Begin Month
+     47  1,    !- Begin Day of Month
+     48  12, !- End Month
+     49  31,   !- End Day of Month
+     50  UseWeatherFile,   !- Day of Week for Start Day
+     51  Yes,              !- Use Weather File Holidays and Special Days
+     52  Yes,              !- Use Weather File Daylight Saving Period
+     53  No,               !- Apply Weekend Holiday Rule
+     54  Yes,              !- Use Weather File Rain Indicators
+     55  Yes;              !- Use Weather File Snow Indicators
+     56 ScheduleTypeLimits,
+     57   Always On Discrete Limits,   !- name
+     58   0,   !- - Lower Limit Value {BasedOnField A3}
+     59   1,   !- - Upper Limit Value {BasedOnField A3}
+     60   Discrete,   !- - Numeric Type
+     61   availability;   !- - Unit Type
+     62 
+     63 ScheduleTypeLimits,
+     64   Fraction,   !- name
+     65   0,   !- - Lower Limit Value {BasedOnField A3}
+     66   1,   !- - Upper Limit Value {BasedOnField A3}
+     67   CONTINUOUS;   !- - Numeric Type
+     68 
+     69 ScheduleTypeLimits,
+     70   Temperature 26,   !- name
+     71   ,   !- - Lower Limit Value {BasedOnField A3}
+     72   ,   !- - Upper Limit Value {BasedOnField A3}
+     73   Continuous,   !- - Numeric Type
+     74   temperature;   !- - Unit Type
+     75 
+     76 ScheduleTypeLimits,
+     77   Temperature 23,   !- name
+     78   ,   !- - Lower Limit Value {BasedOnField A3}
+     79   ,   !- - Upper Limit Value {BasedOnField A3}
+     80   Continuous,   !- - Numeric Type
+     81   temperature;   !- - Unit Type
+     82 
+     83 ScheduleTypeLimits,
+     84   ActivityLevel 9,   !- name
+     85   0,   !- - Lower Limit Value {BasedOnField A3}
+     86   ,   !- - Upper Limit Value {BasedOnField A3}
+     87   Continuous,   !- - Numeric Type
+     88   activitylevel;   !- - Unit Type
+     89 
+     90 ScheduleTypeLimits,
+     91   Temperature 14,   !- name
+     92   ,   !- - Lower Limit Value {BasedOnField A3}
+     93   ,   !- - Upper Limit Value {BasedOnField A3}
+     94   Continuous,   !- - Numeric Type
+     95   temperature;   !- - Unit Type
+     96 
+     97 ScheduleTypeLimits,
+     98   Temperature 8,   !- name
+     99   ,   !- - Lower Limit Value {BasedOnField A3}
+    100   ,   !- - Upper Limit Value {BasedOnField A3}
+    101   Continuous,   !- - Numeric Type
+    102   temperature;   !- - Unit Type
+    103 
+    104 ScheduleTypeLimits,
+    105   Fractional,   !- name
+    106   0,   !- - Lower Limit Value {BasedOnField A3}
+    107   1,   !- - Upper Limit Value {BasedOnField A3}
+    108   Continuous;   !- - Numeric Type
+    109 
+    110 ScheduleTypeLimits,
+    111   Temperature 1,   !- name
+    112   ,   !- - Lower Limit Value {BasedOnField A3}
+    113   ,   !- - Upper Limit Value {BasedOnField A3}
+    114   Continuous,   !- - Numeric Type
+    115   temperature;   !- - Unit Type
+    116 
+    117 ScheduleTypeLimits,
+    118   Temperature 2,   !- name
+    119   ,   !- - Lower Limit Value {BasedOnField A3}
+    120   ,   !- - Upper Limit Value {BasedOnField A3}
+    121   Continuous,   !- - Numeric Type
+    122   temperature;   !- - Unit Type
+    123 
+    124 ScheduleTypeLimits,
+    125   Temperature 3,   !- name
+    126   ,   !- - Lower Limit Value {BasedOnField A3}
+    127   ,   !- - Upper Limit Value {BasedOnField A3}
+    128   Continuous,   !- - Numeric Type
+    129   temperature;   !- - Unit Type
+    130 
+    131 ScheduleTypeLimits,
+    132   Temperature 11,   !- name
+    133   ,   !- - Lower Limit Value {BasedOnField A3}
+    134   ,   !- - Upper Limit Value {BasedOnField A3}
+    135   Continuous,   !- - Numeric Type
+    136   temperature;   !- - Unit Type
+    137 
+    138 ScheduleTypeLimits,
+    139   ActivityLevel,   !- name
+    140   0,   !- - Lower Limit Value {BasedOnField A3}
+    141   ,   !- - Upper Limit Value {BasedOnField A3}
+    142   Continuous,   !- - Numeric Type
+    143   activitylevel;   !- - Unit Type
+    144 
+    145 ScheduleTypeLimits,
+    146   Temperature 4,   !- name
+    147   ,   !- - Lower Limit Value {BasedOnField A3}
+    148   ,   !- - Upper Limit Value {BasedOnField A3}
+    149   Continuous,   !- - Numeric Type
+    150   temperature;   !- - Unit Type
+    151 
+    152 ScheduleTypeLimits,
+    153   Temperature 5,   !- name
+    154   ,   !- - Lower Limit Value {BasedOnField A3}
+    155   ,   !- - Upper Limit Value {BasedOnField A3}
+    156   Continuous,   !- - Numeric Type
+    157   temperature;   !- - Unit Type
+    158 
+    159 ScheduleTypeLimits,
+    160   Temperature 6,   !- name
+    161   ,   !- - Lower Limit Value {BasedOnField A3}
+    162   ,   !- - Upper Limit Value {BasedOnField A3}
+    163   Continuous,   !- - Numeric Type
+    164   temperature;   !- - Unit Type
+    165 
+    166 ScheduleTypeLimits,
+    167   Temperature 7,   !- name
+    168   ,   !- - Lower Limit Value {BasedOnField A3}
+    169   ,   !- - Upper Limit Value {BasedOnField A3}
+    170   Continuous,   !- - Numeric Type
+    171   temperature;   !- - Unit Type
+    172 
+    173 
+    174 GlobalGeometryRules,
+    175  LowerLeftCorner,         !- Starting Vertex Position
+    176  CounterClockWise,        !- Vertex Entry Direction
+    177  Absolute;                !- Coordinate System
+    178 
+    179 Shading:Building:Detailed,
+    180  shdSrf_0_0_0, !- Name
+    181  , !- Transmittance Schedule Name
+    182  4, !- Number of Vertices
+    183  6.712061405181885,
+    184  -2.1019744873046875,
+    185  0.79163426160812378,
+    186  6.325806140899658,
+    187  -1.4962830543518066,
+    188  0.79163426160812378,
+    189  6.99915885925293,
+    190  -1.8464199304580688,
+    191  3.3214564323425293,
+    192  7.385414123535156,
+    193  -2.45211124420166,
+    194  3.3214564323425293;
+    195 
+    196 
+    197 Shading:Building:Detailed,
+    198  shdSrf_1_0_0, !- Name
+    199  , !- Transmittance Schedule Name
+    200  4, !- Number of Vertices
+    201  7.356997013092041,
+    202  -0.86168831586837769,
+    203  0.79163426160812378,
+    204  6.9707417488098145,
+    205  -0.2559969425201416,
+    206  0.79163426160812378,
+    207  7.644094944000244,
+    208  -0.60613369941711426,
+    209  3.3214564323425293,
+    210  8.030349731445313,
+    211  -1.2118251323699951,
+    212  3.3214564323425293;
+    213 
+    214 
+    215 Shading:Building:Detailed,
+    216  shdSrf_2_0_0, !- Name
+    217  , !- Transmittance Schedule Name
+    218  4, !- Number of Vertices
+    219  8.672630310058594,
+    220  0.029841907322406769,
+    221  3.3114795684814453,
+    222  8.286375045776367,
+    223  0.63553327322006226,
+    224  3.3114795684814453,
+    225  8.289031028747559,
+    226  0.63415247201919556,
+    227  3.3214564323425293,
+    228  8.675286293029785,
+    229  0.028461091220378876,
+    230  3.3214564323425293;
+    231 
+    232 
+    233 Shading:Building:Detailed,
+    234  shdSrf_3_0_0, !- Name
+    235  , !- Transmittance Schedule Name
+    236  4, !- Number of Vertices
+    237  2.1850802898406982,
+    238  0.6899721622467041,
+    239  0.79163426160812378,
+    240  2.424304246902466,
+    241  0.70052582025527954,
+    242  0.79163426160812378,
+    243  1.7509512901306152,
+    244  1.050662636756897,
+    245  3.3214564323425293,
+    246  1.5117274522781372,
+    247  1.0401089191436768,
+    248  3.3214564323425293;
+    249 
+    250 
+    251 Shading:Building:Detailed,
+    252  shdSrf_4_0_0, !- Name
+    253  , !- Transmittance Schedule Name
+    254  4, !- Number of Vertices
+    255  2.8300161361694336,
+    256  1.9302582740783691,
+    257  0.79163426160812378,
+    258  3.069240093231201,
+    259  1.9408119916915894,
+    260  0.79163426160812378,
+    261  2.3958871364593506,
+    262  2.2909488677978516,
+    263  3.3214564323425293,
+    264  2.156663179397583,
+    265  2.280395030975342,
+    266  3.3214564323425293;
+    267 
+    268 
+    269 Shading:Building:Detailed,
+    270  shdSrf_5_0_0, !- Name
+    271  , !- Transmittance Schedule Name
+    272  4, !- Number of Vertices
+    273  7.6552605628967285,
+    274  -2.8775696754455566,
+    275  4.773777961730957,
+    276  7.269005298614502,
+    277  -2.271878242492676,
+    278  4.773777961730957,
+    279  7.942358493804932,
+    280  -2.6220149993896484,
+    281  7.303599834442139,
+    282  8.32861328125,
+    283  -3.2277064323425293,
+    284  7.303599834442139;
+    285 
+    286 
+    287 Shading:Building:Detailed,
+    288  shdSrf_6_0_0, !- Name
+    289  , !- Transmittance Schedule Name
+    290  4, !- Number of Vertices
+    291  8.53361988067627,
+    292  -1.1883822679519653,
+    293  4.773777961730957,
+    294  8.147365570068359,
+    295  -0.58269095420837402,
+    296  4.773777961730957,
+    297  8.820717811584473,
+    298  -0.93282771110534668,
+    299  7.303599834442139,
+    300  9.206973075866699,
+    301  -1.538519024848938,
+    302  7.303599834442139;
+    303 
+    304 
+    305 Shading:Building:Detailed,
+    306  shdSrf_7_0_0, !- Name
+    307  , !- Transmittance Schedule Name
+    308  4, !- Number of Vertices
+    309  10.082674980163574,
+    310  0.15205051004886627,
+    311  7.293612480163574,
+    312  9.696419715881348,
+    313  0.75774186849594116,
+    314  7.293612480163574,
+    315  9.699077606201172,
+    316  0.75635957717895508,
+    317  7.303599834442139,
+    318  10.085332870483398,
+    319  0.15066820383071899,
+    320  7.303599834442139;
+    321 
+    322 
+    323 Shading:Building:Detailed,
+    324  shdSrf_8_0_0, !- Name
+    325  , !- Transmittance Schedule Name
+    326  4, !- Number of Vertices
+    327  1.008455753326416,
+    328  1.0166633129119873,
+    329  4.773777961730957,
+    330  1.2476797103881836,
+    331  1.027216911315918,
+    332  4.773777961730957,
+    333  0.57432669401168823,
+    334  1.3773537874221802,
+    335  7.303599834442139,
+    336  0.33510279655456543,
+    337  1.36680006980896,
+    338  7.303599834442139;
+    339 
+    340 
+    341 Shading:Building:Detailed,
+    342  shdSrf_9_0_0, !- Name
+    343  , !- Transmittance Schedule Name
+    344  4, !- Number of Vertices
+    345  1.8868155479431152,
+    346  2.705850601196289,
+    347  4.773777961730957,
+    348  2.1260392665863037,
+    349  2.7164041996002197,
+    350  4.773777961730957,
+    351  1.4526864290237427,
+    352  3.0665409564971924,
+    353  7.303599834442139,
+    354  1.213462471961975,
+    355  3.0559873580932617,
+    356  7.303599834442139;
+    357 
+    358 
+    359 Shading:Building:Detailed,
+    360  shdSrf_10_0_0, !- Name
+    361  , !- Transmittance Schedule Name
+    362  4, !- Number of Vertices
+    363  8.600741386413574,
+    364  -3.654350519180298,
+    365  8.764492034912109,
+    366  8.214486122131348,
+    367  -3.048659086227417,
+    368  8.764492034912109,
+    369  8.887839317321777,
+    370  -3.3987958431243896,
+    371  11.294314384460449,
+    372  9.274094581604004,
+    373  -4.004487037658691,
+    374  11.294314384460449;
+    375 
+    376 
+    377 Shading:Building:Detailed,
+    378  shdSrf_11_0_0, !- Name
+    379  , !- Transmittance Schedule Name
+    380  4, !- Number of Vertices
+    381  9.712525367736816,
+    382  -1.5162614583969116,
+    383  8.764492034912109,
+    384  9.32627010345459,
+    385  -0.91057014465332031,
+    386  8.764492034912109,
+    387  9.99962329864502,
+    388  -1.260706901550293,
+    389  11.294314384460449,
+    390  10.385878562927246,
+    391  -1.8663983345031738,
+    392  11.294314384460449;
+    393 
+    394 
+    395 Shading:Building:Detailed,
+    396  shdSrf_12_0_0, !- Name
+    397  , !- Transmittance Schedule Name
+    398  4, !- Number of Vertices
+    399  11.495002746582031,
+    400  0.27307358384132385,
+    401  11.284322738647461,
+    402  11.108747482299805,
+    403  0.87876492738723755,
+    404  11.284322738647461,
+    405  11.111407279968262,
+    406  0.87738198041915894,
+    407  11.294314384460449,
+    408  11.497662544250488,
+    409  0.27169063687324524,
+    410  11.294314384460449;
+    411 
+    412 
+    413 Shading:Building:Detailed,
+    414  shdSrf_13_0_0, !- Name
+    415  , !- Transmittance Schedule Name
+    416  4, !- Number of Vertices
+    417  -0.17044991254806519,
+    418  1.3445411920547485,
+    419  8.764492034912109,
+    420  0.06877397745847702,
+    421  1.3550949096679688,
+    422  8.764492034912109,
+    423  -0.60457897186279297,
+    424  1.7052316665649414,
+    425  11.294314384460449,
+    426  -0.84380286931991577,
+    427  1.6946780681610107,
+    428  11.294314384460449;
+    429 
+    430 
+    431 Shading:Building:Detailed,
+    432  shdSrf_14_0_0, !- Name
+    433  , !- Transmittance Schedule Name
+    434  4, !- Number of Vertices
+    435  0.94133394956588745,
+    436  3.4826302528381348,
+    437  8.764492034912109,
+    438  1.1805578470230103,
+    439  3.4931838512420654,
+    440  8.764492034912109,
+    441  0.50720489025115967,
+    442  3.843320608139038,
+    443  11.294314384460449,
+    444  0.26798099279403687,
+    445  3.8327670097351074,
+    446  11.294314384460449;
+    447 
+    448 
+    449 Shading:Building:Detailed,
+    450  shdSrf_15_0_0, !- Name
+    451  , !- Transmittance Schedule Name
+    452  4, !- Number of Vertices
+    453  9.547179222106934,
+    454  -4.431628704071045,
+    455  12.758801460266113,
+    456  9.160923957824707,
+    457  -3.825937271118164,
+    458  12.758801460266113,
+    459  9.834277153015137,
+    460  -4.176074028015137,
+    461  15.288623809814453,
+    462  10.220532417297363,
+    463  -4.781765460968018,
+    464  15.288623809814453;
+    465 
+    466 
+    467 Shading:Building:Detailed,
+    468  shdSrf_16_0_0, !- Name
+    469  , !- Transmittance Schedule Name
+    470  4, !- Number of Vertices
+    471  10.892387390136719,
+    472  -1.8446377515792847,
+    473  12.758801460266113,
+    474  10.506132125854492,
+    475  -1.2389464378356934,
+    476  12.758801460266113,
+    477  11.179485321044922,
+    478  -1.589083194732666,
+    479  15.288623809814453,
+    480  11.565740585327148,
+    481  -2.194774627685547,
+    482  15.288623809814453;
+    483 
+    484 
+    485 Shading:Building:Detailed,
+    486  shdSrf_17_0_0, !- Name
+    487  , !- Transmittance Schedule Name
+    488  4, !- Number of Vertices
+    489  12.90828800201416,
+    490  0.39359951019287109,
+    491  15.278629302978516,
+    492  12.522032737731934,
+    493  0.99929088354110718,
+    494  15.278629302978516,
+    495  12.524693489074707,
+    496  0.99790757894515991,
+    497  15.288623809814453,
+    498  12.910948753356934,
+    499  0.39221620559692383,
+    500  15.288623809814453;
+    501 
+    502 
+    503 Shading:Building:Detailed,
+    504  shdSrf_18_0_0, !- Name
+    505  , !- Transmittance Schedule Name
+    506  4, !- Number of Vertices
+    507  -1.3503122329711914,
+    508  1.6729168891906738,
+    509  12.758801460266113,
+    510  -1.1110882759094238,
+    511  1.6834704875946045,
+    512  12.758801460266113,
+    513  -1.7844412326812744,
+    514  2.033607244491577,
+    515  15.288623809814453,
+    516  -2.023665189743042,
+    517  2.0230536460876465,
+    518  15.288623809814453;
+    519 
+    520 
+    521 Shading:Building:Detailed,
+    522  shdSrf_19_0_0, !- Name
+    523  , !- Transmittance Schedule Name
+    524  4, !- Number of Vertices
+    525  -0.0051040328107774258,
+    526  4.2599077224731445,
+    527  12.758801460266113,
+    528  0.23411986231803894,
+    529  4.270461082458496,
+    530  12.758801460266113,
+    531  -0.43923312425613403,
+    532  4.620597839355469,
+    533  15.288623809814453,
+    534  -0.67845702171325684,
+    535  4.610044479370117,
+    536  15.288623809814453;
+    537 
+    538 
+    539 Shading:Building:Detailed,
+    540  shdSrf_20_0_0, !- Name
+    541  , !- Transmittance Schedule Name
+    542  4, !- Number of Vertices
+    543  10.494108200073242,
+    544  -5.20916223526001,
+    545  16.754955291748047,
+    546  10.107852935791016,
+    547  -4.603470802307129,
+    548  16.754955291748047,
+    549  10.781206130981445,
+    550  -4.953607559204102,
+    551  19.284778594970703,
+    552  11.167461395263672,
+    553  -5.559298992156982,
+    554  19.284778594970703;
+    555 
+    556 
+    557 Shading:Building:Detailed,
+    558  shdSrf_21_0_0, !- Name
+    559  , !- Transmittance Schedule Name
+    560  4, !- Number of Vertices
+    561  12.07274055480957,
+    562  -2.173269271850586,
+    563  16.754955291748047,
+    564  11.686485290527344,
+    565  -1.5675779581069946,
+    566  16.754955291748047,
+    567  12.359838485717773,
+    568  -1.9177147150039673,
+    569  19.284778594970703,
+    570  12.74609375,
+    571  -2.5234060287475586,
+    572  19.284778594970703;
+    573 
+    574 
+    575 Shading:Building:Detailed,
+    576  shdSrf_22_0_0, !- Name
+    577  , !- Transmittance Schedule Name
+    578  4, !- Number of Vertices
+    579  14.322065353393555,
+    580  0.51387006044387817,
+    581  19.274782180786133,
+    582  13.935810089111328,
+    583  1.1195614337921143,
+    584  19.274782180786133,
+    585  13.938470840454102,
+    586  1.118177890777588,
+    587  19.284778594970703,
+    588  14.324726104736328,
+    589  0.51248657703399658,
+    590  19.284778594970703;
+    591 
+    592 
+    593 Shading:Building:Detailed,
+    594  shdSrf_23_0_0, !- Name
+    595  , !- Transmittance Schedule Name
+    596  4, !- Number of Vertices
+    597  -2.530665636062622,
+    598  2.0015480518341064,
+    599  16.754955291748047,
+    600  -2.2914416790008545,
+    601  2.012101650238037,
+    602  16.754955291748047,
+    603  -2.964794874191284,
+    604  2.3622384071350098,
+    605  19.284778594970703,
+    606  -3.2040185928344727,
+    607  2.351684808731079,
+    608  19.284778594970703;
+    609 
+    610 
+    611 Shading:Building:Detailed,
+    612  shdSrf_24_0_0, !- Name
+    613  , !- Transmittance Schedule Name
+    614  4, !- Number of Vertices
+    615  -0.95203322172164917,
+    616  5.037440776824951,
+    617  16.754955291748047,
+    618  -0.71280932426452637,
+    619  5.047994136810303,
+    620  16.754955291748047,
+    621  -1.386162281036377,
+    622  5.398131370544434,
+    623  19.284778594970703,
+    624  -1.6253862380981445,
+    625  5.387577533721924,
+    626  19.284778594970703;
+    627 
+    628 
+    629 Zone,
+    630  0_0,
+    631  0, !-Direction of Relative North {deg}
+    632  0.0, !- X Origin {m}
+    633  0.0, !- Y Origin {m}
+    634  0.0, !- Z Origin {m}
+    635  1; !- Type
+    636 
+    637 BuildingSurface:Detailed,
+    638  0_0_0, !- Name
+    639  CEILING, !- Surface Type
+    640  000 Interior Ceiling, !- Construction Name
+    641  0_0, !- Zone Name
+    642  SURFACE, !- Outside Boundary Condition
+    643  1_0_0, !- Outside Boundary Condition Object
+    644  NoSun, !- Sun Exposure
+    645  NoWind, !- Wind Exposure
+    646  autocalculate, !- View Factor to Ground
+    647  4, !- Number of Vertices
+    648  0.38280221819877625,
+    649  -1.1392083168029785,
+    650  4.0,
+    651  6.061014175415039,
+    652  -4.0918192863464355,
+    653  4.0,
+    654  9.013625144958496,
+    655  1.5863926410675049,
+    656  4.0,
+    657  3.3354129791259766,
+    658  4.539003372192383,
+    659  4.0;
+    660 
+    661 
+    662 BuildingSurface:Detailed,
+    663  0_0_1, !- Name
+    664  FLOOR, !- Surface Type
+    665  ASHRAE 90.1-2004 AtticFloor ClimateZone 1-5, !- Construction Name
+    666  0_0, !- Zone Name
+    667  GROUND, !- Outside Boundary Condition
+    668  , !- Outside Boundary Condition Object
+    669  NoSun, !- Sun Exposure
+    670  NoWind, !- Wind Exposure
+    671  autocalculate, !- View Factor to Ground
+    672  4, !- Number of Vertices
+    673  2.0010814666748047,
+    674  -0.62815815210342407,
+    675  0.0,
+    676  3.846463203430176,
+    677  2.9207241535186768,
+    678  0.0,
+    679  7.395345687866211,
+    680  1.0753425359725952,
+    681  0.0,
+    682  5.54996395111084,
+    683  -2.4735398292541504,
+    684  0.0;
+    685 
+    686 
+    687 BuildingSurface:Detailed,
+    688  0_0_2, !- Name
+    689  WALL, !- Surface Type
+    690  ASHRAE 90.1-2004 ExtWall Mass ClimateZone 3-4, !- Construction Name
+    691  0_0, !- Zone Name
+    692  Outdoors, !- Outside Boundary Condition
+    693  , !- Outside Boundary Condition Object
+    694  SunExposed, !- Sun Exposure
+    695  WindExposed, !- Wind Exposure
+    696  autocalculate, !- View Factor to Ground
+    697  4, !- Number of Vertices
+    698  5.54996395111084,
+    699  -2.4735398292541504,
+    700  0.0,
+    701  7.395345687866211,
+    702  1.0753425359725952,
+    703  0.0,
+    704  9.013625144958496,
+    705  1.5863926410675049,
+    706  4.0,
+    707  6.061014175415039,
+    708  -4.0918192863464355,
+    709  4.0;
+    710 
+    711 
+    712 FenestrationSurface:Detailed,
+    713  0_0_2_glz_0_0, !- Name
+    714  WINDOW, !- Surface Type
+    715  ASHRAE 90.1-2004 ExtWindow ClimateZone 4-6, !- Construction Name
+    716  0_0_2, !- Surface Name
+    717  , !- Outside Boundary Condition Object
+    718  autocalculate, !- View Factor to Ground
+    719  , !- Shading Control Name
+    720  , !- Frame and Divider Name
+    721  1, !- Multiplier
+    722  4, !- Number of Vertices
+    723  6.099800109863281,
+    724  -1.9309189319610596,
+    725  0.79163426160812378,
+    726  7.2669219970703125,
+    727  0.31359139084815979,
+    728  0.79163426160812378,
+    729  8.290411949157715,
+    730  0.63680791854858398,
+    731  3.3214564323425293,
+    732  6.423016548156738,
+    733  -2.954408645629883,
+    734  3.3214564323425293;
+    735 
+    736 
+    737 BuildingSurface:Detailed,
+    738  0_0_3, !- Name
+    739  WALL, !- Surface Type
+    740  ASHRAE 90.1-2004 ExtWall Mass ClimateZone 3-4, !- Construction Name
+    741  0_0, !- Zone Name
+    742  Outdoors, !- Outside Boundary Condition
+    743  , !- Outside Boundary Condition Object
+    744  SunExposed, !- Sun Exposure
+    745  WindExposed, !- Wind Exposure
+    746  autocalculate, !- View Factor to Ground
+    747  4, !- Number of Vertices
+    748  2.0010814666748047,
+    749  -0.62815815210342407,
+    750  0.0,
+    751  5.54996395111084,
+    752  -2.4735398292541504,
+    753  0.0,
+    754  6.061014175415039,
+    755  -4.0918192863464355,
+    756  4.0,
+    757  0.38280221819877625,
+    758  -1.1392083168029785,
+    759  4.0;
+    760 
+    761 
+    762 BuildingSurface:Detailed,
+    763  0_0_4, !- Name
+    764  WALL, !- Surface Type
+    765  ASHRAE 90.1-2004 ExtWall Mass ClimateZone 3-4, !- Construction Name
+    766  0_0, !- Zone Name
+    767  Outdoors, !- Outside Boundary Condition
+    768  , !- Outside Boundary Condition Object
+    769  SunExposed, !- Sun Exposure
+    770  WindExposed, !- Wind Exposure
+    771  autocalculate, !- View Factor to Ground
+    772  5, !- Number of Vertices
+    773  3.846463203430176,
+    774  2.9207241535186768,
+    775  0.0,
+    776  2.0010814666748047,
+    777  -0.62815815210342407,
+    778  0.0,
+    779  0.78737205266952515,
+    780  -1.0114457607269287,
+    781  3.0,
+    782  0.38280221819877625,
+    783  -1.1392083168029785,
+    784  4.0,
+    785  3.3354129791259766,
+    786  4.539003372192383,
+    787  4.0;
+    788 
+    789 
+    790 FenestrationSurface:Detailed,
+    791  0_0_4_glz_0_0, !- Name
+    792  WINDOW, !- Surface Type
+    793  ASHRAE 90.1-2004 ExtWindow ClimateZone 4-6, !- Construction Name
+    794  0_0_4, !- Surface Name
+    795  , !- Outside Boundary Condition Object
+    796  autocalculate, !- View Factor to Ground
+    797  , !- Shading Control Name
+    798  , !- Frame and Divider Name
+    799  1, !- Multiplier
+    800  4, !- Number of Vertices
+    801  3.2966270446777344,
+    802  2.378103256225586,
+    803  0.79163426160812378,
+    804  2.129505157470703,
+    805  0.13359293341636658,
+    806  0.79163426160812378,
+    807  1.1060154438018799,
+    808  -0.18962359428405762,
+    809  3.3214564323425293,
+    810  2.9734106063842773,
+    811  3.401592969894409,
+    812  3.3214564323425293;
+    813 
+    814 
+    815 BuildingSurface:Detailed,
+    816  0_0_5, !- Name
+    817  WALL, !- Surface Type
+    818  ASHRAE 90.1-2004 ExtWall Mass ClimateZone 3-4, !- Construction Name
+    819  0_0, !- Zone Name
+    820  Outdoors, !- Outside Boundary Condition
+    821  , !- Outside Boundary Condition Object
+    822  SunExposed, !- Sun Exposure
+    823  WindExposed, !- Wind Exposure
+    824  autocalculate, !- View Factor to Ground
+    825  4, !- Number of Vertices
+    826  7.395345687866211,
+    827  1.0753425359725952,
+    828  0.0,
+    829  3.846463203430176,
+    830  2.9207241535186768,
+    831  0.0,
+    832  3.3354129791259766,
+    833  4.539003372192383,
+    834  4.0,
+    835  9.013625144958496,
+    836  1.5863926410675049,
+    837  4.0;
+    838 
+    839 
+    840 FenestrationSurface:Detailed,
+    841  0_0_5_glz_0_0, !- Name
+    842  WINDOW, !- Surface Type
+    843  ASHRAE 90.1-2004 ExtWindow ClimateZone 4-6, !- Construction Name
+    844  0_0_5, !- Surface Name
+    845  , !- Outside Boundary Condition Object
+    846  autocalculate, !- View Factor to Ground
+    847  , !- Shading Control Name
+    848  , !- Frame and Divider Name
+    849  1, !- Multiplier
+    850  4, !- Number of Vertices
+    851  6.852724552154541,
+    852  1.6251786947250366,
+    853  0.79163426160812378,
+    854  4.608214378356934,
+    855  2.7923004627227783,
+    856  0.79163426160812378,
+    857  4.284997940063477,
+    858  3.8157901763916016,
+    859  3.3214564323425293,
+    860  7.876214027404785,
+    861  1.9483952522277832,
+    862  3.3214564323425293;
+    863 
+    864 
+    865 Zone,
+    866  1_0,
+    867  0, !-Direction of Relative North {deg}
+    868  0.0, !- X Origin {m}
+    869  0.0, !- Y Origin {m}
+    870  0.0, !- Z Origin {m}
+    871  1; !- Type
+    872 
+    873 BuildingSurface:Detailed,
+    874  1_0_0, !- Name
+    875  FLOOR, !- Surface Type
+    876  000 Interior Floor, !- Construction Name
+    877  1_0, !- Zone Name
+    878  SURFACE, !- Outside Boundary Condition
+    879  0_0_0, !- Outside Boundary Condition Object
+    880  NoSun, !- Sun Exposure
+    881  NoWind, !- Wind Exposure
+    882  autocalculate, !- View Factor to Ground
+    883  4, !- Number of Vertices
+    884  3.0799343585968018,
+    885  -0.28745803236961365,
+    886  4.0,
+    887  4.187163352966309,
+    888  1.8418713808059692,
+    889  4.0,
+    890  6.316492557525635,
+    891  0.7346423864364624,
+    892  4.0,
+    893  5.209263801574707,
+    894  -1.3946870565414429,
+    895  4.0;
+    896 
+    897 
+    898 BuildingSurface:Detailed,
+    899  1_0_1, !- Name
+    900  CEILING, !- Surface Type
+    901  000 Interior Ceiling, !- Construction Name
+    902  1_0, !- Zone Name
+    903  SURFACE, !- Outside Boundary Condition
+    904  6_0_0, !- Outside Boundary Condition Object
+    905  NoSun, !- Sun Exposure
+    906  NoWind, !- Wind Exposure
+    907  autocalculate, !- View Factor to Ground
+    908  4, !- Number of Vertices
+    909  1.4616550207138062,
+    910  -0.79850822687149048,
+    911  8.0,
+    912  5.720314025878906,
+    913  -3.0129663944244385,
+    914  8.0,
+    915  7.93477201461792,
+    916  1.2456926107406616,
+    917  8.0,
+    918  3.6761131286621094,
+    919  3.460150718688965,
+    920  8.0;
+    921 
+    922 
+    923 BuildingSurface:Detailed,
+    924  1_0_2, !- Name
+    925  WALL, !- Surface Type
+    926  000 Interior Wall, !- Construction Name
+    927  1_0, !- Zone Name
+    928  SURFACE, !- Outside Boundary Condition
+    929  3_0_5, !- Outside Boundary Condition Object
+    930  NoSun, !- Sun Exposure
+    931  NoWind, !- Wind Exposure
+    932  autocalculate, !- View Factor to Ground
+    933  4, !- Number of Vertices
+    934  6.316492557525635,
+    935  0.7346423864364624,
+    936  4.0,
+    937  4.187163352966309,
+    938  1.8418713808059692,
+    939  4.0,
+    940  3.6761131286621094,
+    941  3.460150718688965,
+    942  8.0,
+    943  7.93477201461792,
+    944  1.2456926107406616,
+    945  8.0;
+    946 
+    947 
+    948 BuildingSurface:Detailed,
+    949  1_0_3, !- Name
+    950  WALL, !- Surface Type
+    951  000 Interior Wall, !- Construction Name
+    952  1_0, !- Zone Name
+    953  SURFACE, !- Outside Boundary Condition
+    954  4_0_5, !- Outside Boundary Condition Object
+    955  NoSun, !- Sun Exposure
+    956  NoWind, !- Wind Exposure
+    957  autocalculate, !- View Factor to Ground
+    958  4, !- Number of Vertices
+    959  4.187163352966309,
+    960  1.8418713808059692,
+    961  4.0,
+    962  3.0799343585968018,
+    963  -0.28745803236961365,
+    964  4.0,
+    965  1.4616550207138062,
+    966  -0.79850822687149048,
+    967  8.0,
+    968  3.6761131286621094,
+    969  3.460150718688965,
+    970  8.0;
+    971 
+    972 
+    973 BuildingSurface:Detailed,
+    974  1_0_4, !- Name
+    975  WALL, !- Surface Type
+    976  000 Interior Wall, !- Construction Name
+    977  1_0, !- Zone Name
+    978  SURFACE, !- Outside Boundary Condition
+    979  5_0_5, !- Outside Boundary Condition Object
+    980  NoSun, !- Sun Exposure
+    981  NoWind, !- Wind Exposure
+    982  autocalculate, !- View Factor to Ground
+    983  4, !- Number of Vertices
+    984  3.0799343585968018,
+    985  -0.28745803236961365,
+    986  4.0,
+    987  5.209263801574707,
+    988  -1.3946870565414429,
+    989  4.0,
+    990  5.720314025878906,
+    991  -3.0129663944244385,
+    992  8.0,
+    993  1.4616550207138062,
+    994  -0.79850822687149048,
+    995  8.0;
+    996 
+    997 
+    998 BuildingSurface:Detailed,
+    999  1_0_5, !- Name
+   1000  WALL, !- Surface Type
+   1001  000 Interior Wall, !- Construction Name
+   1002  1_0, !- Zone Name
+   1003  SURFACE, !- Outside Boundary Condition
+   1004  2_0_5, !- Outside Boundary Condition Object
+   1005  NoSun, !- Sun Exposure
+   1006  NoWind, !- Wind Exposure
+   1007  autocalculate, !- View Factor to Ground
+   1008  4, !- Number of Vertices
+   1009  5.209263801574707,
+   1010  -1.3946870565414429,
+   1011  4.0,
+   1012  6.316492557525635,
+   1013  0.7346423864364624,
+   1014  4.0,
+   1015  7.93477201461792,
+   1016  1.2456926107406616,
+   1017  8.0,
+   1018  5.720314025878906,
+   1019  -3.0129663944244385,
+   1020  8.0;
+   1021 
+   1022 
+   1023 Zone,
+   1024  2_0,
+   1025  0, !-Direction of Relative North {deg}
+   1026  0.0, !- X Origin {m}
+   1027  0.0, !- Y Origin {m}
+   1028  0.0, !- Z Origin {m}
+   1029  1; !- Type
+   1030 
+   1031 BuildingSurface:Detailed,
+   1032  2_0_0, !- Name
+   1033  FLOOR, !- Surface Type
+   1034  ASHRAE 90.1-2004 AtticFloor ClimateZone 1-5, !- Construction Name
+   1035  2_0, !- Zone Name
+   1036  GROUND, !- Outside Boundary Condition
+   1037  , !- Outside Boundary Condition Object
+   1038  NoSun, !- Sun Exposure
+   1039  NoWind, !- Wind Exposure
+   1040  autocalculate, !- View Factor to Ground
+   1041  4, !- Number of Vertices
+   1042  5.209263801574707,
+   1043  -1.3946870565414429,
+   1044  4.0,
+   1045  6.316492557525635,
+   1046  0.7346423864364624,
+   1047  4.0,
+   1048  9.013625144958496,
+   1049  1.5863926410675049,
+   1050  4.0,
+   1051  6.061014175415039,
+   1052  -4.0918192863464355,
+   1053  4.0;
+   1054 
+   1055 
+   1056 BuildingSurface:Detailed,
+   1057  2_0_1, !- Name
+   1058  CEILING, !- Surface Type
+   1059  000 Interior Ceiling, !- Construction Name
+   1060  2_0, !- Zone Name
+   1061  SURFACE, !- Outside Boundary Condition
+   1062  7_0_0, !- Outside Boundary Condition Object
+   1063  NoSun, !- Sun Exposure
+   1064  NoWind, !- Wind Exposure
+   1065  autocalculate, !- View Factor to Ground
+   1066  4, !- Number of Vertices
+   1067  6.572064399719238,
+   1068  -5.7100982666015625,
+   1069  8.0,
+   1070  10.631903648376465,
+   1071  2.097442865371704,
+   1072  8.0,
+   1073  7.93477201461792,
+   1074  1.2456926107406616,
+   1075  8.0,
+   1076  5.720314025878906,
+   1077  -3.0129663944244385,
+   1078  8.0;
+   1079 
+   1080 
+   1081 BuildingSurface:Detailed,
+   1082  2_0_2, !- Name
+   1083  WALL, !- Surface Type
+   1084  000 Interior Wall, !- Construction Name
+   1085  2_0, !- Zone Name
+   1086  SURFACE, !- Outside Boundary Condition
+   1087  3_0_3, !- Outside Boundary Condition Object
+   1088  NoSun, !- Sun Exposure
+   1089  NoWind, !- Wind Exposure
+   1090  autocalculate, !- View Factor to Ground
+   1091  4, !- Number of Vertices
+   1092  9.013625144958496,
+   1093  1.5863926410675049,
+   1094  4.0,
+   1095  6.316492557525635,
+   1096  0.7346423864364624,
+   1097  4.0,
+   1098  7.93477201461792,
+   1099  1.2456926107406616,
+   1100  8.0,
+   1101  10.631903648376465,
+   1102  2.097442865371704,
+   1103  8.0;
+   1104 
+   1105 
+   1106 BuildingSurface:Detailed,
+   1107  2_0_3, !- Name
+   1108  WALL, !- Surface Type
+   1109  000 Interior Wall, !- Construction Name
+   1110  2_0, !- Zone Name
+   1111  SURFACE, !- Outside Boundary Condition
+   1112  5_0_2, !- Outside Boundary Condition Object
+   1113  NoSun, !- Sun Exposure
+   1114  NoWind, !- Wind Exposure
+   1115  autocalculate, !- View Factor to Ground
+   1116  4, !- Number of Vertices
+   1117  5.209263801574707,
+   1118  -1.3946870565414429,
+   1119  4.0,
+   1120  6.061014175415039,
+   1121  -4.0918192863464355,
+   1122  4.0,
+   1123  6.572064399719238,
+   1124  -5.7100982666015625,
+   1125  8.0,
+   1126  5.720314025878906,
+   1127  -3.0129663944244385,
+   1128  8.0;
+   1129 
+   1130 
+   1131 BuildingSurface:Detailed,
+   1132  2_0_4, !- Name
+   1133  WALL, !- Surface Type
+   1134  ASHRAE 90.1-2004 ExtWall Mass ClimateZone 3-4, !- Construction Name
+   1135  2_0, !- Zone Name
+   1136  Outdoors, !- Outside Boundary Condition
+   1137  , !- Outside Boundary Condition Object
+   1138  SunExposed, !- Sun Exposure
+   1139  WindExposed, !- Wind Exposure
+   1140  autocalculate, !- View Factor to Ground
+   1141  4, !- Number of Vertices
+   1142  6.061014175415039,
+   1143  -4.0918192863464355,
+   1144  4.0,
+   1145  9.013625144958496,
+   1146  1.5863926410675049,
+   1147  4.0,
+   1148  10.631903648376465,
+   1149  2.097442865371704,
+   1150  8.0,
+   1151  6.572064399719238,
+   1152  -5.7100982666015625,
+   1153  8.0;
+   1154 
+   1155 
+   1156 FenestrationSurface:Detailed,
+   1157  2_0_4_glz_0_0, !- Name
+   1158  WINDOW, !- Surface Type
+   1159  ASHRAE 90.1-2004 ExtWindow ClimateZone 4-6, !- Construction Name
+   1160  2_0_4, !- Surface Name
+   1161  , !- Outside Boundary Condition Object
+   1162  autocalculate, !- View Factor to Ground
+   1163  , !- Shading Control Name
+   1164  , !- Frame and Divider Name
+   1165  1, !- Multiplier
+   1166  4, !- Number of Vertices
+   1167  6.80957555770874,
+   1168  -3.1554150581359863,
+   1169  4.773777961730957,
+   1170  8.676970481872559,
+   1171  0.43580135703086853,
+   1172  4.773777961730957,
+   1173  9.700460433959961,
+   1174  0.75901788473129272,
+   1175  7.303599834442139,
+   1176  7.132791996002197,
+   1177  -4.178905010223389,
+   1178  7.303599834442139;
+   1179 
+   1180 
+   1181 BuildingSurface:Detailed,
+   1182  2_0_5, !- Name
+   1183  WALL, !- Surface Type
+   1184  000 Interior Wall, !- Construction Name
+   1185  2_0, !- Zone Name
+   1186  SURFACE, !- Outside Boundary Condition
+   1187  1_0_5, !- Outside Boundary Condition Object
+   1188  NoSun, !- Sun Exposure
+   1189  NoWind, !- Wind Exposure
+   1190  autocalculate, !- View Factor to Ground
+   1191  4, !- Number of Vertices
+   1192  6.316492557525635,
+   1193  0.7346423864364624,
+   1194  4.0,
+   1195  5.209263801574707,
+   1196  -1.3946870565414429,
+   1197  4.0,
+   1198  5.720314025878906,
+   1199  -3.0129663944244385,
+   1200  8.0,
+   1201  7.93477201461792,
+   1202  1.2456926107406616,
+   1203  8.0;
+   1204 
+   1205 
+   1206 Zone,
+   1207  3_0,
+   1208  0, !-Direction of Relative North {deg}
+   1209  0.0, !- X Origin {m}
+   1210  0.0, !- Y Origin {m}
+   1211  0.0, !- Z Origin {m}
+   1212  1; !- Type
+   1213 
+   1214 BuildingSurface:Detailed,
+   1215  3_0_0, !- Name
+   1216  FLOOR, !- Surface Type
+   1217  ASHRAE 90.1-2004 AtticFloor ClimateZone 1-5, !- Construction Name
+   1218  3_0, !- Zone Name
+   1219  GROUND, !- Outside Boundary Condition
+   1220  , !- Outside Boundary Condition Object
+   1221  NoSun, !- Sun Exposure
+   1222  NoWind, !- Wind Exposure
+   1223  autocalculate, !- View Factor to Ground
+   1224  4, !- Number of Vertices
+   1225  4.187163352966309,
+   1226  1.8418713808059692,
+   1227  4.0,
+   1228  3.3354129791259766,
+   1229  4.539003372192383,
+   1230  4.0,
+   1231  9.013625144958496,
+   1232  1.5863926410675049,
+   1233  4.0,
+   1234  6.316492557525635,
+   1235  0.7346423864364624,
+   1236  4.0;
+   1237 
+   1238 
+   1239 BuildingSurface:Detailed,
+   1240  3_0_1, !- Name
+   1241  CEILING, !- Surface Type
+   1242  000 Interior Ceiling, !- Construction Name
+   1243  3_0, !- Zone Name
+   1244  SURFACE, !- Outside Boundary Condition
+   1245  8_0_0, !- Outside Boundary Condition Object
+   1246  NoSun, !- Sun Exposure
+   1247  NoWind, !- Wind Exposure
+   1248  autocalculate, !- View Factor to Ground
+   1249  4, !- Number of Vertices
+   1250  2.8243627548217773,
+   1251  6.157282829284668,
+   1252  8.0,
+   1253  3.6761131286621094,
+   1254  3.460150718688965,
+   1255  8.0,
+   1256  7.93477201461792,
+   1257  1.2456926107406616,
+   1258  8.0,
+   1259  10.631903648376465,
+   1260  2.097442865371704,
+   1261  8.0;
+   1262 
+   1263 
+   1264 BuildingSurface:Detailed,
+   1265  3_0_2, !- Name
+   1266  WALL, !- Surface Type
+   1267  000 Interior Wall, !- Construction Name
+   1268  3_0, !- Zone Name
+   1269  SURFACE, !- Outside Boundary Condition
+   1270  4_0_3, !- Outside Boundary Condition Object
+   1271  NoSun, !- Sun Exposure
+   1272  NoWind, !- Wind Exposure
+   1273  autocalculate, !- View Factor to Ground
+   1274  4, !- Number of Vertices
+   1275  3.3354129791259766,
+   1276  4.539003372192383,
+   1277  4.0,
+   1278  4.187163352966309,
+   1279  1.8418713808059692,
+   1280  4.0,
+   1281  3.6761131286621094,
+   1282  3.460150718688965,
+   1283  8.0,
+   1284  2.8243627548217773,
+   1285  6.157282829284668,
+   1286  8.0;
+   1287 
+   1288 
+   1289 BuildingSurface:Detailed,
+   1290  3_0_3, !- Name
+   1291  WALL, !- Surface Type
+   1292  000 Interior Wall, !- Construction Name
+   1293  3_0, !- Zone Name
+   1294  SURFACE, !- Outside Boundary Condition
+   1295  2_0_2, !- Outside Boundary Condition Object
+   1296  NoSun, !- Sun Exposure
+   1297  NoWind, !- Wind Exposure
+   1298  autocalculate, !- View Factor to Ground
+   1299  4, !- Number of Vertices
+   1300  6.316492557525635,
+   1301  0.7346423864364624,
+   1302  4.0,
+   1303  9.013625144958496,
+   1304  1.5863926410675049,
+   1305  4.0,
+   1306  10.631903648376465,
+   1307  2.097442865371704,
+   1308  8.0,
+   1309  7.93477201461792,
+   1310  1.2456926107406616,
+   1311  8.0;
+   1312 
+   1313 
+   1314 BuildingSurface:Detailed,
+   1315  3_0_4, !- Name
+   1316  WALL, !- Surface Type
+   1317  ASHRAE 90.1-2004 ExtWall Mass ClimateZone 3-4, !- Construction Name
+   1318  3_0, !- Zone Name
+   1319  Outdoors, !- Outside Boundary Condition
+   1320  , !- Outside Boundary Condition Object
+   1321  SunExposed, !- Sun Exposure
+   1322  WindExposed, !- Wind Exposure
+   1323  autocalculate, !- View Factor to Ground
+   1324  4, !- Number of Vertices
+   1325  9.013625144958496,
+   1326  1.5863926410675049,
+   1327  4.0,
+   1328  3.3354129791259766,
+   1329  4.539003372192383,
+   1330  4.0,
+   1331  2.8243627548217773,
+   1332  6.157282829284668,
+   1333  8.0,
+   1334  10.631903648376465,
+   1335  2.097442865371704,
+   1336  8.0;
+   1337 
+   1338 
+   1339 FenestrationSurface:Detailed,
+   1340  3_0_4_glz_0_0, !- Name
+   1341  WINDOW, !- Surface Type
+   1342  ASHRAE 90.1-2004 ExtWindow ClimateZone 4-6, !- Construction Name
+   1343  3_0_4, !- Surface Name
+   1344  , !- Outside Boundary Condition Object
+   1345  autocalculate, !- View Factor to Ground
+   1346  , !- Shading Control Name
+   1347  , !- Frame and Divider Name
+   1348  1, !- Multiplier
+   1349  4, !- Number of Vertices
+   1350  8.077220916748047,
+   1351  2.334954023361206,
+   1352  4.773777961730957,
+   1353  4.48600435256958,
+   1354  4.2023491859436035,
+   1355  4.773777961730957,
+   1356  4.162787914276123,
+   1357  5.225838661193848,
+   1358  7.303599834442139,
+   1359  9.100710868835449,
+   1360  2.658170700073242,
+   1361  7.303599834442139;
+   1362 
+   1363 
+   1364 BuildingSurface:Detailed,
+   1365  3_0_5, !- Name
+   1366  WALL, !- Surface Type
+   1367  000 Interior Wall, !- Construction Name
+   1368  3_0, !- Zone Name
+   1369  SURFACE, !- Outside Boundary Condition
+   1370  1_0_2, !- Outside Boundary Condition Object
+   1371  NoSun, !- Sun Exposure
+   1372  NoWind, !- Wind Exposure
+   1373  autocalculate, !- View Factor to Ground
+   1374  4, !- Number of Vertices
+   1375  4.187163352966309,
+   1376  1.8418713808059692,
+   1377  4.0,
+   1378  6.316492557525635,
+   1379  0.7346423864364624,
+   1380  4.0,
+   1381  7.93477201461792,
+   1382  1.2456926107406616,
+   1383  8.0,
+   1384  3.6761131286621094,
+   1385  3.460150718688965,
+   1386  8.0;
+   1387 
+   1388 
+   1389 Zone,
+   1390  4_0,
+   1391  0, !-Direction of Relative North {deg}
+   1392  0.0, !- X Origin {m}
+   1393  0.0, !- Y Origin {m}
+   1394  0.0, !- Z Origin {m}
+   1395  1; !- Type
+   1396 
+   1397 BuildingSurface:Detailed,
+   1398  4_0_0, !- Name
+   1399  FLOOR, !- Surface Type
+   1400  ASHRAE 90.1-2004 AtticFloor ClimateZone 1-5, !- Construction Name
+   1401  4_0, !- Zone Name
+   1402  GROUND, !- Outside Boundary Condition
+   1403  , !- Outside Boundary Condition Object
+   1404  NoSun, !- Sun Exposure
+   1405  NoWind, !- Wind Exposure
+   1406  autocalculate, !- View Factor to Ground
+   1407  4, !- Number of Vertices
+   1408  0.38280221819877625,
+   1409  -1.1392083168029785,
+   1410  4.0,
+   1411  3.3354129791259766,
+   1412  4.539003372192383,
+   1413  4.0,
+   1414  4.187163352966309,
+   1415  1.8418713808059692,
+   1416  4.0,
+   1417  3.0799343585968018,
+   1418  -0.28745803236961365,
+   1419  4.0;
+   1420 
+   1421 
+   1422 BuildingSurface:Detailed,
+   1423  4_0_1, !- Name
+   1424  CEILING, !- Surface Type
+   1425  000 Interior Ceiling, !- Construction Name
+   1426  4_0, !- Zone Name
+   1427  SURFACE, !- Outside Boundary Condition
+   1428  9_0_0, !- Outside Boundary Condition Object
+   1429  NoSun, !- Sun Exposure
+   1430  NoWind, !- Wind Exposure
+   1431  autocalculate, !- View Factor to Ground
+   1432  4, !- Number of Vertices
+   1433  -1.2354769706726074,
+   1434  -1.6502585411071777,
+   1435  8.0,
+   1436  1.4616550207138062,
+   1437  -0.79850822687149048,
+   1438  8.0,
+   1439  3.6761131286621094,
+   1440  3.460150718688965,
+   1441  8.0,
+   1442  2.8243627548217773,
+   1443  6.157282829284668,
+   1444  8.0;
+   1445 
+   1446 
+   1447 BuildingSurface:Detailed,
+   1448  4_0_2, !- Name
+   1449  WALL, !- Surface Type
+   1450  000 Interior Wall, !- Construction Name
+   1451  4_0, !- Zone Name
+   1452  SURFACE, !- Outside Boundary Condition
+   1453  5_0_3, !- Outside Boundary Condition Object
+   1454  NoSun, !- Sun Exposure
+   1455  NoWind, !- Wind Exposure
+   1456  autocalculate, !- View Factor to Ground
+   1457  4, !- Number of Vertices
+   1458  0.38280221819877625,
+   1459  -1.1392083168029785,
+   1460  4.0,
+   1461  3.0799343585968018,
+   1462  -0.28745803236961365,
+   1463  4.0,
+   1464  1.4616550207138062,
+   1465  -0.79850822687149048,
+   1466  8.0,
+   1467  -1.2354769706726074,
+   1468  -1.6502585411071777,
+   1469  8.0;
+   1470 
+   1471 
+   1472 BuildingSurface:Detailed,
+   1473  4_0_3, !- Name
+   1474  WALL, !- Surface Type
+   1475  000 Interior Wall, !- Construction Name
+   1476  4_0, !- Zone Name
+   1477  SURFACE, !- Outside Boundary Condition
+   1478  3_0_2, !- Outside Boundary Condition Object
+   1479  NoSun, !- Sun Exposure
+   1480  NoWind, !- Wind Exposure
+   1481  autocalculate, !- View Factor to Ground
+   1482  4, !- Number of Vertices
+   1483  4.187163352966309,
+   1484  1.8418713808059692,
+   1485  4.0,
+   1486  3.3354129791259766,
+   1487  4.539003372192383,
+   1488  4.0,
+   1489  2.8243627548217773,
+   1490  6.157282829284668,
+   1491  8.0,
+   1492  3.6761131286621094,
+   1493  3.460150718688965,
+   1494  8.0;
+   1495 
+   1496 
+   1497 BuildingSurface:Detailed,
+   1498  4_0_4, !- Name
+   1499  WALL, !- Surface Type
+   1500  ASHRAE 90.1-2004 ExtWall Mass ClimateZone 3-4, !- Construction Name
+   1501  4_0, !- Zone Name
+   1502  Outdoors, !- Outside Boundary Condition
+   1503  , !- Outside Boundary Condition Object
+   1504  SunExposed, !- Sun Exposure
+   1505  WindExposed, !- Wind Exposure
+   1506  autocalculate, !- View Factor to Ground
+   1507  4, !- Number of Vertices
+   1508  3.3354129791259766,
+   1509  4.539003372192383,
+   1510  4.0,
+   1511  0.38280221819877625,
+   1512  -1.1392083168029785,
+   1513  4.0,
+   1514  -1.2354769706726074,
+   1515  -1.6502585411071777,
+   1516  8.0,
+   1517  2.8243627548217773,
+   1518  6.157282829284668,
+   1519  8.0;
+   1520 
+   1521 
+   1522 FenestrationSurface:Detailed,
+   1523  4_0_4_glz_0_0, !- Name
+   1524  WINDOW, !- Surface Type
+   1525  ASHRAE 90.1-2004 ExtWindow ClimateZone 4-6, !- Construction Name
+   1526  4_0_4, !- Surface Name
+   1527  , !- Outside Boundary Condition Object
+   1528  autocalculate, !- View Factor to Ground
+   1529  , !- Shading Control Name
+   1530  , !- Frame and Divider Name
+   1531  1, !- Multiplier
+   1532  4, !- Number of Vertices
+   1533  2.5868515968322754,
+   1534  3.6025993824005127,
+   1535  4.773777961730957,
+   1536  0.71945661306381226,
+   1537  0.011382972821593285,
+   1538  4.773777961730957,
+   1539  -0.30403304100036621,
+   1540  -0.31183356046676636,
+   1541  7.303599834442139,
+   1542  2.2636351585388184,
+   1543  4.626089096069336,
+   1544  7.303599834442139;
+   1545 
+   1546 
+   1547 BuildingSurface:Detailed,
+   1548  4_0_5, !- Name
+   1549  WALL, !- Surface Type
+   1550  000 Interior Wall, !- Construction Name
+   1551  4_0, !- Zone Name
+   1552  SURFACE, !- Outside Boundary Condition
+   1553  1_0_3, !- Outside Boundary Condition Object
+   1554  NoSun, !- Sun Exposure
+   1555  NoWind, !- Wind Exposure
+   1556  autocalculate, !- View Factor to Ground
+   1557  4, !- Number of Vertices
+   1558  3.0799343585968018,
+   1559  -0.28745803236961365,
+   1560  4.0,
+   1561  4.187163352966309,
+   1562  1.8418713808059692,
+   1563  4.0,
+   1564  3.6761131286621094,
+   1565  3.460150718688965,
+   1566  8.0,
+   1567  1.4616550207138062,
+   1568  -0.79850822687149048,
+   1569  8.0;
+   1570 
+   1571 
+   1572 Zone,
+   1573  5_0,
+   1574  0, !-Direction of Relative North {deg}
+   1575  0.0, !- X Origin {m}
+   1576  0.0, !- Y Origin {m}
+   1577  0.0, !- Z Origin {m}
+   1578  1; !- Type
+   1579 
+   1580 BuildingSurface:Detailed,
+   1581  5_0_0, !- Name
+   1582  FLOOR, !- Surface Type
+   1583  ASHRAE 90.1-2004 AtticFloor ClimateZone 1-5, !- Construction Name
+   1584  5_0, !- Zone Name
+   1585  GROUND, !- Outside Boundary Condition
+   1586  , !- Outside Boundary Condition Object
+   1587  NoSun, !- Sun Exposure
+   1588  NoWind, !- Wind Exposure
+   1589  autocalculate, !- View Factor to Ground
+   1590  4, !- Number of Vertices
+   1591  0.38280221819877625,
+   1592  -1.1392083168029785,
+   1593  4.0,
+   1594  3.0799343585968018,
+   1595  -0.28745803236961365,
+   1596  4.0,
+   1597  5.209263801574707,
+   1598  -1.3946870565414429,
+   1599  4.0,
+   1600  6.061014175415039,
+   1601  -4.0918192863464355,
+   1602  4.0;
+   1603 
+   1604 
+   1605 BuildingSurface:Detailed,
+   1606  5_0_1, !- Name
+   1607  CEILING, !- Surface Type
+   1608  000 Interior Ceiling, !- Construction Name
+   1609  5_0, !- Zone Name
+   1610  SURFACE, !- Outside Boundary Condition
+   1611  10_0_0, !- Outside Boundary Condition Object
+   1612  NoSun, !- Sun Exposure
+   1613  NoWind, !- Wind Exposure
+   1614  autocalculate, !- View Factor to Ground
+   1615  4, !- Number of Vertices
+   1616  6.572064399719238,
+   1617  -5.7100982666015625,
+   1618  8.0,
+   1619  5.720314025878906,
+   1620  -3.0129663944244385,
+   1621  8.0,
+   1622  1.4616550207138062,
+   1623  -0.79850822687149048,
+   1624  8.0,
+   1625  -1.2354769706726074,
+   1626  -1.6502585411071777,
+   1627  8.0;
+   1628 
+   1629 
+   1630 BuildingSurface:Detailed,
+   1631  5_0_2, !- Name
+   1632  WALL, !- Surface Type
+   1633  000 Interior Wall, !- Construction Name
+   1634  5_0, !- Zone Name
+   1635  SURFACE, !- Outside Boundary Condition
+   1636  2_0_3, !- Outside Boundary Condition Object
+   1637  NoSun, !- Sun Exposure
+   1638  NoWind, !- Wind Exposure
+   1639  autocalculate, !- View Factor to Ground
+   1640  4, !- Number of Vertices
+   1641  6.061014175415039,
+   1642  -4.0918192863464355,
+   1643  4.0,
+   1644  5.209263801574707,
+   1645  -1.3946870565414429,
+   1646  4.0,
+   1647  5.720314025878906,
+   1648  -3.0129663944244385,
+   1649  8.0,
+   1650  6.572064399719238,
+   1651  -5.7100982666015625,
+   1652  8.0;
+   1653 
+   1654 
+   1655 BuildingSurface:Detailed,
+   1656  5_0_3, !- Name
+   1657  WALL, !- Surface Type
+   1658  000 Interior Wall, !- Construction Name
+   1659  5_0, !- Zone Name
+   1660  SURFACE, !- Outside Boundary Condition
+   1661  4_0_2, !- Outside Boundary Condition Object
+   1662  NoSun, !- Sun Exposure
+   1663  NoWind, !- Wind Exposure
+   1664  autocalculate, !- View Factor to Ground
+   1665  4, !- Number of Vertices
+   1666  3.0799343585968018,
+   1667  -0.28745803236961365,
+   1668  4.0,
+   1669  0.38280221819877625,
+   1670  -1.1392083168029785,
+   1671  4.0,
+   1672  -1.2354769706726074,
+   1673  -1.6502585411071777,
+   1674  8.0,
+   1675  1.4616550207138062,
+   1676  -0.79850822687149048,
+   1677  8.0;
+   1678 
+   1679 
+   1680 BuildingSurface:Detailed,
+   1681  5_0_4, !- Name
+   1682  WALL, !- Surface Type
+   1683  ASHRAE 90.1-2004 ExtWall Mass ClimateZone 3-4, !- Construction Name
+   1684  5_0, !- Zone Name
+   1685  Outdoors, !- Outside Boundary Condition
+   1686  , !- Outside Boundary Condition Object
+   1687  SunExposed, !- Sun Exposure
+   1688  WindExposed, !- Wind Exposure
+   1689  autocalculate, !- View Factor to Ground
+   1690  4, !- Number of Vertices
+   1691  0.38280221819877625,
+   1692  -1.1392083168029785,
+   1693  4.0,
+   1694  6.061014175415039,
+   1695  -4.0918192863464355,
+   1696  4.0,
+   1697  6.572064399719238,
+   1698  -5.7100982666015625,
+   1699  8.0,
+   1700  -1.2354769706726074,
+   1701  -1.6502585411071777,
+   1702  8.0;
+   1703 
+   1704 
+   1705 BuildingSurface:Detailed,
+   1706  5_0_5, !- Name
+   1707  WALL, !- Surface Type
+   1708  000 Interior Wall, !- Construction Name
+   1709  5_0, !- Zone Name
+   1710  SURFACE, !- Outside Boundary Condition
+   1711  1_0_4, !- Outside Boundary Condition Object
+   1712  NoSun, !- Sun Exposure
+   1713  NoWind, !- Wind Exposure
+   1714  autocalculate, !- View Factor to Ground
+   1715  4, !- Number of Vertices
+   1716  5.209263801574707,
+   1717  -1.3946870565414429,
+   1718  4.0,
+   1719  3.0799343585968018,
+   1720  -0.28745803236961365,
+   1721  4.0,
+   1722  1.4616550207138062,
+   1723  -0.79850822687149048,
+   1724  8.0,
+   1725  5.720314025878906,
+   1726  -3.0129663944244385,
+   1727  8.0;
+   1728 
+   1729 
+   1730 Zone,
+   1731  6_0,
+   1732  0, !-Direction of Relative North {deg}
+   1733  0.0, !- X Origin {m}
+   1734  0.0, !- Y Origin {m}
+   1735  0.0, !- Z Origin {m}
+   1736  1; !- Type
+   1737 
+   1738 BuildingSurface:Detailed,
+   1739  6_0_0, !- Name
+   1740  FLOOR, !- Surface Type
+   1741  000 Interior Floor, !- Construction Name
+   1742  6_0, !- Zone Name
+   1743  SURFACE, !- Outside Boundary Condition
+   1744  1_0_1, !- Outside Boundary Condition Object
+   1745  NoSun, !- Sun Exposure
+   1746  NoWind, !- Wind Exposure
+   1747  autocalculate, !- View Factor to Ground
+   1748  4, !- Number of Vertices
+   1749  1.4616550207138062,
+   1750  -0.79850822687149048,
+   1751  8.0,
+   1752  3.6761131286621094,
+   1753  3.460150718688965,
+   1754  8.0,
+   1755  7.93477201461792,
+   1756  1.2456926107406616,
+   1757  8.0,
+   1758  5.720314025878906,
+   1759  -3.0129663944244385,
+   1760  8.0;
+   1761 
+   1762 
+   1763 BuildingSurface:Detailed,
+   1764  6_0_1, !- Name
+   1765  CEILING, !- Surface Type
+   1766  000 Interior Ceiling, !- Construction Name
+   1767  6_0, !- Zone Name
+   1768  SURFACE, !- Outside Boundary Condition
+   1769  11_0_0, !- Outside Boundary Condition Object
+   1770  NoSun, !- Sun Exposure
+   1771  NoWind, !- Wind Exposure
+   1772  autocalculate, !- View Factor to Ground
+   1773  4, !- Number of Vertices
+   1774  -0.1566241979598999,
+   1775  -1.309558391571045,
+   1776  12.0,
+   1777  6.2313642501831055,
+   1778  -4.6312456130981445,
+   1779  12.0,
+   1780  9.553050994873047,
+   1781  1.7567427158355713,
+   1782  12.0,
+   1783  3.16506290435791,
+   1784  5.078429698944092,
+   1785  12.0;
+   1786 
+   1787 
+   1788 BuildingSurface:Detailed,
+   1789  6_0_2, !- Name
+   1790  WALL, !- Surface Type
+   1791  000 Interior Wall, !- Construction Name
+   1792  6_0, !- Zone Name
+   1793  SURFACE, !- Outside Boundary Condition
+   1794  8_0_5, !- Outside Boundary Condition Object
+   1795  NoSun, !- Sun Exposure
+   1796  NoWind, !- Wind Exposure
+   1797  autocalculate, !- View Factor to Ground
+   1798  4, !- Number of Vertices
+   1799  7.93477201461792,
+   1800  1.2456926107406616,
+   1801  8.0,
+   1802  3.6761131286621094,
+   1803  3.460150718688965,
+   1804  8.0,
+   1805  3.16506290435791,
+   1806  5.078429698944092,
+   1807  12.0,
+   1808  9.553050994873047,
+   1809  1.7567427158355713,
+   1810  12.0;
+   1811 
+   1812 
+   1813 BuildingSurface:Detailed,
+   1814  6_0_3, !- Name
+   1815  WALL, !- Surface Type
+   1816  000 Interior Wall, !- Construction Name
+   1817  6_0, !- Zone Name
+   1818  SURFACE, !- Outside Boundary Condition
+   1819  9_0_5, !- Outside Boundary Condition Object
+   1820  NoSun, !- Sun Exposure
+   1821  NoWind, !- Wind Exposure
+   1822  autocalculate, !- View Factor to Ground
+   1823  4, !- Number of Vertices
+   1824  3.6761131286621094,
+   1825  3.460150718688965,
+   1826  8.0,
+   1827  1.4616550207138062,
+   1828  -0.79850822687149048,
+   1829  8.0,
+   1830  -0.1566241979598999,
+   1831  -1.309558391571045,
+   1832  12.0,
+   1833  3.16506290435791,
+   1834  5.078429698944092,
+   1835  12.0;
+   1836 
+   1837 
+   1838 BuildingSurface:Detailed,
+   1839  6_0_4, !- Name
+   1840  WALL, !- Surface Type
+   1841  000 Interior Wall, !- Construction Name
+   1842  6_0, !- Zone Name
+   1843  SURFACE, !- Outside Boundary Condition
+   1844  10_0_5, !- Outside Boundary Condition Object
+   1845  NoSun, !- Sun Exposure
+   1846  NoWind, !- Wind Exposure
+   1847  autocalculate, !- View Factor to Ground
+   1848  4, !- Number of Vertices
+   1849  1.4616550207138062,
+   1850  -0.79850822687149048,
+   1851  8.0,
+   1852  5.720314025878906,
+   1853  -3.0129663944244385,
+   1854  8.0,
+   1855  6.2313642501831055,
+   1856  -4.6312456130981445,
+   1857  12.0,
+   1858  -0.1566241979598999,
+   1859  -1.309558391571045,
+   1860  12.0;
+   1861 
+   1862 
+   1863 BuildingSurface:Detailed,
+   1864  6_0_5, !- Name
+   1865  WALL, !- Surface Type
+   1866  000 Interior Wall, !- Construction Name
+   1867  6_0, !- Zone Name
+   1868  SURFACE, !- Outside Boundary Condition
+   1869  7_0_5, !- Outside Boundary Condition Object
+   1870  NoSun, !- Sun Exposure
+   1871  NoWind, !- Wind Exposure
+   1872  autocalculate, !- View Factor to Ground
+   1873  4, !- Number of Vertices
+   1874  5.720314025878906,
+   1875  -3.0129663944244385,
+   1876  8.0,
+   1877  7.93477201461792,
+   1878  1.2456926107406616,
+   1879  8.0,
+   1880  9.553050994873047,
+   1881  1.7567427158355713,
+   1882  12.0,
+   1883  6.2313642501831055,
+   1884  -4.6312456130981445,
+   1885  12.0;
+   1886 
+   1887 
+   1888 Zone,
+   1889  7_0,
+   1890  0, !-Direction of Relative North {deg}
+   1891  0.0, !- X Origin {m}
+   1892  0.0, !- Y Origin {m}
+   1893  0.0, !- Z Origin {m}
+   1894  1; !- Type
+   1895 
+   1896 BuildingSurface:Detailed,
+   1897  7_0_0, !- Name
+   1898  FLOOR, !- Surface Type
+   1899  000 Interior Floor, !- Construction Name
+   1900  7_0, !- Zone Name
+   1901  SURFACE, !- Outside Boundary Condition
+   1902  2_0_1, !- Outside Boundary Condition Object
+   1903  NoSun, !- Sun Exposure
+   1904  NoWind, !- Wind Exposure
+   1905  autocalculate, !- View Factor to Ground
+   1906  4, !- Number of Vertices
+   1907  5.720314025878906,
+   1908  -3.0129663944244385,
+   1909  8.0,
+   1910  7.93477201461792,
+   1911  1.2456926107406616,
+   1912  8.0,
+   1913  10.631903648376465,
+   1914  2.097442865371704,
+   1915  8.0,
+   1916  6.572064399719238,
+   1917  -5.7100982666015625,
+   1918  8.0;
+   1919 
+   1920 
+   1921 BuildingSurface:Detailed,
+   1922  7_0_1, !- Name
+   1923  CEILING, !- Surface Type
+   1924  000 Interior Ceiling, !- Construction Name
+   1925  7_0, !- Zone Name
+   1926  SURFACE, !- Outside Boundary Condition
+   1927  12_0_0, !- Outside Boundary Condition Object
+   1928  NoSun, !- Sun Exposure
+   1929  NoWind, !- Wind Exposure
+   1930  autocalculate, !- View Factor to Ground
+   1931  4, !- Number of Vertices
+   1932  7.0831146240234375,
+   1933  -7.328377723693848,
+   1934  12.0,
+   1935  12.25018310546875,
+   1936  2.6084930896759033,
+   1937  12.0,
+   1938  9.553050994873047,
+   1939  1.7567427158355713,
+   1940  12.0,
+   1941  6.2313642501831055,
+   1942  -4.6312456130981445,
+   1943  12.0;
+   1944 
+   1945 
+   1946 BuildingSurface:Detailed,
+   1947  7_0_2, !- Name
+   1948  WALL, !- Surface Type
+   1949  000 Interior Wall, !- Construction Name
+   1950  7_0, !- Zone Name
+   1951  SURFACE, !- Outside Boundary Condition
+   1952  8_0_3, !- Outside Boundary Condition Object
+   1953  NoSun, !- Sun Exposure
+   1954  NoWind, !- Wind Exposure
+   1955  autocalculate, !- View Factor to Ground
+   1956  4, !- Number of Vertices
+   1957  10.631903648376465,
+   1958  2.097442865371704,
+   1959  8.0,
+   1960  7.93477201461792,
+   1961  1.2456926107406616,
+   1962  8.0,
+   1963  9.553050994873047,
+   1964  1.7567427158355713,
+   1965  12.0,
+   1966  12.25018310546875,
+   1967  2.6084930896759033,
+   1968  12.0;
+   1969 
+   1970 
+   1971 BuildingSurface:Detailed,
+   1972  7_0_3, !- Name
+   1973  WALL, !- Surface Type
+   1974  000 Interior Wall, !- Construction Name
+   1975  7_0, !- Zone Name
+   1976  SURFACE, !- Outside Boundary Condition
+   1977  10_0_2, !- Outside Boundary Condition Object
+   1978  NoSun, !- Sun Exposure
+   1979  NoWind, !- Wind Exposure
+   1980  autocalculate, !- View Factor to Ground
+   1981  4, !- Number of Vertices
+   1982  5.720314025878906,
+   1983  -3.0129663944244385,
+   1984  8.0,
+   1985  6.572064399719238,
+   1986  -5.7100982666015625,
+   1987  8.0,
+   1988  7.0831146240234375,
+   1989  -7.328377723693848,
+   1990  12.0,
+   1991  6.2313642501831055,
+   1992  -4.6312456130981445,
+   1993  12.0;
+   1994 
+   1995 
+   1996 BuildingSurface:Detailed,
+   1997  7_0_4, !- Name
+   1998  WALL, !- Surface Type
+   1999  ASHRAE 90.1-2004 ExtWall Mass ClimateZone 3-4, !- Construction Name
+   2000  7_0, !- Zone Name
+   2001  Outdoors, !- Outside Boundary Condition
+   2002  , !- Outside Boundary Condition Object
+   2003  SunExposed, !- Sun Exposure
+   2004  WindExposed, !- Wind Exposure
+   2005  autocalculate, !- View Factor to Ground
+   2006  4, !- Number of Vertices
+   2007  6.572064399719238,
+   2008  -5.7100982666015625,
+   2009  8.0,
+   2010  10.631903648376465,
+   2011  2.097442865371704,
+   2012  8.0,
+   2013  12.25018310546875,
+   2014  2.6084930896759033,
+   2015  12.0,
+   2016  7.0831146240234375,
+   2017  -7.328377723693848,
+   2018  12.0;
+   2019 
+   2020 
+   2021 FenestrationSurface:Detailed,
+   2022  7_0_4_glz_0_0, !- Name
+   2023  WINDOW, !- Surface Type
+   2024  ASHRAE 90.1-2004 ExtWindow ClimateZone 4-6, !- Construction Name
+   2025  7_0_4, !- Surface Name
+   2026  , !- Outside Boundary Condition Object
+   2027  autocalculate, !- View Factor to Ground
+   2028  , !- Shading Control Name
+   2029  , !- Frame and Divider Name
+   2030  1, !- Multiplier
+   2031  4, !- Number of Vertices
+   2032  7.521632194519043,
+   2033  -4.381097793579102,
+   2034  8.764492034912109,
+   2035  10.089300155639648,
+   2036  0.55682504177093506,
+   2037  8.764492034912109,
+   2038  11.112790107727051,
+   2039  0.88004159927368164,
+   2040  11.294314384460449,
+   2041  7.8448486328125,
+   2042  -5.404587268829346,
+   2043  11.294314384460449;
+   2044 
+   2045 
+   2046 BuildingSurface:Detailed,
+   2047  7_0_5, !- Name
+   2048  WALL, !- Surface Type
+   2049  000 Interior Wall, !- Construction Name
+   2050  7_0, !- Zone Name
+   2051  SURFACE, !- Outside Boundary Condition
+   2052  6_0_5, !- Outside Boundary Condition Object
+   2053  NoSun, !- Sun Exposure
+   2054  NoWind, !- Wind Exposure
+   2055  autocalculate, !- View Factor to Ground
+   2056  4, !- Number of Vertices
+   2057  7.93477201461792,
+   2058  1.2456926107406616,
+   2059  8.0,
+   2060  5.720314025878906,
+   2061  -3.0129663944244385,
+   2062  8.0,
+   2063  6.2313642501831055,
+   2064  -4.6312456130981445,
+   2065  12.0,
+   2066  9.553050994873047,
+   2067  1.7567427158355713,
+   2068  12.0;
+   2069 
+   2070 
+   2071 Zone,
+   2072  8_0,
+   2073  0, !-Direction of Relative North {deg}
+   2074  0.0, !- X Origin {m}
+   2075  0.0, !- Y Origin {m}
+   2076  0.0, !- Z Origin {m}
+   2077  1; !- Type
+   2078 
+   2079 BuildingSurface:Detailed,
+   2080  8_0_0, !- Name
+   2081  FLOOR, !- Surface Type
+   2082  000 Interior Floor, !- Construction Name
+   2083  8_0, !- Zone Name
+   2084  SURFACE, !- Outside Boundary Condition
+   2085  3_0_1, !- Outside Boundary Condition Object
+   2086  NoSun, !- Sun Exposure
+   2087  NoWind, !- Wind Exposure
+   2088  autocalculate, !- View Factor to Ground
+   2089  4, !- Number of Vertices
+   2090  10.631903648376465,
+   2091  2.097442865371704,
+   2092  8.0,
+   2093  7.93477201461792,
+   2094  1.2456926107406616,
+   2095  8.0,
+   2096  3.6761131286621094,
+   2097  3.460150718688965,
+   2098  8.0,
+   2099  2.8243627548217773,
+   2100  6.157282829284668,
+   2101  8.0;
+   2102 
+   2103 
+   2104 BuildingSurface:Detailed,
+   2105  8_0_1, !- Name
+   2106  CEILING, !- Surface Type
+   2107  000 Interior Ceiling, !- Construction Name
+   2108  8_0, !- Zone Name
+   2109  SURFACE, !- Outside Boundary Condition
+   2110  13_0_0, !- Outside Boundary Condition Object
+   2111  NoSun, !- Sun Exposure
+   2112  NoWind, !- Wind Exposure
+   2113  autocalculate, !- View Factor to Ground
+   2114  4, !- Number of Vertices
+   2115  2.313312530517578,
+   2116  7.775561809539795,
+   2117  12.0,
+   2118  3.16506290435791,
+   2119  5.078429698944092,
+   2120  12.0,
+   2121  9.553050994873047,
+   2122  1.7567427158355713,
+   2123  12.0,
+   2124  12.25018310546875,
+   2125  2.6084930896759033,
+   2126  12.0;
+   2127 
+   2128 
+   2129 BuildingSurface:Detailed,
+   2130  8_0_2, !- Name
+   2131  WALL, !- Surface Type
+   2132  000 Interior Wall, !- Construction Name
+   2133  8_0, !- Zone Name
+   2134  SURFACE, !- Outside Boundary Condition
+   2135  9_0_3, !- Outside Boundary Condition Object
+   2136  NoSun, !- Sun Exposure
+   2137  NoWind, !- Wind Exposure
+   2138  autocalculate, !- View Factor to Ground
+   2139  4, !- Number of Vertices
+   2140  2.8243627548217773,
+   2141  6.157282829284668,
+   2142  8.0,
+   2143  3.6761131286621094,
+   2144  3.460150718688965,
+   2145  8.0,
+   2146  3.16506290435791,
+   2147  5.078429698944092,
+   2148  12.0,
+   2149  2.313312530517578,
+   2150  7.775561809539795,
+   2151  12.0;
+   2152 
+   2153 
+   2154 BuildingSurface:Detailed,
+   2155  8_0_3, !- Name
+   2156  WALL, !- Surface Type
+   2157  000 Interior Wall, !- Construction Name
+   2158  8_0, !- Zone Name
+   2159  SURFACE, !- Outside Boundary Condition
+   2160  7_0_2, !- Outside Boundary Condition Object
+   2161  NoSun, !- Sun Exposure
+   2162  NoWind, !- Wind Exposure
+   2163  autocalculate, !- View Factor to Ground
+   2164  4, !- Number of Vertices
+   2165  7.93477201461792,
+   2166  1.2456926107406616,
+   2167  8.0,
+   2168  10.631903648376465,
+   2169  2.097442865371704,
+   2170  8.0,
+   2171  12.25018310546875,
+   2172  2.6084930896759033,
+   2173  12.0,
+   2174  9.553050994873047,
+   2175  1.7567427158355713,
+   2176  12.0;
+   2177 
+   2178 
+   2179 BuildingSurface:Detailed,
+   2180  8_0_4, !- Name
+   2181  WALL, !- Surface Type
+   2182  ASHRAE 90.1-2004 ExtWall Mass ClimateZone 3-4, !- Construction Name
+   2183  8_0, !- Zone Name
+   2184  Outdoors, !- Outside Boundary Condition
+   2185  , !- Outside Boundary Condition Object
+   2186  SunExposed, !- Sun Exposure
+   2187  WindExposed, !- Wind Exposure
+   2188  autocalculate, !- View Factor to Ground
+   2189  4, !- Number of Vertices
+   2190  10.631903648376465,
+   2191  2.097442865371704,
+   2192  8.0,
+   2193  2.8243627548217773,
+   2194  6.157282829284668,
+   2195  8.0,
+   2196  2.313312530517578,
+   2197  7.775561809539795,
+   2198  12.0,
+   2199  12.25018310546875,
+   2200  2.6084930896759033,
+   2201  12.0;
+   2202 
+   2203 
+   2204 FenestrationSurface:Detailed,
+   2205  8_0_4_glz_0_0, !- Name
+   2206  WINDOW, !- Surface Type
+   2207  ASHRAE 90.1-2004 ExtWindow ClimateZone 4-6, !- Construction Name
+   2208  8_0_4, !- Surface Name
+   2209  , !- Outside Boundary Condition Object
+   2210  autocalculate, !- View Factor to Ground
+   2211  , !- Shading Control Name
+   2212  , !- Frame and Divider Name
+   2213  1, !- Multiplier
+   2214  4, !- Number of Vertices
+   2215  9.302903175354004,
+   2216  3.047010660171509,
+   2217  8.764492034912109,
+   2218  4.364980697631836,
+   2219  5.614678859710693,
+   2220  8.764492034912109,
+   2221  4.041764259338379,
+   2222  6.638168811798096,
+   2223  11.294314384460449,
+   2224  10.326393127441406,
+   2225  3.370227336883545,
+   2226  11.294314384460449;
+   2227 
+   2228 
+   2229 BuildingSurface:Detailed,
+   2230  8_0_5, !- Name
+   2231  WALL, !- Surface Type
+   2232  000 Interior Wall, !- Construction Name
+   2233  8_0, !- Zone Name
+   2234  SURFACE, !- Outside Boundary Condition
+   2235  6_0_2, !- Outside Boundary Condition Object
+   2236  NoSun, !- Sun Exposure
+   2237  NoWind, !- Wind Exposure
+   2238  autocalculate, !- View Factor to Ground
+   2239  4, !- Number of Vertices
+   2240  3.6761131286621094,
+   2241  3.460150718688965,
+   2242  8.0,
+   2243  7.93477201461792,
+   2244  1.2456926107406616,
+   2245  8.0,
+   2246  9.553050994873047,
+   2247  1.7567427158355713,
+   2248  12.0,
+   2249  3.16506290435791,
+   2250  5.078429698944092,
+   2251  12.0;
+   2252 
+   2253 
+   2254 Zone,
+   2255  9_0,
+   2256  0, !-Direction of Relative North {deg}
+   2257  0.0, !- X Origin {m}
+   2258  0.0, !- Y Origin {m}
+   2259  0.0, !- Z Origin {m}
+   2260  1; !- Type
+   2261 
+   2262 BuildingSurface:Detailed,
+   2263  9_0_0, !- Name
+   2264  FLOOR, !- Surface Type
+   2265  000 Interior Floor, !- Construction Name
+   2266  9_0, !- Zone Name
+   2267  SURFACE, !- Outside Boundary Condition
+   2268  4_0_1, !- Outside Boundary Condition Object
+   2269  NoSun, !- Sun Exposure
+   2270  NoWind, !- Wind Exposure
+   2271  autocalculate, !- View Factor to Ground
+   2272  4, !- Number of Vertices
+   2273  -1.2354769706726074,
+   2274  -1.6502585411071777,
+   2275  8.0,
+   2276  2.8243627548217773,
+   2277  6.157282829284668,
+   2278  8.0,
+   2279  3.6761131286621094,
+   2280  3.460150718688965,
+   2281  8.0,
+   2282  1.4616550207138062,
+   2283  -0.79850822687149048,
+   2284  8.0;
+   2285 
+   2286 
+   2287 BuildingSurface:Detailed,
+   2288  9_0_1, !- Name
+   2289  CEILING, !- Surface Type
+   2290  000 Interior Ceiling, !- Construction Name
+   2291  9_0, !- Zone Name
+   2292  SURFACE, !- Outside Boundary Condition
+   2293  14_0_0, !- Outside Boundary Condition Object
+   2294  NoSun, !- Sun Exposure
+   2295  NoWind, !- Wind Exposure
+   2296  autocalculate, !- View Factor to Ground
+   2297  4, !- Number of Vertices
+   2298  -2.8537561893463135,
+   2299  -2.161308765411377,
+   2300  12.0,
+   2301  -0.1566241979598999,
+   2302  -1.309558391571045,
+   2303  12.0,
+   2304  3.16506290435791,
+   2305  5.078429698944092,
+   2306  12.0,
+   2307  2.313312530517578,
+   2308  7.775561809539795,
+   2309  12.0;
+   2310 
+   2311 
+   2312 BuildingSurface:Detailed,
+   2313  9_0_2, !- Name
+   2314  WALL, !- Surface Type
+   2315  000 Interior Wall, !- Construction Name
+   2316  9_0, !- Zone Name
+   2317  SURFACE, !- Outside Boundary Condition
+   2318  10_0_3, !- Outside Boundary Condition Object
+   2319  NoSun, !- Sun Exposure
+   2320  NoWind, !- Wind Exposure
+   2321  autocalculate, !- View Factor to Ground
+   2322  4, !- Number of Vertices
+   2323  -1.2354769706726074,
+   2324  -1.6502585411071777,
+   2325  8.0,
+   2326  1.4616550207138062,
+   2327  -0.79850822687149048,
+   2328  8.0,
+   2329  -0.1566241979598999,
+   2330  -1.309558391571045,
+   2331  12.0,
+   2332  -2.8537561893463135,
+   2333  -2.161308765411377,
+   2334  12.0;
+   2335 
+   2336 
+   2337 BuildingSurface:Detailed,
+   2338  9_0_3, !- Name
+   2339  WALL, !- Surface Type
+   2340  000 Interior Wall, !- Construction Name
+   2341  9_0, !- Zone Name
+   2342  SURFACE, !- Outside Boundary Condition
+   2343  8_0_2, !- Outside Boundary Condition Object
+   2344  NoSun, !- Sun Exposure
+   2345  NoWind, !- Wind Exposure
+   2346  autocalculate, !- View Factor to Ground
+   2347  4, !- Number of Vertices
+   2348  3.6761131286621094,
+   2349  3.460150718688965,
+   2350  8.0,
+   2351  2.8243627548217773,
+   2352  6.157282829284668,
+   2353  8.0,
+   2354  2.313312530517578,
+   2355  7.775561809539795,
+   2356  12.0,
+   2357  3.16506290435791,
+   2358  5.078429698944092,
+   2359  12.0;
+   2360 
+   2361 
+   2362 BuildingSurface:Detailed,
+   2363  9_0_4, !- Name
+   2364  WALL, !- Surface Type
+   2365  ASHRAE 90.1-2004 ExtWall Mass ClimateZone 3-4, !- Construction Name
+   2366  9_0, !- Zone Name
+   2367  Outdoors, !- Outside Boundary Condition
+   2368  , !- Outside Boundary Condition Object
+   2369  SunExposed, !- Sun Exposure
+   2370  WindExposed, !- Wind Exposure
+   2371  autocalculate, !- View Factor to Ground
+   2372  4, !- Number of Vertices
+   2373  2.8243627548217773,
+   2374  6.157282829284668,
+   2375  8.0,
+   2376  -1.2354769706726074,
+   2377  -1.6502585411071777,
+   2378  8.0,
+   2379  -2.8537561893463135,
+   2380  -2.161308765411377,
+   2381  12.0,
+   2382  2.313312530517578,
+   2383  7.775561809539795,
+   2384  12.0;
+   2385 
+   2386 
+   2387 FenestrationSurface:Detailed,
+   2388  9_0_4_glz_0_0, !- Name
+   2389  WINDOW, !- Surface Type
+   2390  ASHRAE 90.1-2004 ExtWindow ClimateZone 4-6, !- Construction Name
+   2391  9_0_4, !- Surface Name
+   2392  , !- Outside Boundary Condition Object
+   2393  autocalculate, !- View Factor to Ground
+   2394  , !- Shading Control Name
+   2395  , !- Frame and Divider Name
+   2396  1, !- Multiplier
+   2397  4, !- Number of Vertices
+   2398  1.8747949600219727,
+   2399  4.828281879425049,
+   2400  8.764492034912109,
+   2401  -0.69287323951721191,
+   2402  -0.10964071750640869,
+   2403  8.764492034912109,
+   2404  -1.7163628339767456,
+   2405  -0.43285724520683289,
+   2406  11.294314384460449,
+   2407  1.551578402519226,
+   2408  5.851771831512451,
+   2409  11.294314384460449;
+   2410 
+   2411 
+   2412 BuildingSurface:Detailed,
+   2413  9_0_5, !- Name
+   2414  WALL, !- Surface Type
+   2415  000 Interior Wall, !- Construction Name
+   2416  9_0, !- Zone Name
+   2417  SURFACE, !- Outside Boundary Condition
+   2418  6_0_3, !- Outside Boundary Condition Object
+   2419  NoSun, !- Sun Exposure
+   2420  NoWind, !- Wind Exposure
+   2421  autocalculate, !- View Factor to Ground
+   2422  4, !- Number of Vertices
+   2423  1.4616550207138062,
+   2424  -0.79850822687149048,
+   2425  8.0,
+   2426  3.6761131286621094,
+   2427  3.460150718688965,
+   2428  8.0,
+   2429  3.16506290435791,
+   2430  5.078429698944092,
+   2431  12.0,
+   2432  -0.1566241979598999,
+   2433  -1.309558391571045,
+   2434  12.0;
+   2435 
+   2436 
+   2437 Zone,
+   2438  10_0,
+   2439  0, !-Direction of Relative North {deg}
+   2440  0.0, !- X Origin {m}
+   2441  0.0, !- Y Origin {m}
+   2442  0.0, !- Z Origin {m}
+   2443  1; !- Type
+   2444 
+   2445 BuildingSurface:Detailed,
+   2446  10_0_0, !- Name
+   2447  FLOOR, !- Surface Type
+   2448  000 Interior Floor, !- Construction Name
+   2449  10_0, !- Zone Name
+   2450  SURFACE, !- Outside Boundary Condition
+   2451  5_0_1, !- Outside Boundary Condition Object
+   2452  NoSun, !- Sun Exposure
+   2453  NoWind, !- Wind Exposure
+   2454  autocalculate, !- View Factor to Ground
+   2455  4, !- Number of Vertices
+   2456  -1.2354769706726074,
+   2457  -1.6502585411071777,
+   2458  8.0,
+   2459  1.4616550207138062,
+   2460  -0.79850822687149048,
+   2461  8.0,
+   2462  5.720314025878906,
+   2463  -3.0129663944244385,
+   2464  8.0,
+   2465  6.572064399719238,
+   2466  -5.7100982666015625,
+   2467  8.0;
+   2468 
+   2469 
+   2470 BuildingSurface:Detailed,
+   2471  10_0_1, !- Name
+   2472  CEILING, !- Surface Type
+   2473  000 Interior Ceiling, !- Construction Name
+   2474  10_0, !- Zone Name
+   2475  SURFACE, !- Outside Boundary Condition
+   2476  15_0_0, !- Outside Boundary Condition Object
+   2477  NoSun, !- Sun Exposure
+   2478  NoWind, !- Wind Exposure
+   2479  autocalculate, !- View Factor to Ground
+   2480  4, !- Number of Vertices
+   2481  7.0831146240234375,
+   2482  -7.328377723693848,
+   2483  12.0,
+   2484  6.2313642501831055,
+   2485  -4.6312456130981445,
+   2486  12.0,
+   2487  -0.1566241979598999,
+   2488  -1.309558391571045,
+   2489  12.0,
+   2490  -2.8537561893463135,
+   2491  -2.161308765411377,
+   2492  12.0;
+   2493 
+   2494 
+   2495 BuildingSurface:Detailed,
+   2496  10_0_2, !- Name
+   2497  WALL, !- Surface Type
+   2498  000 Interior Wall, !- Construction Name
+   2499  10_0, !- Zone Name
+   2500  SURFACE, !- Outside Boundary Condition
+   2501  7_0_3, !- Outside Boundary Condition Object
+   2502  NoSun, !- Sun Exposure
+   2503  NoWind, !- Wind Exposure
+   2504  autocalculate, !- View Factor to Ground
+   2505  4, !- Number of Vertices
+   2506  6.572064399719238,
+   2507  -5.7100982666015625,
+   2508  8.0,
+   2509  5.720314025878906,
+   2510  -3.0129663944244385,
+   2511  8.0,
+   2512  6.2313642501831055,
+   2513  -4.6312456130981445,
+   2514  12.0,
+   2515  7.0831146240234375,
+   2516  -7.328377723693848,
+   2517  12.0;
+   2518 
+   2519 
+   2520 BuildingSurface:Detailed,
+   2521  10_0_3, !- Name
+   2522  WALL, !- Surface Type
+   2523  000 Interior Wall, !- Construction Name
+   2524  10_0, !- Zone Name
+   2525  SURFACE, !- Outside Boundary Condition
+   2526  9_0_2, !- Outside Boundary Condition Object
+   2527  NoSun, !- Sun Exposure
+   2528  NoWind, !- Wind Exposure
+   2529  autocalculate, !- View Factor to Ground
+   2530  4, !- Number of Vertices
+   2531  1.4616550207138062,
+   2532  -0.79850822687149048,
+   2533  8.0,
+   2534  -1.2354769706726074,
+   2535  -1.6502585411071777,
+   2536  8.0,
+   2537  -2.8537561893463135,
+   2538  -2.161308765411377,
+   2539  12.0,
+   2540  -0.1566241979598999,
+   2541  -1.309558391571045,
+   2542  12.0;
+   2543 
+   2544 
+   2545 BuildingSurface:Detailed,
+   2546  10_0_4, !- Name
+   2547  WALL, !- Surface Type
+   2548  ASHRAE 90.1-2004 ExtWall Mass ClimateZone 3-4, !- Construction Name
+   2549  10_0, !- Zone Name
+   2550  Outdoors, !- Outside Boundary Condition
+   2551  , !- Outside Boundary Condition Object
+   2552  SunExposed, !- Sun Exposure
+   2553  WindExposed, !- Wind Exposure
+   2554  autocalculate, !- View Factor to Ground
+   2555  4, !- Number of Vertices
+   2556  -1.2354769706726074,
+   2557  -1.6502585411071777,
+   2558  8.0,
+   2559  6.572064399719238,
+   2560  -5.7100982666015625,
+   2561  8.0,
+   2562  7.0831146240234375,
+   2563  -7.328377723693848,
+   2564  12.0,
+   2565  -2.8537561893463135,
+   2566  -2.161308765411377,
+   2567  12.0;
+   2568 
+   2569 
+   2570 BuildingSurface:Detailed,
+   2571  10_0_5, !- Name
+   2572  WALL, !- Surface Type
+   2573  000 Interior Wall, !- Construction Name
+   2574  10_0, !- Zone Name
+   2575  SURFACE, !- Outside Boundary Condition
+   2576  6_0_4, !- Outside Boundary Condition Object
+   2577  NoSun, !- Sun Exposure
+   2578  NoWind, !- Wind Exposure
+   2579  autocalculate, !- View Factor to Ground
+   2580  4, !- Number of Vertices
+   2581  5.720314025878906,
+   2582  -3.0129663944244385,
+   2583  8.0,
+   2584  1.4616550207138062,
+   2585  -0.79850822687149048,
+   2586  8.0,
+   2587  -0.1566241979598999,
+   2588  -1.309558391571045,
+   2589  12.0,
+   2590  6.2313642501831055,
+   2591  -4.6312456130981445,
+   2592  12.0;
+   2593 
+   2594 
+   2595 Zone,
+   2596  11_0,
+   2597  0, !-Direction of Relative North {deg}
+   2598  0.0, !- X Origin {m}
+   2599  0.0, !- Y Origin {m}
+   2600  0.0, !- Z Origin {m}
+   2601  1; !- Type
+   2602 
+   2603 BuildingSurface:Detailed,
+   2604  11_0_0, !- Name
+   2605  FLOOR, !- Surface Type
+   2606  000 Interior Floor, !- Construction Name
+   2607  11_0, !- Zone Name
+   2608  SURFACE, !- Outside Boundary Condition
+   2609  6_0_1, !- Outside Boundary Condition Object
+   2610  NoSun, !- Sun Exposure
+   2611  NoWind, !- Wind Exposure
+   2612  autocalculate, !- View Factor to Ground
+   2613  4, !- Number of Vertices
+   2614  -0.1566241979598999,
+   2615  -1.309558391571045,
+   2616  12.0,
+   2617  3.16506290435791,
+   2618  5.078429698944092,
+   2619  12.0,
+   2620  9.553050994873047,
+   2621  1.7567427158355713,
+   2622  12.0,
+   2623  6.2313642501831055,
+   2624  -4.6312456130981445,
+   2625  12.0;
+   2626 
+   2627 
+   2628 BuildingSurface:Detailed,
+   2629  11_0_1, !- Name
+   2630  CEILING, !- Surface Type
+   2631  000 Interior Ceiling, !- Construction Name
+   2632  11_0, !- Zone Name
+   2633  SURFACE, !- Outside Boundary Condition
+   2634  16_0_0, !- Outside Boundary Condition Object
+   2635  NoSun, !- Sun Exposure
+   2636  NoWind, !- Wind Exposure
+   2637  autocalculate, !- View Factor to Ground
+   2638  4, !- Number of Vertices
+   2639  -1.774903416633606,
+   2640  -1.8206086158752441,
+   2641  16.0,
+   2642  6.742414474487305,
+   2643  -6.2495245933532715,
+   2644  16.0,
+   2645  11.171330451965332,
+   2646  2.2677929401397705,
+   2647  16.0,
+   2648  2.654012680053711,
+   2649  6.696709156036377,
+   2650  16.0;
+   2651 
+   2652 
+   2653 BuildingSurface:Detailed,
+   2654  11_0_2, !- Name
+   2655  WALL, !- Surface Type
+   2656  000 Interior Wall, !- Construction Name
+   2657  11_0, !- Zone Name
+   2658  SURFACE, !- Outside Boundary Condition
+   2659  13_0_5, !- Outside Boundary Condition Object
+   2660  NoSun, !- Sun Exposure
+   2661  NoWind, !- Wind Exposure
+   2662  autocalculate, !- View Factor to Ground
+   2663  4, !- Number of Vertices
+   2664  9.553050994873047,
+   2665  1.7567427158355713,
+   2666  12.0,
+   2667  3.16506290435791,
+   2668  5.078429698944092,
+   2669  12.0,
+   2670  2.654012680053711,
+   2671  6.696709156036377,
+   2672  16.0,
+   2673  11.171330451965332,
+   2674  2.2677929401397705,
+   2675  16.0;
+   2676 
+   2677 
+   2678 BuildingSurface:Detailed,
+   2679  11_0_3, !- Name
+   2680  WALL, !- Surface Type
+   2681  000 Interior Wall, !- Construction Name
+   2682  11_0, !- Zone Name
+   2683  SURFACE, !- Outside Boundary Condition
+   2684  14_0_5, !- Outside Boundary Condition Object
+   2685  NoSun, !- Sun Exposure
+   2686  NoWind, !- Wind Exposure
+   2687  autocalculate, !- View Factor to Ground
+   2688  4, !- Number of Vertices
+   2689  3.16506290435791,
+   2690  5.078429698944092,
+   2691  12.0,
+   2692  -0.1566241979598999,
+   2693  -1.309558391571045,
+   2694  12.0,
+   2695  -1.774903416633606,
+   2696  -1.8206086158752441,
+   2697  16.0,
+   2698  2.654012680053711,
+   2699  6.696709156036377,
+   2700  16.0;
+   2701 
+   2702 
+   2703 BuildingSurface:Detailed,
+   2704  11_0_4, !- Name
+   2705  WALL, !- Surface Type
+   2706  000 Interior Wall, !- Construction Name
+   2707  11_0, !- Zone Name
+   2708  SURFACE, !- Outside Boundary Condition
+   2709  15_0_5, !- Outside Boundary Condition Object
+   2710  NoSun, !- Sun Exposure
+   2711  NoWind, !- Wind Exposure
+   2712  autocalculate, !- View Factor to Ground
+   2713  4, !- Number of Vertices
+   2714  -0.1566241979598999,
+   2715  -1.309558391571045,
+   2716  12.0,
+   2717  6.2313642501831055,
+   2718  -4.6312456130981445,
+   2719  12.0,
+   2720  6.742414474487305,
+   2721  -6.2495245933532715,
+   2722  16.0,
+   2723  -1.774903416633606,
+   2724  -1.8206086158752441,
+   2725  16.0;
+   2726 
+   2727 
+   2728 BuildingSurface:Detailed,
+   2729  11_0_5, !- Name
+   2730  WALL, !- Surface Type
+   2731  000 Interior Wall, !- Construction Name
+   2732  11_0, !- Zone Name
+   2733  SURFACE, !- Outside Boundary Condition
+   2734  12_0_5, !- Outside Boundary Condition Object
+   2735  NoSun, !- Sun Exposure
+   2736  NoWind, !- Wind Exposure
+   2737  autocalculate, !- View Factor to Ground
+   2738  4, !- Number of Vertices
+   2739  6.2313642501831055,
+   2740  -4.6312456130981445,
+   2741  12.0,
+   2742  9.553050994873047,
+   2743  1.7567427158355713,
+   2744  12.0,
+   2745  11.171330451965332,
+   2746  2.2677929401397705,
+   2747  16.0,
+   2748  6.742414474487305,
+   2749  -6.2495245933532715,
+   2750  16.0;
+   2751 
+   2752 
+   2753 Zone,
+   2754  12_0,
+   2755  0, !-Direction of Relative North {deg}
+   2756  0.0, !- X Origin {m}
+   2757  0.0, !- Y Origin {m}
+   2758  0.0, !- Z Origin {m}
+   2759  1; !- Type
+   2760 
+   2761 BuildingSurface:Detailed,
+   2762  12_0_0, !- Name
+   2763  FLOOR, !- Surface Type
+   2764  000 Interior Floor, !- Construction Name
+   2765  12_0, !- Zone Name
+   2766  SURFACE, !- Outside Boundary Condition
+   2767  7_0_1, !- Outside Boundary Condition Object
+   2768  NoSun, !- Sun Exposure
+   2769  NoWind, !- Wind Exposure
+   2770  autocalculate, !- View Factor to Ground
+   2771  4, !- Number of Vertices
+   2772  6.2313642501831055,
+   2773  -4.6312456130981445,
+   2774  12.0,
+   2775  9.553050994873047,
+   2776  1.7567427158355713,
+   2777  12.0,
+   2778  12.25018310546875,
+   2779  2.6084930896759033,
+   2780  12.0,
+   2781  7.0831146240234375,
+   2782  -7.328377723693848,
+   2783  12.0;
+   2784 
+   2785 
+   2786 BuildingSurface:Detailed,
+   2787  12_0_1, !- Name
+   2788  CEILING, !- Surface Type
+   2789  000 Interior Ceiling, !- Construction Name
+   2790  12_0, !- Zone Name
+   2791  SURFACE, !- Outside Boundary Condition
+   2792  17_0_0, !- Outside Boundary Condition Object
+   2793  NoSun, !- Sun Exposure
+   2794  NoWind, !- Wind Exposure
+   2795  autocalculate, !- View Factor to Ground
+   2796  4, !- Number of Vertices
+   2797  7.594164848327637,
+   2798  -8.946657180786133,
+   2799  16.0,
+   2800  13.868462562561035,
+   2801  3.1195433139801025,
+   2802  16.0,
+   2803  11.171330451965332,
+   2804  2.2677929401397705,
+   2805  16.0,
+   2806  6.742414474487305,
+   2807  -6.2495245933532715,
+   2808  16.0;
+   2809 
+   2810 
+   2811 BuildingSurface:Detailed,
+   2812  12_0_2, !- Name
+   2813  WALL, !- Surface Type
+   2814  000 Interior Wall, !- Construction Name
+   2815  12_0, !- Zone Name
+   2816  SURFACE, !- Outside Boundary Condition
+   2817  13_0_3, !- Outside Boundary Condition Object
+   2818  NoSun, !- Sun Exposure
+   2819  NoWind, !- Wind Exposure
+   2820  autocalculate, !- View Factor to Ground
+   2821  4, !- Number of Vertices
+   2822  12.25018310546875,
+   2823  2.6084930896759033,
+   2824  12.0,
+   2825  9.553050994873047,
+   2826  1.7567427158355713,
+   2827  12.0,
+   2828  11.171330451965332,
+   2829  2.2677929401397705,
+   2830  16.0,
+   2831  13.868462562561035,
+   2832  3.1195433139801025,
+   2833  16.0;
+   2834 
+   2835 
+   2836 BuildingSurface:Detailed,
+   2837  12_0_3, !- Name
+   2838  WALL, !- Surface Type
+   2839  000 Interior Wall, !- Construction Name
+   2840  12_0, !- Zone Name
+   2841  SURFACE, !- Outside Boundary Condition
+   2842  15_0_2, !- Outside Boundary Condition Object
+   2843  NoSun, !- Sun Exposure
+   2844  NoWind, !- Wind Exposure
+   2845  autocalculate, !- View Factor to Ground
+   2846  4, !- Number of Vertices
+   2847  6.2313642501831055,
+   2848  -4.6312456130981445,
+   2849  12.0,
+   2850  7.0831146240234375,
+   2851  -7.328377723693848,
+   2852  12.0,
+   2853  7.594164848327637,
+   2854  -8.946657180786133,
+   2855  16.0,
+   2856  6.742414474487305,
+   2857  -6.2495245933532715,
+   2858  16.0;
+   2859 
+   2860 
+   2861 BuildingSurface:Detailed,
+   2862  12_0_4, !- Name
+   2863  WALL, !- Surface Type
+   2864  ASHRAE 90.1-2004 ExtWall Mass ClimateZone 3-4, !- Construction Name
+   2865  12_0, !- Zone Name
+   2866  Outdoors, !- Outside Boundary Condition
+   2867  , !- Outside Boundary Condition Object
+   2868  SunExposed, !- Sun Exposure
+   2869  WindExposed, !- Wind Exposure
+   2870  autocalculate, !- View Factor to Ground
+   2871  4, !- Number of Vertices
+   2872  7.0831146240234375,
+   2873  -7.328377723693848,
+   2874  12.0,
+   2875  12.25018310546875,
+   2876  2.6084930896759033,
+   2877  12.0,
+   2878  13.868462562561035,
+   2879  3.1195433139801025,
+   2880  16.0,
+   2881  7.594164848327637,
+   2882  -8.946657180786133,
+   2883  16.0;
+   2884 
+   2885 
+   2886 FenestrationSurface:Detailed,
+   2887  12_0_4_glz_0_0, !- Name
+   2888  WINDOW, !- Surface Type
+   2889  ASHRAE 90.1-2004 ExtWindow ClimateZone 4-6, !- Construction Name
+   2890  12_0_4, !- Surface Name
+   2891  , !- Outside Boundary Condition Object
+   2892  autocalculate, !- View Factor to Ground
+   2893  , !- Shading Control Name
+   2894  , !- Frame and Divider Name
+   2895  1, !- Multiplier
+   2896  4, !- Number of Vertices
+   2897  8.234645843505859,
+   2898  -5.6072773933410645,
+   2899  12.758801460266113,
+   2900  11.502586364746094,
+   2901  0.67735129594802856,
+   2902  12.758801460266113,
+   2903  12.526076316833496,
+   2904  1.0005677938461304,
+   2905  15.288623809814453,
+   2906  8.557862281799316,
+   2907  -6.630767345428467,
+   2908  15.288623809814453;
+   2909 
+   2910 
+   2911 BuildingSurface:Detailed,
+   2912  12_0_5, !- Name
+   2913  WALL, !- Surface Type
+   2914  000 Interior Wall, !- Construction Name
+   2915  12_0, !- Zone Name
+   2916  SURFACE, !- Outside Boundary Condition
+   2917  11_0_5, !- Outside Boundary Condition Object
+   2918  NoSun, !- Sun Exposure
+   2919  NoWind, !- Wind Exposure
+   2920  autocalculate, !- View Factor to Ground
+   2921  4, !- Number of Vertices
+   2922  9.553050994873047,
+   2923  1.7567427158355713,
+   2924  12.0,
+   2925  6.2313642501831055,
+   2926  -4.6312456130981445,
+   2927  12.0,
+   2928  6.742414474487305,
+   2929  -6.2495245933532715,
+   2930  16.0,
+   2931  11.171330451965332,
+   2932  2.2677929401397705,
+   2933  16.0;
+   2934 
+   2935 
+   2936 Zone,
+   2937  13_0,
+   2938  0, !-Direction of Relative North {deg}
+   2939  0.0, !- X Origin {m}
+   2940  0.0, !- Y Origin {m}
+   2941  0.0, !- Z Origin {m}
+   2942  1; !- Type
+   2943 
+   2944 BuildingSurface:Detailed,
+   2945  13_0_0, !- Name
+   2946  FLOOR, !- Surface Type
+   2947  000 Interior Floor, !- Construction Name
+   2948  13_0, !- Zone Name
+   2949  SURFACE, !- Outside Boundary Condition
+   2950  8_0_1, !- Outside Boundary Condition Object
+   2951  NoSun, !- Sun Exposure
+   2952  NoWind, !- Wind Exposure
+   2953  autocalculate, !- View Factor to Ground
+   2954  4, !- Number of Vertices
+   2955  12.25018310546875,
+   2956  2.6084930896759033,
+   2957  12.0,
+   2958  9.553050994873047,
+   2959  1.7567427158355713,
+   2960  12.0,
+   2961  3.16506290435791,
+   2962  5.078429698944092,
+   2963  12.0,
+   2964  2.313312530517578,
+   2965  7.775561809539795,
+   2966  12.0;
+   2967 
+   2968 
+   2969 BuildingSurface:Detailed,
+   2970  13_0_1, !- Name
+   2971  CEILING, !- Surface Type
+   2972  000 Interior Ceiling, !- Construction Name
+   2973  13_0, !- Zone Name
+   2974  SURFACE, !- Outside Boundary Condition
+   2975  18_0_0, !- Outside Boundary Condition Object
+   2976  NoSun, !- Sun Exposure
+   2977  NoWind, !- Wind Exposure
+   2978  autocalculate, !- View Factor to Ground
+   2979  4, !- Number of Vertices
+   2980  1.8022624254226685,
+   2981  9.393840789794922,
+   2982  16.0,
+   2983  2.654012680053711,
+   2984  6.696709156036377,
+   2985  16.0,
+   2986  11.171330451965332,
+   2987  2.2677929401397705,
+   2988  16.0,
+   2989  13.868462562561035,
+   2990  3.1195433139801025,
+   2991  16.0;
+   2992 
+   2993 
+   2994 BuildingSurface:Detailed,
+   2995  13_0_2, !- Name
+   2996  WALL, !- Surface Type
+   2997  000 Interior Wall, !- Construction Name
+   2998  13_0, !- Zone Name
+   2999  SURFACE, !- Outside Boundary Condition
+   3000  14_0_3, !- Outside Boundary Condition Object
+   3001  NoSun, !- Sun Exposure
+   3002  NoWind, !- Wind Exposure
+   3003  autocalculate, !- View Factor to Ground
+   3004  4, !- Number of Vertices
+   3005  2.313312530517578,
+   3006  7.775561809539795,
+   3007  12.0,
+   3008  3.16506290435791,
+   3009  5.078429698944092,
+   3010  12.0,
+   3011  2.654012680053711,
+   3012  6.696709156036377,
+   3013  16.0,
+   3014  1.8022624254226685,
+   3015  9.393840789794922,
+   3016  16.0;
+   3017 
+   3018 
+   3019 BuildingSurface:Detailed,
+   3020  13_0_3, !- Name
+   3021  WALL, !- Surface Type
+   3022  000 Interior Wall, !- Construction Name
+   3023  13_0, !- Zone Name
+   3024  SURFACE, !- Outside Boundary Condition
+   3025  12_0_2, !- Outside Boundary Condition Object
+   3026  NoSun, !- Sun Exposure
+   3027  NoWind, !- Wind Exposure
+   3028  autocalculate, !- View Factor to Ground
+   3029  4, !- Number of Vertices
+   3030  9.553050994873047,
+   3031  1.7567427158355713,
+   3032  12.0,
+   3033  12.25018310546875,
+   3034  2.6084930896759033,
+   3035  12.0,
+   3036  13.868462562561035,
+   3037  3.1195433139801025,
+   3038  16.0,
+   3039  11.171330451965332,
+   3040  2.2677929401397705,
+   3041  16.0;
+   3042 
+   3043 
+   3044 BuildingSurface:Detailed,
+   3045  13_0_4, !- Name
+   3046  WALL, !- Surface Type
+   3047  ASHRAE 90.1-2004 ExtWall Mass ClimateZone 3-4, !- Construction Name
+   3048  13_0, !- Zone Name
+   3049  Outdoors, !- Outside Boundary Condition
+   3050  , !- Outside Boundary Condition Object
+   3051  SunExposed, !- Sun Exposure
+   3052  WindExposed, !- Wind Exposure
+   3053  autocalculate, !- View Factor to Ground
+   3054  4, !- Number of Vertices
+   3055  12.25018310546875,
+   3056  2.6084930896759033,
+   3057  12.0,
+   3058  2.313312530517578,
+   3059  7.775561809539795,
+   3060  12.0,
+   3061  1.8022624254226685,
+   3062  9.393840789794922,
+   3063  16.0,
+   3064  13.868462562561035,
+   3065  3.1195433139801025,
+   3066  16.0;
+   3067 
+   3068 
+   3069 FenestrationSurface:Detailed,
+   3070  13_0_4_glz_0_0, !- Name
+   3071  WINDOW, !- Surface Type
+   3072  ASHRAE 90.1-2004 ExtWindow ClimateZone 4-6, !- Construction Name
+   3073  13_0_4, !- Surface Name
+   3074  , !- Outside Boundary Condition Object
+   3075  autocalculate, !- View Factor to Ground
+   3076  , !- Shading Control Name
+   3077  , !- Frame and Divider Name
+   3078  1, !- Multiplier
+   3079  4, !- Number of Vertices
+   3080  10.529083251953125,
+   3081  3.760024070739746,
+   3082  12.758801460266113,
+   3083  4.244454383850098,
+   3084  7.027965545654297,
+   3085  12.758801460266113,
+   3086  3.9212379455566406,
+   3087  8.051455497741699,
+   3088  15.288623809814453,
+   3089  11.552573204040527,
+   3090  4.083240509033203,
+   3091  15.288623809814453;
+   3092 
+   3093 
+   3094 BuildingSurface:Detailed,
+   3095  13_0_5, !- Name
+   3096  WALL, !- Surface Type
+   3097  000 Interior Wall, !- Construction Name
+   3098  13_0, !- Zone Name
+   3099  SURFACE, !- Outside Boundary Condition
+   3100  11_0_2, !- Outside Boundary Condition Object
+   3101  NoSun, !- Sun Exposure
+   3102  NoWind, !- Wind Exposure
+   3103  autocalculate, !- View Factor to Ground
+   3104  4, !- Number of Vertices
+   3105  3.16506290435791,
+   3106  5.078429698944092,
+   3107  12.0,
+   3108  9.553050994873047,
+   3109  1.7567427158355713,
+   3110  12.0,
+   3111  11.171330451965332,
+   3112  2.2677929401397705,
+   3113  16.0,
+   3114  2.654012680053711,
+   3115  6.696709156036377,
+   3116  16.0;
+   3117 
+   3118 
+   3119 Zone,
+   3120  14_0,
+   3121  0, !-Direction of Relative North {deg}
+   3122  0.0, !- X Origin {m}
+   3123  0.0, !- Y Origin {m}
+   3124  0.0, !- Z Origin {m}
+   3125  1; !- Type
+   3126 
+   3127 BuildingSurface:Detailed,
+   3128  14_0_0, !- Name
+   3129  FLOOR, !- Surface Type
+   3130  000 Interior Floor, !- Construction Name
+   3131  14_0, !- Zone Name
+   3132  SURFACE, !- Outside Boundary Condition
+   3133  9_0_1, !- Outside Boundary Condition Object
+   3134  NoSun, !- Sun Exposure
+   3135  NoWind, !- Wind Exposure
+   3136  autocalculate, !- View Factor to Ground
+   3137  4, !- Number of Vertices
+   3138  -2.8537561893463135,
+   3139  -2.161308765411377,
+   3140  12.0,
+   3141  2.313312530517578,
+   3142  7.775561809539795,
+   3143  12.0,
+   3144  3.16506290435791,
+   3145  5.078429698944092,
+   3146  12.0,
+   3147  -0.1566241979598999,
+   3148  -1.309558391571045,
+   3149  12.0;
+   3150 
+   3151 
+   3152 BuildingSurface:Detailed,
+   3153  14_0_1, !- Name
+   3154  CEILING, !- Surface Type
+   3155  000 Interior Ceiling, !- Construction Name
+   3156  14_0, !- Zone Name
+   3157  SURFACE, !- Outside Boundary Condition
+   3158  19_0_0, !- Outside Boundary Condition Object
+   3159  NoSun, !- Sun Exposure
+   3160  NoWind, !- Wind Exposure
+   3161  autocalculate, !- View Factor to Ground
+   3162  4, !- Number of Vertices
+   3163  -4.4720354080200195,
+   3164  -2.672358989715576,
+   3165  16.0,
+   3166  -1.774903416633606,
+   3167  -1.8206086158752441,
+   3168  16.0,
+   3169  2.654012680053711,
+   3170  6.696709156036377,
+   3171  16.0,
+   3172  1.8022624254226685,
+   3173  9.393840789794922,
+   3174  16.0;
+   3175 
+   3176 
+   3177 BuildingSurface:Detailed,
+   3178  14_0_2, !- Name
+   3179  WALL, !- Surface Type
+   3180  000 Interior Wall, !- Construction Name
+   3181  14_0, !- Zone Name
+   3182  SURFACE, !- Outside Boundary Condition
+   3183  15_0_3, !- Outside Boundary Condition Object
+   3184  NoSun, !- Sun Exposure
+   3185  NoWind, !- Wind Exposure
+   3186  autocalculate, !- View Factor to Ground
+   3187  4, !- Number of Vertices
+   3188  -2.8537561893463135,
+   3189  -2.161308765411377,
+   3190  12.0,
+   3191  -0.1566241979598999,
+   3192  -1.309558391571045,
+   3193  12.0,
+   3194  -1.774903416633606,
+   3195  -1.8206086158752441,
+   3196  16.0,
+   3197  -4.4720354080200195,
+   3198  -2.672358989715576,
+   3199  16.0;
+   3200 
+   3201 
+   3202 BuildingSurface:Detailed,
+   3203  14_0_3, !- Name
+   3204  WALL, !- Surface Type
+   3205  000 Interior Wall, !- Construction Name
+   3206  14_0, !- Zone Name
+   3207  SURFACE, !- Outside Boundary Condition
+   3208  13_0_2, !- Outside Boundary Condition Object
+   3209  NoSun, !- Sun Exposure
+   3210  NoWind, !- Wind Exposure
+   3211  autocalculate, !- View Factor to Ground
+   3212  4, !- Number of Vertices
+   3213  3.16506290435791,
+   3214  5.078429698944092,
+   3215  12.0,
+   3216  2.313312530517578,
+   3217  7.775561809539795,
+   3218  12.0,
+   3219  1.8022624254226685,
+   3220  9.393840789794922,
+   3221  16.0,
+   3222  2.654012680053711,
+   3223  6.696709156036377,
+   3224  16.0;
+   3225 
+   3226 
+   3227 BuildingSurface:Detailed,
+   3228  14_0_4, !- Name
+   3229  WALL, !- Surface Type
+   3230  ASHRAE 90.1-2004 ExtWall Mass ClimateZone 3-4, !- Construction Name
+   3231  14_0, !- Zone Name
+   3232  Outdoors, !- Outside Boundary Condition
+   3233  , !- Outside Boundary Condition Object
+   3234  SunExposed, !- Sun Exposure
+   3235  WindExposed, !- Wind Exposure
+   3236  autocalculate, !- View Factor to Ground
+   3237  4, !- Number of Vertices
+   3238  2.313312530517578,
+   3239  7.775561809539795,
+   3240  12.0,
+   3241  -2.8537561893463135,
+   3242  -2.161308765411377,
+   3243  12.0,
+   3244  -4.4720354080200195,
+   3245  -2.672358989715576,
+   3246  16.0,
+   3247  1.8022624254226685,
+   3248  9.393840789794922,
+   3249  16.0;
+   3250 
+   3251 
+   3252 FenestrationSurface:Detailed,
+   3253  14_0_4_glz_0_0, !- Name
+   3254  WINDOW, !- Surface Type
+   3255  ASHRAE 90.1-2004 ExtWindow ClimateZone 4-6, !- Construction Name
+   3256  14_0_4, !- Surface Name
+   3257  , !- Outside Boundary Condition Object
+   3258  autocalculate, !- View Factor to Ground
+   3259  , !- Shading Control Name
+   3260  , !- Frame and Divider Name
+   3261  1, !- Multiplier
+   3262  4, !- Number of Vertices
+   3263  1.1617815494537354,
+   3264  6.05446195602417,
+   3265  12.758801460266113,
+   3266  -2.1061596870422363,
+   3267  -0.23016694188117981,
+   3268  12.758801460266113,
+   3269  -3.1296494007110596,
+   3270  -0.553383469581604,
+   3271  15.288623809814453,
+   3272  0.83856499195098877,
+   3273  7.077951431274414,
+   3274  15.288623809814453;
+   3275 
+   3276 
+   3277 BuildingSurface:Detailed,
+   3278  14_0_5, !- Name
+   3279  WALL, !- Surface Type
+   3280  000 Interior Wall, !- Construction Name
+   3281  14_0, !- Zone Name
+   3282  SURFACE, !- Outside Boundary Condition
+   3283  11_0_3, !- Outside Boundary Condition Object
+   3284  NoSun, !- Sun Exposure
+   3285  NoWind, !- Wind Exposure
+   3286  autocalculate, !- View Factor to Ground
+   3287  4, !- Number of Vertices
+   3288  -0.1566241979598999,
+   3289  -1.309558391571045,
+   3290  12.0,
+   3291  3.16506290435791,
+   3292  5.078429698944092,
+   3293  12.0,
+   3294  2.654012680053711,
+   3295  6.696709156036377,
+   3296  16.0,
+   3297  -1.774903416633606,
+   3298  -1.8206086158752441,
+   3299  16.0;
+   3300 
+   3301 
+   3302 Zone,
+   3303  15_0,
+   3304  0, !-Direction of Relative North {deg}
+   3305  0.0, !- X Origin {m}
+   3306  0.0, !- Y Origin {m}
+   3307  0.0, !- Z Origin {m}
+   3308  1; !- Type
+   3309 
+   3310 BuildingSurface:Detailed,
+   3311  15_0_0, !- Name
+   3312  FLOOR, !- Surface Type
+   3313  000 Interior Floor, !- Construction Name
+   3314  15_0, !- Zone Name
+   3315  SURFACE, !- Outside Boundary Condition
+   3316  10_0_1, !- Outside Boundary Condition Object
+   3317  NoSun, !- Sun Exposure
+   3318  NoWind, !- Wind Exposure
+   3319  autocalculate, !- View Factor to Ground
+   3320  4, !- Number of Vertices
+   3321  -2.8537561893463135,
+   3322  -2.161308765411377,
+   3323  12.0,
+   3324  -0.1566241979598999,
+   3325  -1.309558391571045,
+   3326  12.0,
+   3327  6.2313642501831055,
+   3328  -4.6312456130981445,
+   3329  12.0,
+   3330  7.0831146240234375,
+   3331  -7.328377723693848,
+   3332  12.0;
+   3333 
+   3334 
+   3335 BuildingSurface:Detailed,
+   3336  15_0_1, !- Name
+   3337  CEILING, !- Surface Type
+   3338  000 Interior Ceiling, !- Construction Name
+   3339  15_0, !- Zone Name
+   3340  SURFACE, !- Outside Boundary Condition
+   3341  20_0_0, !- Outside Boundary Condition Object
+   3342  NoSun, !- Sun Exposure
+   3343  NoWind, !- Wind Exposure
+   3344  autocalculate, !- View Factor to Ground
+   3345  4, !- Number of Vertices
+   3346  7.594164848327637,
+   3347  -8.946657180786133,
+   3348  16.0,
+   3349  6.742414474487305,
+   3350  -6.2495245933532715,
+   3351  16.0,
+   3352  -1.774903416633606,
+   3353  -1.8206086158752441,
+   3354  16.0,
+   3355  -4.4720354080200195,
+   3356  -2.672358989715576,
+   3357  16.0;
+   3358 
+   3359 
+   3360 BuildingSurface:Detailed,
+   3361  15_0_2, !- Name
+   3362  WALL, !- Surface Type
+   3363  000 Interior Wall, !- Construction Name
+   3364  15_0, !- Zone Name
+   3365  SURFACE, !- Outside Boundary Condition
+   3366  12_0_3, !- Outside Boundary Condition Object
+   3367  NoSun, !- Sun Exposure
+   3368  NoWind, !- Wind Exposure
+   3369  autocalculate, !- View Factor to Ground
+   3370  4, !- Number of Vertices
+   3371  7.0831146240234375,
+   3372  -7.328377723693848,
+   3373  12.0,
+   3374  6.2313642501831055,
+   3375  -4.6312456130981445,
+   3376  12.0,
+   3377  6.742414474487305,
+   3378  -6.2495245933532715,
+   3379  16.0,
+   3380  7.594164848327637,
+   3381  -8.946657180786133,
+   3382  16.0;
+   3383 
+   3384 
+   3385 BuildingSurface:Detailed,
+   3386  15_0_3, !- Name
+   3387  WALL, !- Surface Type
+   3388  000 Interior Wall, !- Construction Name
+   3389  15_0, !- Zone Name
+   3390  SURFACE, !- Outside Boundary Condition
+   3391  14_0_2, !- Outside Boundary Condition Object
+   3392  NoSun, !- Sun Exposure
+   3393  NoWind, !- Wind Exposure
+   3394  autocalculate, !- View Factor to Ground
+   3395  4, !- Number of Vertices
+   3396  -0.1566241979598999,
+   3397  -1.309558391571045,
+   3398  12.0,
+   3399  -2.8537561893463135,
+   3400  -2.161308765411377,
+   3401  12.0,
+   3402  -4.4720354080200195,
+   3403  -2.672358989715576,
+   3404  16.0,
+   3405  -1.774903416633606,
+   3406  -1.8206086158752441,
+   3407  16.0;
+   3408 
+   3409 
+   3410 BuildingSurface:Detailed,
+   3411  15_0_4, !- Name
+   3412  WALL, !- Surface Type
+   3413  ASHRAE 90.1-2004 ExtWall Mass ClimateZone 3-4, !- Construction Name
+   3414  15_0, !- Zone Name
+   3415  Outdoors, !- Outside Boundary Condition
+   3416  , !- Outside Boundary Condition Object
+   3417  SunExposed, !- Sun Exposure
+   3418  WindExposed, !- Wind Exposure
+   3419  autocalculate, !- View Factor to Ground
+   3420  4, !- Number of Vertices
+   3421  -2.8537561893463135,
+   3422  -2.161308765411377,
+   3423  12.0,
+   3424  7.0831146240234375,
+   3425  -7.328377723693848,
+   3426  12.0,
+   3427  7.594164848327637,
+   3428  -8.946657180786133,
+   3429  16.0,
+   3430  -4.4720354080200195,
+   3431  -2.672358989715576,
+   3432  16.0;
+   3433 
+   3434 
+   3435 BuildingSurface:Detailed,
+   3436  15_0_5, !- Name
+   3437  WALL, !- Surface Type
+   3438  000 Interior Wall, !- Construction Name
+   3439  15_0, !- Zone Name
+   3440  SURFACE, !- Outside Boundary Condition
+   3441  11_0_4, !- Outside Boundary Condition Object
+   3442  NoSun, !- Sun Exposure
+   3443  NoWind, !- Wind Exposure
+   3444  autocalculate, !- View Factor to Ground
+   3445  4, !- Number of Vertices
+   3446  6.2313642501831055,
+   3447  -4.6312456130981445,
+   3448  12.0,
+   3449  -0.1566241979598999,
+   3450  -1.309558391571045,
+   3451  12.0,
+   3452  -1.774903416633606,
+   3453  -1.8206086158752441,
+   3454  16.0,
+   3455  6.742414474487305,
+   3456  -6.2495245933532715,
+   3457  16.0;
+   3458 
+   3459 
+   3460 Zone,
+   3461  16_0,
+   3462  0, !-Direction of Relative North {deg}
+   3463  0.0, !- X Origin {m}
+   3464  0.0, !- Y Origin {m}
+   3465  0.0, !- Z Origin {m}
+   3466  1; !- Type
+   3467 
+   3468 BuildingSurface:Detailed,
+   3469  16_0_0, !- Name
+   3470  FLOOR, !- Surface Type
+   3471  000 Interior Floor, !- Construction Name
+   3472  16_0, !- Zone Name
+   3473  SURFACE, !- Outside Boundary Condition
+   3474  11_0_1, !- Outside Boundary Condition Object
+   3475  NoSun, !- Sun Exposure
+   3476  NoWind, !- Wind Exposure
+   3477  autocalculate, !- View Factor to Ground
+   3478  4, !- Number of Vertices
+   3479  -1.774903416633606,
+   3480  -1.8206086158752441,
+   3481  16.0,
+   3482  2.654012680053711,
+   3483  6.696709156036377,
+   3484  16.0,
+   3485  11.171330451965332,
+   3486  2.2677929401397705,
+   3487  16.0,
+   3488  6.742414474487305,
+   3489  -6.2495245933532715,
+   3490  16.0;
+   3491 
+   3492 
+   3493 BuildingSurface:Detailed,
+   3494  16_0_1, !- Name
+   3495  ROOF, !- Surface Type
+   3496  ASHRAE 90.1-2004 ExtRoof IEAD ClimateZone 1-4, !- Construction Name
+   3497  16_0, !- Zone Name
+   3498  Outdoors, !- Outside Boundary Condition
+   3499  , !- Outside Boundary Condition Object
+   3500  NoSun, !- Sun Exposure
+   3501  NoWind, !- Wind Exposure
+   3502  autocalculate, !- View Factor to Ground
+   3503  4, !- Number of Vertices
+   3504  -3.3931827545166016,
+   3505  -2.3316588401794434,
+   3506  20.0,
+   3507  7.253464698791504,
+   3508  -7.867804050445557,
+   3509  20.0,
+   3510  12.789609909057617,
+   3511  2.7788431644439697,
+   3512  20.0,
+   3513  2.1429624557495117,
+   3514  8.314988136291504,
+   3515  20.0;
+   3516 
+   3517 
+   3518 BuildingSurface:Detailed,
+   3519  16_0_2, !- Name
+   3520  WALL, !- Surface Type
+   3521  000 Interior Wall, !- Construction Name
+   3522  16_0, !- Zone Name
+   3523  SURFACE, !- Outside Boundary Condition
+   3524  18_0_5, !- Outside Boundary Condition Object
+   3525  NoSun, !- Sun Exposure
+   3526  NoWind, !- Wind Exposure
+   3527  autocalculate, !- View Factor to Ground
+   3528  4, !- Number of Vertices
+   3529  11.171330451965332,
+   3530  2.2677929401397705,
+   3531  16.0,
+   3532  2.654012680053711,
+   3533  6.696709156036377,
+   3534  16.0,
+   3535  2.1429624557495117,
+   3536  8.314988136291504,
+   3537  20.0,
+   3538  12.789609909057617,
+   3539  2.7788431644439697,
+   3540  20.0;
+   3541 
+   3542 
+   3543 BuildingSurface:Detailed,
+   3544  16_0_3, !- Name
+   3545  WALL, !- Surface Type
+   3546  000 Interior Wall, !- Construction Name
+   3547  16_0, !- Zone Name
+   3548  SURFACE, !- Outside Boundary Condition
+   3549  19_0_5, !- Outside Boundary Condition Object
+   3550  NoSun, !- Sun Exposure
+   3551  NoWind, !- Wind Exposure
+   3552  autocalculate, !- View Factor to Ground
+   3553  4, !- Number of Vertices
+   3554  2.654012680053711,
+   3555  6.696709156036377,
+   3556  16.0,
+   3557  -1.774903416633606,
+   3558  -1.8206086158752441,
+   3559  16.0,
+   3560  -3.3931827545166016,
+   3561  -2.3316588401794434,
+   3562  20.0,
+   3563  2.1429624557495117,
+   3564  8.314988136291504,
+   3565  20.0;
+   3566 
+   3567 
+   3568 BuildingSurface:Detailed,
+   3569  16_0_4, !- Name
+   3570  WALL, !- Surface Type
+   3571  000 Interior Wall, !- Construction Name
+   3572  16_0, !- Zone Name
+   3573  SURFACE, !- Outside Boundary Condition
+   3574  20_0_5, !- Outside Boundary Condition Object
+   3575  NoSun, !- Sun Exposure
+   3576  NoWind, !- Wind Exposure
+   3577  autocalculate, !- View Factor to Ground
+   3578  4, !- Number of Vertices
+   3579  -1.774903416633606,
+   3580  -1.8206086158752441,
+   3581  16.0,
+   3582  6.742414474487305,
+   3583  -6.2495245933532715,
+   3584  16.0,
+   3585  7.253464698791504,
+   3586  -7.867804050445557,
+   3587  20.0,
+   3588  -3.3931827545166016,
+   3589  -2.3316588401794434,
+   3590  20.0;
+   3591 
+   3592 
+   3593 BuildingSurface:Detailed,
+   3594  16_0_5, !- Name
+   3595  WALL, !- Surface Type
+   3596  000 Interior Wall, !- Construction Name
+   3597  16_0, !- Zone Name
+   3598  SURFACE, !- Outside Boundary Condition
+   3599  17_0_5, !- Outside Boundary Condition Object
+   3600  NoSun, !- Sun Exposure
+   3601  NoWind, !- Wind Exposure
+   3602  autocalculate, !- View Factor to Ground
+   3603  4, !- Number of Vertices
+   3604  6.742414474487305,
+   3605  -6.2495245933532715,
+   3606  16.0,
+   3607  11.171330451965332,
+   3608  2.2677929401397705,
+   3609  16.0,
+   3610  12.789609909057617,
+   3611  2.7788431644439697,
+   3612  20.0,
+   3613  7.253464698791504,
+   3614  -7.867804050445557,
+   3615  20.0;
+   3616 
+   3617 
+   3618 Zone,
+   3619  17_0,
+   3620  0, !-Direction of Relative North {deg}
+   3621  0.0, !- X Origin {m}
+   3622  0.0, !- Y Origin {m}
+   3623  0.0, !- Z Origin {m}
+   3624  1; !- Type
+   3625 
+   3626 BuildingSurface:Detailed,
+   3627  17_0_0, !- Name
+   3628  FLOOR, !- Surface Type
+   3629  000 Interior Floor, !- Construction Name
+   3630  17_0, !- Zone Name
+   3631  SURFACE, !- Outside Boundary Condition
+   3632  12_0_1, !- Outside Boundary Condition Object
+   3633  NoSun, !- Sun Exposure
+   3634  NoWind, !- Wind Exposure
+   3635  autocalculate, !- View Factor to Ground
+   3636  4, !- Number of Vertices
+   3637  6.742414474487305,
+   3638  -6.2495245933532715,
+   3639  16.0,
+   3640  11.171330451965332,
+   3641  2.2677929401397705,
+   3642  16.0,
+   3643  13.868462562561035,
+   3644  3.1195433139801025,
+   3645  16.0,
+   3646  7.594164848327637,
+   3647  -8.946657180786133,
+   3648  16.0;
+   3649 
+   3650 
+   3651 BuildingSurface:Detailed,
+   3652  17_0_1, !- Name
+   3653  ROOF, !- Surface Type
+   3654  ASHRAE 90.1-2004 ExtRoof IEAD ClimateZone 1-4, !- Construction Name
+   3655  17_0, !- Zone Name
+   3656  Outdoors, !- Outside Boundary Condition
+   3657  , !- Outside Boundary Condition Object
+   3658  NoSun, !- Sun Exposure
+   3659  NoWind, !- Wind Exposure
+   3660  autocalculate, !- View Factor to Ground
+   3661  4, !- Number of Vertices
+   3662  8.105215072631836,
+   3663  -10.564935684204102,
+   3664  20.0,
+   3665  15.48674201965332,
+   3666  3.6305935382843018,
+   3667  20.0,
+   3668  12.789609909057617,
+   3669  2.7788431644439697,
+   3670  20.0,
+   3671  7.253464698791504,
+   3672  -7.867804050445557,
+   3673  20.0;
+   3674 
+   3675 
+   3676 BuildingSurface:Detailed,
+   3677  17_0_2, !- Name
+   3678  WALL, !- Surface Type
+   3679  000 Interior Wall, !- Construction Name
+   3680  17_0, !- Zone Name
+   3681  SURFACE, !- Outside Boundary Condition
+   3682  18_0_3, !- Outside Boundary Condition Object
+   3683  NoSun, !- Sun Exposure
+   3684  NoWind, !- Wind Exposure
+   3685  autocalculate, !- View Factor to Ground
+   3686  4, !- Number of Vertices
+   3687  13.868462562561035,
+   3688  3.1195433139801025,
+   3689  16.0,
+   3690  11.171330451965332,
+   3691  2.2677929401397705,
+   3692  16.0,
+   3693  12.789609909057617,
+   3694  2.7788431644439697,
+   3695  20.0,
+   3696  15.48674201965332,
+   3697  3.6305935382843018,
+   3698  20.0;
+   3699 
+   3700 
+   3701 BuildingSurface:Detailed,
+   3702  17_0_3, !- Name
+   3703  WALL, !- Surface Type
+   3704  000 Interior Wall, !- Construction Name
+   3705  17_0, !- Zone Name
+   3706  SURFACE, !- Outside Boundary Condition
+   3707  20_0_2, !- Outside Boundary Condition Object
+   3708  NoSun, !- Sun Exposure
+   3709  NoWind, !- Wind Exposure
+   3710  autocalculate, !- View Factor to Ground
+   3711  4, !- Number of Vertices
+   3712  6.742414474487305,
+   3713  -6.2495245933532715,
+   3714  16.0,
+   3715  7.594164848327637,
+   3716  -8.946657180786133,
+   3717  16.0,
+   3718  8.105215072631836,
+   3719  -10.564935684204102,
+   3720  20.0,
+   3721  7.253464698791504,
+   3722  -7.867804050445557,
+   3723  20.0;
+   3724 
+   3725 
+   3726 BuildingSurface:Detailed,
+   3727  17_0_4, !- Name
+   3728  WALL, !- Surface Type
+   3729  ASHRAE 90.1-2004 ExtWall Mass ClimateZone 3-4, !- Construction Name
+   3730  17_0, !- Zone Name
+   3731  Outdoors, !- Outside Boundary Condition
+   3732  , !- Outside Boundary Condition Object
+   3733  SunExposed, !- Sun Exposure
+   3734  WindExposed, !- Wind Exposure
+   3735  autocalculate, !- View Factor to Ground
+   3736  4, !- Number of Vertices
+   3737  7.594164848327637,
+   3738  -8.946657180786133,
+   3739  16.0,
+   3740  13.868462562561035,
+   3741  3.1195433139801025,
+   3742  16.0,
+   3743  15.48674201965332,
+   3744  3.6305935382843018,
+   3745  20.0,
+   3746  8.105215072631836,
+   3747  -10.564935684204102,
+   3748  20.0;
+   3749 
+   3750 
+   3751 FenestrationSurface:Detailed,
+   3752  17_0_4_glz_0_0, !- Name
+   3753  WINDOW, !- Surface Type
+   3754  ASHRAE 90.1-2004 ExtWindow ClimateZone 4-6, !- Construction Name
+   3755  17_0_4, !- Surface Name
+   3756  , !- Outside Boundary Condition Object
+   3757  autocalculate, !- View Factor to Ground
+   3758  , !- Shading Control Name
+   3759  , !- Frame and Divider Name
+   3760  1, !- Multiplier
+   3761  4, !- Number of Vertices
+   3762  8.948150634765625,
+   3763  -6.833713054656982,
+   3764  16.754955291748047,
+   3765  12.916364669799805,
+   3766  0.79762202501296997,
+   3767  16.754955291748047,
+   3768  13.939854621887207,
+   3769  1.1208385229110718,
+   3770  19.284778594970703,
+   3771  9.271367073059082,
+   3772  -7.857202529907227,
+   3773  19.284778594970703;
+   3774 
+   3775 
+   3776 BuildingSurface:Detailed,
+   3777  17_0_5, !- Name
+   3778  WALL, !- Surface Type
+   3779  000 Interior Wall, !- Construction Name
+   3780  17_0, !- Zone Name
+   3781  SURFACE, !- Outside Boundary Condition
+   3782  16_0_5, !- Outside Boundary Condition Object
+   3783  NoSun, !- Sun Exposure
+   3784  NoWind, !- Wind Exposure
+   3785  autocalculate, !- View Factor to Ground
+   3786  4, !- Number of Vertices
+   3787  11.171330451965332,
+   3788  2.2677929401397705,
+   3789  16.0,
+   3790  6.742414474487305,
+   3791  -6.2495245933532715,
+   3792  16.0,
+   3793  7.253464698791504,
+   3794  -7.867804050445557,
+   3795  20.0,
+   3796  12.789609909057617,
+   3797  2.7788431644439697,
+   3798  20.0;
+   3799 
+   3800 
+   3801 Zone,
+   3802  18_0,
+   3803  0, !-Direction of Relative North {deg}
+   3804  0.0, !- X Origin {m}
+   3805  0.0, !- Y Origin {m}
+   3806  0.0, !- Z Origin {m}
+   3807  1; !- Type
+   3808 
+   3809 BuildingSurface:Detailed,
+   3810  18_0_0, !- Name
+   3811  FLOOR, !- Surface Type
+   3812  000 Interior Floor, !- Construction Name
+   3813  18_0, !- Zone Name
+   3814  SURFACE, !- Outside Boundary Condition
+   3815  13_0_1, !- Outside Boundary Condition Object
+   3816  NoSun, !- Sun Exposure
+   3817  NoWind, !- Wind Exposure
+   3818  autocalculate, !- View Factor to Ground
+   3819  4, !- Number of Vertices
+   3820  13.868462562561035,
+   3821  3.1195433139801025,
+   3822  16.0,
+   3823  11.171330451965332,
+   3824  2.2677929401397705,
+   3825  16.0,
+   3826  2.654012680053711,
+   3827  6.696709156036377,
+   3828  16.0,
+   3829  1.8022624254226685,
+   3830  9.393840789794922,
+   3831  16.0;
+   3832 
+   3833 
+   3834 BuildingSurface:Detailed,
+   3835  18_0_1, !- Name
+   3836  ROOF, !- Surface Type
+   3837  ASHRAE 90.1-2004 ExtRoof IEAD ClimateZone 1-4, !- Construction Name
+   3838  18_0, !- Zone Name
+   3839  Outdoors, !- Outside Boundary Condition
+   3840  , !- Outside Boundary Condition Object
+   3841  NoSun, !- Sun Exposure
+   3842  NoWind, !- Wind Exposure
+   3843  autocalculate, !- View Factor to Ground
+   3844  4, !- Number of Vertices
+   3845  1.2912122011184692,
+   3846  11.012120246887207,
+   3847  20.0,
+   3848  2.1429624557495117,
+   3849  8.314988136291504,
+   3850  20.0,
+   3851  12.789609909057617,
+   3852  2.7788431644439697,
+   3853  20.0,
+   3854  15.48674201965332,
+   3855  3.6305935382843018,
+   3856  20.0;
+   3857 
+   3858 
+   3859 BuildingSurface:Detailed,
+   3860  18_0_2, !- Name
+   3861  WALL, !- Surface Type
+   3862  000 Interior Wall, !- Construction Name
+   3863  18_0, !- Zone Name
+   3864  SURFACE, !- Outside Boundary Condition
+   3865  19_0_3, !- Outside Boundary Condition Object
+   3866  NoSun, !- Sun Exposure
+   3867  NoWind, !- Wind Exposure
+   3868  autocalculate, !- View Factor to Ground
+   3869  4, !- Number of Vertices
+   3870  1.8022624254226685,
+   3871  9.393840789794922,
+   3872  16.0,
+   3873  2.654012680053711,
+   3874  6.696709156036377,
+   3875  16.0,
+   3876  2.1429624557495117,
+   3877  8.314988136291504,
+   3878  20.0,
+   3879  1.2912122011184692,
+   3880  11.012120246887207,
+   3881  20.0;
+   3882 
+   3883 
+   3884 BuildingSurface:Detailed,
+   3885  18_0_3, !- Name
+   3886  WALL, !- Surface Type
+   3887  000 Interior Wall, !- Construction Name
+   3888  18_0, !- Zone Name
+   3889  SURFACE, !- Outside Boundary Condition
+   3890  17_0_2, !- Outside Boundary Condition Object
+   3891  NoSun, !- Sun Exposure
+   3892  NoWind, !- Wind Exposure
+   3893  autocalculate, !- View Factor to Ground
+   3894  4, !- Number of Vertices
+   3895  11.171330451965332,
+   3896  2.2677929401397705,
+   3897  16.0,
+   3898  13.868462562561035,
+   3899  3.1195433139801025,
+   3900  16.0,
+   3901  15.48674201965332,
+   3902  3.6305935382843018,
+   3903  20.0,
+   3904  12.789609909057617,
+   3905  2.7788431644439697,
+   3906  20.0;
+   3907 
+   3908 
+   3909 BuildingSurface:Detailed,
+   3910  18_0_4, !- Name
+   3911  WALL, !- Surface Type
+   3912  ASHRAE 90.1-2004 ExtWall Mass ClimateZone 3-4, !- Construction Name
+   3913  18_0, !- Zone Name
+   3914  Outdoors, !- Outside Boundary Condition
+   3915  , !- Outside Boundary Condition Object
+   3916  SunExposed, !- Sun Exposure
+   3917  WindExposed, !- Wind Exposure
+   3918  autocalculate, !- View Factor to Ground
+   3919  4, !- Number of Vertices
+   3920  13.868462562561035,
+   3921  3.1195433139801025,
+   3922  16.0,
+   3923  1.8022624254226685,
+   3924  9.393840789794922,
+   3925  16.0,
+   3926  1.2912122011184692,
+   3927  11.012120246887207,
+   3928  20.0,
+   3929  15.48674201965332,
+   3930  3.6305935382843018,
+   3931  20.0;
+   3932 
+   3933 
+   3934 FenestrationSurface:Detailed,
+   3935  18_0_4_glz_0_0, !- Name
+   3936  WINDOW, !- Surface Type
+   3937  ASHRAE 90.1-2004 ExtWindow ClimateZone 4-6, !- Construction Name
+   3938  18_0_4, !- Surface Name
+   3939  , !- Outside Boundary Condition Object
+   3940  autocalculate, !- View Factor to Ground
+   3941  , !- Shading Control Name
+   3942  , !- Frame and Divider Name
+   3943  1, !- Multiplier
+   3944  4, !- Number of Vertices
+   3945  11.755518913269043,
+   3946  4.473528861999512,
+   3947  16.754955291748047,
+   3948  4.124183654785156,
+   3949  8.441742897033691,
+   3950  16.754955291748047,
+   3951  3.800967216491699,
+   3952  9.465232849121094,
+   3953  19.284778594970703,
+   3954  12.779007911682129,
+   3955  4.796745300292969,
+   3956  19.284778594970703;
+   3957 
+   3958 
+   3959 BuildingSurface:Detailed,
+   3960  18_0_5, !- Name
+   3961  WALL, !- Surface Type
+   3962  000 Interior Wall, !- Construction Name
+   3963  18_0, !- Zone Name
+   3964  SURFACE, !- Outside Boundary Condition
+   3965  16_0_2, !- Outside Boundary Condition Object
+   3966  NoSun, !- Sun Exposure
+   3967  NoWind, !- Wind Exposure
+   3968  autocalculate, !- View Factor to Ground
+   3969  4, !- Number of Vertices
+   3970  2.654012680053711,
+   3971  6.696709156036377,
+   3972  16.0,
+   3973  11.171330451965332,
+   3974  2.2677929401397705,
+   3975  16.0,
+   3976  12.789609909057617,
+   3977  2.7788431644439697,
+   3978  20.0,
+   3979  2.1429624557495117,
+   3980  8.314988136291504,
+   3981  20.0;
+   3982 
+   3983 
+   3984 Zone,
+   3985  19_0,
+   3986  0, !-Direction of Relative North {deg}
+   3987  0.0, !- X Origin {m}
+   3988  0.0, !- Y Origin {m}
+   3989  0.0, !- Z Origin {m}
+   3990  1; !- Type
+   3991 
+   3992 BuildingSurface:Detailed,
+   3993  19_0_0, !- Name
+   3994  FLOOR, !- Surface Type
+   3995  000 Interior Floor, !- Construction Name
+   3996  19_0, !- Zone Name
+   3997  SURFACE, !- Outside Boundary Condition
+   3998  14_0_1, !- Outside Boundary Condition Object
+   3999  NoSun, !- Sun Exposure
+   4000  NoWind, !- Wind Exposure
+   4001  autocalculate, !- View Factor to Ground
+   4002  4, !- Number of Vertices
+   4003  -4.4720354080200195,
+   4004  -2.672358989715576,
+   4005  16.0,
+   4006  1.8022624254226685,
+   4007  9.393840789794922,
+   4008  16.0,
+   4009  2.654012680053711,
+   4010  6.696709156036377,
+   4011  16.0,
+   4012  -1.774903416633606,
+   4013  -1.8206086158752441,
+   4014  16.0;
+   4015 
+   4016 
+   4017 BuildingSurface:Detailed,
+   4018  19_0_1, !- Name
+   4019  ROOF, !- Surface Type
+   4020  ASHRAE 90.1-2004 ExtRoof IEAD ClimateZone 1-4, !- Construction Name
+   4021  19_0, !- Zone Name
+   4022  Outdoors, !- Outside Boundary Condition
+   4023  , !- Outside Boundary Condition Object
+   4024  NoSun, !- Sun Exposure
+   4025  NoWind, !- Wind Exposure
+   4026  autocalculate, !- View Factor to Ground
+   4027  4, !- Number of Vertices
+   4028  -6.090314865112305,
+   4029  -3.1834092140197754,
+   4030  20.0,
+   4031  -3.3931827545166016,
+   4032  -2.3316588401794434,
+   4033  20.0,
+   4034  2.1429624557495117,
+   4035  8.314988136291504,
+   4036  20.0,
+   4037  1.2912122011184692,
+   4038  11.012120246887207,
+   4039  20.0;
+   4040 
+   4041 
+   4042 BuildingSurface:Detailed,
+   4043  19_0_2, !- Name
+   4044  WALL, !- Surface Type
+   4045  000 Interior Wall, !- Construction Name
+   4046  19_0, !- Zone Name
+   4047  SURFACE, !- Outside Boundary Condition
+   4048  20_0_3, !- Outside Boundary Condition Object
+   4049  NoSun, !- Sun Exposure
+   4050  NoWind, !- Wind Exposure
+   4051  autocalculate, !- View Factor to Ground
+   4052  4, !- Number of Vertices
+   4053  -4.4720354080200195,
+   4054  -2.672358989715576,
+   4055  16.0,
+   4056  -1.774903416633606,
+   4057  -1.8206086158752441,
+   4058  16.0,
+   4059  -3.3931827545166016,
+   4060  -2.3316588401794434,
+   4061  20.0,
+   4062  -6.090314865112305,
+   4063  -3.1834092140197754,
+   4064  20.0;
+   4065 
+   4066 
+   4067 BuildingSurface:Detailed,
+   4068  19_0_3, !- Name
+   4069  WALL, !- Surface Type
+   4070  000 Interior Wall, !- Construction Name
+   4071  19_0, !- Zone Name
+   4072  SURFACE, !- Outside Boundary Condition
+   4073  18_0_2, !- Outside Boundary Condition Object
+   4074  NoSun, !- Sun Exposure
+   4075  NoWind, !- Wind Exposure
+   4076  autocalculate, !- View Factor to Ground
+   4077  4, !- Number of Vertices
+   4078  2.654012680053711,
+   4079  6.696709156036377,
+   4080  16.0,
+   4081  1.8022624254226685,
+   4082  9.393840789794922,
+   4083  16.0,
+   4084  1.2912122011184692,
+   4085  11.012120246887207,
+   4086  20.0,
+   4087  2.1429624557495117,
+   4088  8.314988136291504,
+   4089  20.0;
+   4090 
+   4091 
+   4092 BuildingSurface:Detailed,
+   4093  19_0_4, !- Name
+   4094  WALL, !- Surface Type
+   4095  ASHRAE 90.1-2004 ExtWall Mass ClimateZone 3-4, !- Construction Name
+   4096  19_0, !- Zone Name
+   4097  Outdoors, !- Outside Boundary Condition
+   4098  , !- Outside Boundary Condition Object
+   4099  SunExposed, !- Sun Exposure
+   4100  WindExposed, !- Wind Exposure
+   4101  autocalculate, !- View Factor to Ground
+   4102  4, !- Number of Vertices
+   4103  1.8022624254226685,
+   4104  9.393840789794922,
+   4105  16.0,
+   4106  -4.4720354080200195,
+   4107  -2.672358989715576,
+   4108  16.0,
+   4109  -6.090314865112305,
+   4110  -3.1834092140197754,
+   4111  20.0,
+   4112  1.2912122011184692,
+   4113  11.012120246887207,
+   4114  20.0;
+   4115 
+   4116 
+   4117 FenestrationSurface:Detailed,
+   4118  19_0_4_glz_0_0, !- Name
+   4119  WINDOW, !- Surface Type
+   4120  ASHRAE 90.1-2004 ExtWindow ClimateZone 4-6, !- Construction Name
+   4121  19_0_4, !- Surface Name
+   4122  , !- Outside Boundary Condition Object
+   4123  autocalculate, !- View Factor to Ground
+   4124  , !- Shading Control Name
+   4125  , !- Frame and Divider Name
+   4126  1, !- Multiplier
+   4127  4, !- Number of Vertices
+   4128  0.44827684760093689,
+   4129  7.28089714050293,
+   4130  16.754955291748047,
+   4131  -3.519937515258789,
+   4132  -0.35043773055076599,
+   4133  16.754955291748047,
+   4134  -4.543426990509033,
+   4135  -0.67365425825119019,
+   4136  19.284778594970703,
+   4137  0.12506033480167389,
+   4138  8.304387092590332,
+   4139  19.284778594970703;
+   4140 
+   4141 
+   4142 BuildingSurface:Detailed,
+   4143  19_0_5, !- Name
+   4144  WALL, !- Surface Type
+   4145  000 Interior Wall, !- Construction Name
+   4146  19_0, !- Zone Name
+   4147  SURFACE, !- Outside Boundary Condition
+   4148  16_0_3, !- Outside Boundary Condition Object
+   4149  NoSun, !- Sun Exposure
+   4150  NoWind, !- Wind Exposure
+   4151  autocalculate, !- View Factor to Ground
+   4152  4, !- Number of Vertices
+   4153  -1.774903416633606,
+   4154  -1.8206086158752441,
+   4155  16.0,
+   4156  2.654012680053711,
+   4157  6.696709156036377,
+   4158  16.0,
+   4159  2.1429624557495117,
+   4160  8.314988136291504,
+   4161  20.0,
+   4162  -3.3931827545166016,
+   4163  -2.3316588401794434,
+   4164  20.0;
+   4165 
+   4166 
+   4167 Zone,
+   4168  20_0,
+   4169  0, !-Direction of Relative North {deg}
+   4170  0.0, !- X Origin {m}
+   4171  0.0, !- Y Origin {m}
+   4172  0.0, !- Z Origin {m}
+   4173  1; !- Type
+   4174 
+   4175 BuildingSurface:Detailed,
+   4176  20_0_0, !- Name
+   4177  FLOOR, !- Surface Type
+   4178  000 Interior Floor, !- Construction Name
+   4179  20_0, !- Zone Name
+   4180  SURFACE, !- Outside Boundary Condition
+   4181  15_0_1, !- Outside Boundary Condition Object
+   4182  NoSun, !- Sun Exposure
+   4183  NoWind, !- Wind Exposure
+   4184  autocalculate, !- View Factor to Ground
+   4185  4, !- Number of Vertices
+   4186  -4.4720354080200195,
+   4187  -2.672358989715576,
+   4188  16.0,
+   4189  -1.774903416633606,
+   4190  -1.8206086158752441,
+   4191  16.0,
+   4192  6.742414474487305,
+   4193  -6.2495245933532715,
+   4194  16.0,
+   4195  7.594164848327637,
+   4196  -8.946657180786133,
+   4197  16.0;
+   4198 
+   4199 
+   4200 BuildingSurface:Detailed,
+   4201  20_0_1, !- Name
+   4202  ROOF, !- Surface Type
+   4203  ASHRAE 90.1-2004 ExtRoof IEAD ClimateZone 1-4, !- Construction Name
+   4204  20_0, !- Zone Name
+   4205  Outdoors, !- Outside Boundary Condition
+   4206  , !- Outside Boundary Condition Object
+   4207  NoSun, !- Sun Exposure
+   4208  NoWind, !- Wind Exposure
+   4209  autocalculate, !- View Factor to Ground
+   4210  4, !- Number of Vertices
+   4211  8.105215072631836,
+   4212  -10.564935684204102,
+   4213  20.0,
+   4214  7.253464698791504,
+   4215  -7.867804050445557,
+   4216  20.0,
+   4217  -3.3931827545166016,
+   4218  -2.3316588401794434,
+   4219  20.0,
+   4220  -6.090314865112305,
+   4221  -3.1834092140197754,
+   4222  20.0;
+   4223 
+   4224 
+   4225 BuildingSurface:Detailed,
+   4226  20_0_2, !- Name
+   4227  WALL, !- Surface Type
+   4228  000 Interior Wall, !- Construction Name
+   4229  20_0, !- Zone Name
+   4230  SURFACE, !- Outside Boundary Condition
+   4231  17_0_3, !- Outside Boundary Condition Object
+   4232  NoSun, !- Sun Exposure
+   4233  NoWind, !- Wind Exposure
+   4234  autocalculate, !- View Factor to Ground
+   4235  4, !- Number of Vertices
+   4236  7.594164848327637,
+   4237  -8.946657180786133,
+   4238  16.0,
+   4239  6.742414474487305,
+   4240  -6.2495245933532715,
+   4241  16.0,
+   4242  7.253464698791504,
+   4243  -7.867804050445557,
+   4244  20.0,
+   4245  8.105215072631836,
+   4246  -10.564935684204102,
+   4247  20.0;
+   4248 
+   4249 
+   4250 BuildingSurface:Detailed,
+   4251  20_0_3, !- Name
+   4252  WALL, !- Surface Type
+   4253  000 Interior Wall, !- Construction Name
+   4254  20_0, !- Zone Name
+   4255  SURFACE, !- Outside Boundary Condition
+   4256  19_0_2, !- Outside Boundary Condition Object
+   4257  NoSun, !- Sun Exposure
+   4258  NoWind, !- Wind Exposure
+   4259  autocalculate, !- View Factor to Ground
+   4260  4, !- Number of Vertices
+   4261  -1.774903416633606,
+   4262  -1.8206086158752441,
+   4263  16.0,
+   4264  -4.4720354080200195,
+   4265  -2.672358989715576,
+   4266  16.0,
+   4267  -6.090314865112305,
+   4268  -3.1834092140197754,
+   4269  20.0,
+   4270  -3.3931827545166016,
+   4271  -2.3316588401794434,
+   4272  20.0;
+   4273 
+   4274 
+   4275 BuildingSurface:Detailed,
+   4276  20_0_4, !- Name
+   4277  WALL, !- Surface Type
+   4278  ASHRAE 90.1-2004 ExtWall Mass ClimateZone 3-4, !- Construction Name
+   4279  20_0, !- Zone Name
+   4280  Outdoors, !- Outside Boundary Condition
+   4281  , !- Outside Boundary Condition Object
+   4282  SunExposed, !- Sun Exposure
+   4283  WindExposed, !- Wind Exposure
+   4284  autocalculate, !- View Factor to Ground
+   4285  4, !- Number of Vertices
+   4286  -4.4720354080200195,
+   4287  -2.672358989715576,
+   4288  16.0,
+   4289  7.594164848327637,
+   4290  -8.946657180786133,
+   4291  16.0,
+   4292  8.105215072631836,
+   4293  -10.564935684204102,
+   4294  20.0,
+   4295  -6.090314865112305,
+   4296  -3.1834092140197754,
+   4297  20.0;
+   4298 
+   4299 
+   4300 BuildingSurface:Detailed,
+   4301  20_0_5, !- Name
+   4302  WALL, !- Surface Type
+   4303  000 Interior Wall, !- Construction Name
+   4304  20_0, !- Zone Name
+   4305  SURFACE, !- Outside Boundary Condition
+   4306  16_0_4, !- Outside Boundary Condition Object
+   4307  NoSun, !- Sun Exposure
+   4308  NoWind, !- Wind Exposure
+   4309  autocalculate, !- View Factor to Ground
+   4310  4, !- Number of Vertices
+   4311  6.742414474487305,
+   4312  -6.2495245933532715,
+   4313  16.0,
+   4314  -1.774903416633606,
+   4315  -1.8206086158752441,
+   4316  16.0,
+   4317  -3.3931827545166016,
+   4318  -2.3316588401794434,
+   4319  20.0,
+   4320  7.253464698791504,
+   4321  -7.867804050445557,
+   4322  20.0;
+   4323 
+   4324 Construction,
+   4325   000 Interior Ceiling,   !- name
+   4326   000 M11 100mm lightweight concrete,   !- - Layer 1
+   4327   000 F05 Ceiling air space resistance,   !- - Layer 2
+   4328   000 F16 Acoustic tile;   !- - Layer 3
+   4329 
+   4330 Material,
+   4331   000 M11 100mm lightweight concrete,   !- name
+   4332   MediumRough,   !- - Roughness
+   4333   0.1016,   !- - Thickness {m}
+   4334   0.53,   !- - Conductivity {W/m-K}
+   4335   1280,   !- - Density {kg/m3}
+   4336   840,   !- - Specific Heat {J/kg-K}
+   4337   0.9,   !- - Thermal Absorptance
+   4338   0.7,   !- - Solar Absorptance
+   4339   0.7;   !- - Visible Absorptance
+   4340 
+   4341 Material:AirGap,
+   4342   000 F05 Ceiling air space resistance,   !- name
+   4343   0.18;   !- - Thermal Resistance {m2-K/W}
+   4344 
+   4345 Material,
+   4346   000 F16 Acoustic tile,   !- name
+   4347   MediumSmooth,   !- - Roughness
+   4348   0.0191,   !- - Thickness {m}
+   4349   0.06,   !- - Conductivity {W/m-K}
+   4350   368,   !- - Density {kg/m3}
+   4351   590,   !- - Specific Heat {J/kg-K}
+   4352   0.9,   !- - Thermal Absorptance
+   4353   0.7,   !- - Solar Absorptance
+   4354   0.7;   !- - Visible Absorptance
+   4355 
+   4356 Construction,
+   4357   ASHRAE 90.1-2004 AtticFloor ClimateZone 1-5,   !- name
+   4358   1/2IN Gypsum,   !- - Layer 1
+   4359   AtticFloor NonRes Insulation-5.18,   !- - Layer 2
+   4360   1/2IN Gypsum;   !- - Layer 3
+   4361 
+   4362 Material,
+   4363   1/2IN Gypsum,   !- name
+   4364   Smooth,   !- - Roughness
+   4365   0.0127,   !- - Thickness {m}
+   4366   0.16,   !- - Conductivity {W/m-K}
+   4367   784.9,   !- - Density {kg/m3}
+   4368   830,   !- - Specific Heat {J/kg-K}
+   4369   0.9,   !- - Thermal Absorptance
+   4370   0.92,   !- - Solar Absorptance
+   4371   0.92;   !- - Visible Absorptance
+   4372 
+   4373 Material,
+   4374   AtticFloor NonRes Insulation-5.18,   !- name
+   4375   MediumRough,   !- - Roughness
+   4376   0.302609558350619,   !- - Thickness {m}
+   4377   0.049,   !- - Conductivity {W/m-K}
+   4378   265,   !- - Density {kg/m3}
+   4379   836.8,   !- - Specific Heat {J/kg-K}
+   4380   0.9,   !- - Thermal Absorptance
+   4381   0.7,   !- - Solar Absorptance
+   4382   0.7;   !- - Visible Absorptance
+   4383 
+   4384 Construction,
+   4385   ASHRAE 90.1-2004 ExtWall Mass ClimateZone 3-4,   !- name
+   4386   1IN Stucco,   !- - Layer 1
+   4387   8IN CONCRETE HW RefBldg,   !- - Layer 2
+   4388   Mass NonRes Wall Insulation-1.17,   !- - Layer 3
+   4389   1/2IN Gypsum;   !- - Layer 4
+   4390 
+   4391 Material,
+   4392   1IN Stucco,   !- name
+   4393   Smooth,   !- - Roughness
+   4394   0.0253,   !- - Thickness {m}
+   4395   0.6918,   !- - Conductivity {W/m-K}
+   4396   1858,   !- - Density {kg/m3}
+   4397   837,   !- - Specific Heat {J/kg-K}
+   4398   0.9,   !- - Thermal Absorptance
+   4399   0.92,   !- - Solar Absorptance
+   4400   0.92;   !- - Visible Absorptance
+   4401 
+   4402 Material,
+   4403   8IN CONCRETE HW RefBldg,   !- name
+   4404   Rough,   !- - Roughness
+   4405   0.2032,   !- - Thickness {m}
+   4406   1.311,   !- - Conductivity {W/m-K}
+   4407   2240,   !- - Density {kg/m3}
+   4408   836.8,   !- - Specific Heat {J/kg-K}
+   4409   0.9,   !- - Thermal Absorptance
+   4410   0.7,   !- - Solar Absorptance
+   4411   0.7;   !- - Visible Absorptance
+   4412 
+   4413 Material,
+   4414   Mass NonRes Wall Insulation-1.17,   !- name
+   4415   MediumRough,   !- - Roughness
+   4416   0.0365394788793098,   !- - Thickness {m}
+   4417   0.049,   !- - Conductivity {W/m-K}
+   4418   265,   !- - Density {kg/m3}
+   4419   836.8,   !- - Specific Heat {J/kg-K}
+   4420   0.9,   !- - Thermal Absorptance
+   4421   0.7,   !- - Solar Absorptance
+   4422   0.7;   !- - Visible Absorptance
+   4423 
+   4424 Construction,
+   4425   ASHRAE 90.1-2004 ExtWindow ClimateZone 4-6,   !- name
+   4426   Fixed Window 3.24/0.39/0.31;   !- - Layer 1
+   4427 
+   4428 WindowMaterial:SimpleGlazingSystem,
+   4429   Fixed Window 3.24/0.39/0.31,   !- name
+   4430   3.23646,   !- - U-Factor {W/m2-K}
+   4431   0.39,   !- - Solar Heat Gain Coefficient
+   4432   0.31;   !- - Visible Transmittance
+   4433 
+   4434 Construction,
+   4435   000 Interior Floor,   !- name
+   4436   000 F16 Acoustic tile,   !- - Layer 1
+   4437   000 F05 Ceiling air space resistance,   !- - Layer 2
+   4438   000 M11 100mm lightweight concrete;   !- - Layer 3
+   4439 
+   4440 Construction,
+   4441   000 Interior Wall,   !- name
+   4442   000 G01a 19mm gypsum board,   !- - Layer 1
+   4443   000 F04 Wall air space resistance,   !- - Layer 2
+   4444   000 G01a 19mm gypsum board;   !- - Layer 3
+   4445 
+   4446 Material,
+   4447   000 G01a 19mm gypsum board,   !- name
+   4448   MediumSmooth,   !- - Roughness
+   4449   0.019,   !- - Thickness {m}
+   4450   0.16,   !- - Conductivity {W/m-K}
+   4451   800,   !- - Density {kg/m3}
+   4452   1090,   !- - Specific Heat {J/kg-K}
+   4453   0.9,   !- - Thermal Absorptance
+   4454   0.7,   !- - Solar Absorptance
+   4455   0.7;   !- - Visible Absorptance
+   4456 
+   4457 Material:AirGap,
+   4458   000 F04 Wall air space resistance,   !- name
+   4459   0.15;   !- - Thermal Resistance {m2-K/W}
