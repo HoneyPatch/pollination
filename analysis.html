@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pollinator - Analysis</title>
+<link href="./css/bootstrap/bootstrap-min.css" media="all" rel="stylesheet" type="text/css" />
+<link href="./css/bootstrap/bootstrap-responsive.css" media="all" rel="stylesheet" type="text/css" />
+<link href="./css/bootstrap/bootstrap.css" media="all" rel="stylesheet" type="text/css" />
+<link href="./css/d3.parcoords.css" media="all" rel="stylesheet" type="text/css" />
+<link href="./css/styles.css" media="all" rel="stylesheet" type="text/css" />
+<script src="./js/jquery-2.1.1.js" type="text/javascript"></script>
+<script src="./js/bootstrap.js" type="text/javascript"></script>
+<script src="./js/bootstrap.min.js" type="text/javascript"></script>
+<script src="./js/mustache.js" type="text/javascript"></script>
+<script src="./js/d3.v3.min.js" type="text/javascript"></script>
+<script src="./js/d3.parcoords.js"></script>
+<script src="./js/divgrid.js"></script>
+</head>
+
+<!--BODY-->
+<body>
+<div class="fluid-container">
+    <nav class="navbar navbar-default" role="navigation">
+                <ul class="nav navbar-nav">
+                    <li><a href="./index">About</a></li>
+                    <li><a href="./team">Team</a></li>
+                    <li class="active"><a href="./analysis">Analysis</a></li>
+                    <li><a href="https://github.com/mdahlhausen/pollinator">View on GitHub</a></li>
+                    <li><a href="http://core.thorntontomasetti.com/aec-technology-symposium-2014/">AEC Hackathon</a></li>
+                </ul>
+    </nav> <!--END NAV BAR-->
+
+<div id="example" class="parcoords" style="height:300px;"></div>
+
+<div class="row-fluid header-row">
+    <div id="grid"></div>
+</div>
+
+<script id="brushing">
+    var parcoords = d3.parcoords()("#example")
+      .alpha(0.4)
+      .mode("queue") // progressive rendering
+    
+    // load json file and create the chart
+    //d3.csv('./nutrients.csv', function(data) {
+    d3.json("./fixedtest.json", function (error, data) {
+        parcoords
+        .data(data)
+        .render()
+        .reorderable() 
+        .brushable();  
+    
+      // create data table, row hover highlighting
+      var grid = d3.divgrid();
+      d3.select("#grid")
+        .datum(data.slice(0,10))
+        .call(grid)
+        .selectAll(".row")
+        .on({
+          "mouseover": function(d) { parcoords.highlight([d]) },
+          "mouseout": parcoords.unhighlight
+        });
+    
+      // update data table on brush event
+      parcoords.on("brush", function(d) {
+        d3.select("#grid")
+          .datum(d.slice(0,10))
+          .call(grid)
+          .selectAll(".row")
+          .on({
+            "mouseover": function(d) { parcoords.highlight([d]) },
+            "mouseout": parcoords.unhighlight
+          });
+      });
+    });
+</script>
+
+</div> <!-- /container -->
+</body>
+</html>
+
