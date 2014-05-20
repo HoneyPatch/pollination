@@ -4,4 +4,4 @@ Pollination is an open source batch simulation and visualization tool for runnin
 
 ## Demo
 
-See an example of the results [here](http://mdahlhausen.github.io/pollinator/index)
+See an example of the results [here](http://HoneyPatch.github.io/pollination/index)
